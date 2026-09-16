@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>הודעות - אפליקציית צ'אטים בסגנון Apple Messages</title>
+  <meta name="description" content="הדמיה סטטית של מסך צ'אט בודד בסגנון Apple Messages המראה רשימת שיחות עם בועות צ'אט מותאמות ל-RTL.">
+  <meta name="theme-color" content="#f5f5f7">
+  <meta property="og:title" content="הודעות - אפליקציית צ'אטים בסגנון Apple Messages">
+  <meta property="og:description" content="הדמיה סטטית של מסך צ'אט בודד בסגנון Apple Messages המראה רשימת שיחות עם בועות צ'אט מותאמות ל-RTL.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Visually hidden for screen readers */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    /* Custom icon for send button */
+    .send-icon { width: 18px; height: 18px; }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#f5f5f7',
+            surface: '#ffffff',
+            text: '#000000',
+            muted: '#8e8e93',
+            primary: '#8e8e93',
+            accent: '#ffffff',
+            bubble: '#e5e5ea',
+            border: '#e5e5ea',
+            inputBorder: '#d1d1d6'
+          },
+          fontFamily: {
+            display: ['Inter', 'system-ui', 'sans-serif'],
+            body: ['Inter', 'system-ui', 'sans-serif']
+          },
+          borderRadius: {
+            xs: '6px',
+            sm: '8px',
+            md: '12px',
+            lg: '20px',
+            xl: '28px'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-bg text-text antialiased">
+  <h1 class="sr-only">הודעות - אפליקציית צ'אטים בסגנון Apple Messages</h1>
+
+  <!-- Navigation -->
+  <header class="h-[44px] flex items-center justify-center border-b border-[#d1d1d6] bg-bg">
+    <span class="text-[17px] font-medium text-text">הודעות</span>
+  </header>
+
+  <!-- Chat List -->
+  <main class="flex-1 overflow-y-auto pb-[56px]">
+    <div class="space-y-2 px-4">
+      <!-- Conversation 1: user sent last message -->
+      <div class="flex items-start space-x-3">
+        <!-- Avatar -->
+        <div class="flex-shrink-0 h-8 w-8 rounded-md bg-[#e5e5ea] flex items-center justify-center text-[12px] font-medium text-text">
+          יא
+        </div>
+        <div class="flex-1 space-y-1">
+          <div class="flex items-baseline justify-between">
+            <p class="text-[17px] font-medium text-text">יונתן כהן</p>
+            <p class="text-[12px] text-muted">10:32</p>
+          </div>
+          <!-- Bubble: user sent (white with border) -->
+          <div class="inline-block max-w-[70%] bg-accent border border-[#e5e5ea] rounded-md px-3 py-3 text-text">
+            היום ניפגש ב-19:00?
+          </div>
+        </div>
+      </div>
+
+      <!-- Conversation 2: received last message -->
+      <div class="flex items-start space-x-3">
+        <!-- Avatar -->
+        <div class="flex-shrink-0 h-8 w-8 rounded-md bg-[#e5e5ea] flex items-center justify-center text-[12px] font-medium text-text">
+          מ ל
+        </div>
+        <div class="flex-1 space-y-1">
+          <div class="flex items-baseline justify-between">
+            <p class="text-[17px] font-medium text-text">מלי לוי</p>
+            <p class="text-[12px] text-muted">09:15</p>
+          </div>
+          <!-- Bubble: received (gray bg) -->
+          <div class="inline-block max-w-[70%] bg-[#e5e5ea] rounded-md px-3 py-3 text-text">
+            בסדר, אראה אותך שם
+          </div>
+        </div>
+      </div>
+
+      <!-- Conversation 3: user sent last message -->
+      <div class="flex items-start space-x-3">
+        <!-- Avatar -->
+        <div class="flex-shrink-0 h-8 w-8 rounded-md bg-[#e5e5ea] flex items-center justify-center text-[12px] font-medium text-text">
+          ע ז
+        </div>
+        <div class="flex-1 space-y-1">
+          <div class="flex items-baseline justify-between">
+            <p class="text-[17px] font-medium text-text">עוזי אביב</p>
+            <p class="text-[12px] text-muted">אתמול 22:01</p>
+          </div>
+          <!-- Bubble: user sent (white with border) -->
+          <div class="inline-block max-w-[70%] bg-accent border border-[#e5e5ea] rounded-md px-3 py-3 text-text">
+            שלח לי את הקישור כשאתה יכול
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Input Area -->
+  <footer class="flex items-center bg-surface border-t border-[#d1d1d6] px-0">
+    <input type="text" placeholder="הקלד הודעה..." aria-label="הכנסת הודעה" class="flex-1 h-[56px] rounded-lg bg-surface px-4 py-2 text-[17px] text-text focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50" />
+    <button class="ml-2 h-[30px] w-[30px] flex items-center justify-center bg-primary rounded-full hover:bg-primary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50" aria-label="שליחה">
+      <svg class="send-icon stroke-[1.5] stroke-white fill-none" viewBox="0 0 24 24"><path d="M2 2l7.39 3.18L2 14.6l5.66-2.44L22 12l-8.34 3.6L15.66 19.4l-2.25-8.79L2 2z"/></svg>
+    </button>
+  </footer>
+</body>
+</html>

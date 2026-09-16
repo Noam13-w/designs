@@ -1,0 +1,956 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>שקט - סטודיו ליוגה בתל אביב | לוח שיעורים, מחירון והרשמה לניסיון</title>
+    <meta name="description" content="שקט סטודיו ליוגה בתל אביב מציע שיעורים קטנים ואישיים לכל הרמות. לוח שיעורים מעודכן, מחירונים شفופים והרשמה מהירה לשיעור ניסיון חינם.">
+    <meta name="og:title" content="שקט - סטודיו ליוגה בתל אביב">
+    <meta name="og:description" content="שיעורי יוגה בתל אביב עם מדריכות מוסמכות. לוח שיעורים, מחירון והרשמה לניסיון.">
+    <meta name="og:type" content="website">
+    <meta name="theme-color" content="#8B5E34">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700&family=Heebo:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%238B5E34'/%3E%3Ctext x='50' y='55' fill='%23FFFFFF' font-size='40' text-anchor='middle'%3Eש%3C/text%3E%3C/svg%3E">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: '#F6F1EA',
+                        surface: '#FFFCF8',
+                        'surface-2': '#F8F5F0',
+                        text: '#2A2622',
+                        muted: '#6B675F',
+                        border: '#E4D9C8',
+                        primary: '#8B5E34',
+                        'primary-fg': '#FFFFFF',
+                        accent: '#C9A227'
+                    },
+                    fontFamily: {
+                        display: ['Rubik', 'sans-serif'],
+                        body: ['Heebo', 'sans-serif']
+                    },
+                    borderRadius: {
+                        sm: '6px',
+                        md: '12px',
+                        lg: '20px',
+                        xl: '28px'
+                    },
+                    boxShadow: {
+                        soft: '0 1px 2px rgba(0,0,0,.05), 0 8px 24px -12px rgba(0,0,0,.15)',
+                        ring: '0 0 0 1px var(--border)'
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --bg: #F6F1EA;
+            --surface: #FFFCF8;
+            --text: #2A2622;
+            --muted: #6B675F;
+            --border: #E4D9C8;
+            --primary: #8B5E34;
+            --accent: #C9A227;
+        }
+        .noise-bg {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+        }
+        .hero-blob {
+            position: absolute;
+            width: 30vw;
+            height: 30vw;
+            background: radial-gradient(circle at center, var(--accent) 0%, transparent 70%);
+            filter: blur(80px);
+            opacity: 0.15;
+            animation: blobMove 12s ease-in-out infinite alternate;
+        }
+        @keyframes blobMove {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(30px, -20px) scale(1.1); }
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 600ms ease, transform 600ms ease;
+        }
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .focus-visible:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+        .blob {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: var(--accent);
+            opacity: 0.08;
+            filter: blur(60px);
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .accordion-button[aria-expanded="true"] {
+            background-color: var(--primary-fg);
+            color: var(--primary);
+        }
+        .accordion-button[aria-expanded="true"]::after {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-bg text-text antialiased">
+    <div class="relative overflow-hidden">
+        <div class="blob" style="top: 10%; left: 5%;"></div>
+        <div class="blob" style="top: 60%; right: 5%; width: 180px; height: 180px; animation-delay: -2s;"></div>
+        <div class="blob" style="bottom: 15%; left: 15%; width: 220px; height: 220px; animation-delay: -4s;"></div>
+        <header class="relative z-10">
+            <nav class="relative flex h-16 items-center justify-between px-4 md:px-8 lg:px-12 backdrop-blur-sm bg-surface/80 border-b border-border/50">
+                <div class="flex items-center space-x-4">
+                    <a href="tel:+97235551234" class="text-muted flex items-center space-x-1 focus-visible">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        <span>03-555-1234</span>
+                    </a>
+                    <a href="https://wa.me/97235551234" class="relative inline-flex items-center px-4 py-2 bg-primary text-primary-fg font-semibold rounded-md hover:bg-primary/90 transition-colors focus-visible focus-visible:ring-2 focus-visible:ring-primary-fg focus-visible:ring-offset-2">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20.1 3.9C17.9 1.7 15 .5 12 .5 5.8.5.7 5.6.7 11.9c0 2 .5 3.9 1.5 5.6L.9 23l8-1c1.1.1 2.2.3 3.3.5l1.2-8c1.7-.5 3.6-1.3 5-2.4l6.9-.4c1.8-.4 3.6-.7 5.2-1.4l1.5-.6c.5-.1 1-.2 1.5-.2z"></path></svg>
+                        וואטסאפ
+                    </a>
+                    <button id="mobile-menu-button" class="md:hidden flex items-center p-2 rounded-md hover:bg-muted/20 focus-visible" aria-controls="mobile-menu" aria-expanded="false">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                </div>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#schedule" class="text-muted hover:text-primary transition-colors focus-visible">לוח שיעורים</a>
+                    <a href="#pricing" class="text-muted hover:text-primary transition-colors focus-visible">מחירון</a>
+                    <a href="#about" class="text-muted hover:text-primary transition-colors focus-visible">אודות</a>
+                    <a href="#gallery" class="text-muted hover:text-primary transition-colors focus-visible">גלריה</a>
+                    <a href="#contact" class="text-muted hover:text-primary transition-colors focus-visible">צור קשר</a>
+                </div>
+                <a href="#" class="flex items-center space-x-2 text-xl font-display font-bold text-primary">
+                    שקט
+                </a>
+            </nav>
+            <div id="mobile-menu" class="md:hidden hidden space-y-6 pt-5 pb-4">
+                <a href="#schedule" class="block px-4 py-2 text-lg font-medium text-primary hover:bg-muted/20 focus-visible">לוח שיעורים</a>
+                <a href="#pricing" class="block px-4 py-2 text-lg font-medium text-primary hover:bg-muted/20 focus-visible">מחירון</a>
+                <a href="#about" class="block px-4 py-2 text-lg font-medium text-primary hover:bg-muted/20 focus-visible">אודות</a>
+                <a href="#gallery" class="block px-4 py-2 text-lg font-medium text-primary hover:bg-muted/20 focus-visible">גלריה</a>
+                <a href="#contact" class="block px-4 py-2 text-lg font-medium text-primary hover:bg-muted/20 focus-visible">צור קשר</a>
+                <div class="pt-4 border-t border-border/50">
+                    <a href="tel:+97235551234" class="block px-4 py-2 text-lg font-medium text-primary hover:bg-muted/20 focus-visible flex items-center space-x-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        <span>03-555-1234</span>
+                    </a>
+                    <a href="https://wa.me/97235551234" class="block mt-2 px-4 py-2 text-lg font-medium text-primary-fg bg-primary rounded-md hover:bg-primary/90 focus-visible flex items-center space-x-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20.1 3.9C17.9 1.7 15 .5 12 .5 5.8.5.7 5.6.7 11.9c0 2 .5 3.9 1.5 5.6L.9 23l8-1c1.1.1 2.2.3 3.3.5l1.2-8c1.7-.5 3.6-1.3 5-2.4l6.9-.4c1.8-.4 3.6-.7 5.2-1.4l1.5-.6c.5-.1 1-.2 1.5-.2z"></path></svg>
+                        וואטסאפ
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <section class="relative pt-20 pb-24 md:pt-28 md:pb-32 lg:pt-32 lg:pb-36">
+            <div class="container mx-auto px-5 md:px-8 lg:px-12">
+                <div class="relative">
+                    <div class="absolute inset-0 -z-10">
+                        <div class="hero-blob" style="left: 10%; top: 20%;"></div>
+                        <div class="hero-blob" style="right: 15%; top: 40%; animation-delay: -3s;"></div>
+                    </div>
+                    <div class="relative z-10 text-start">
+                        <p class="ebony text-xs uppercase tracking-wider font-semibold mb-4">סטודיו ליוגה בשכונת פלורנטין</p>
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight leading-[1.02] mb-6 max-w-2xl">
+                            יוגה שמפחיתה לחץ ומשפרת שינה בתל אביב
+                        </h1>
+                        <p class="text-lg md:text-xl leading-relaxed max-w-xl mb-8">
+                            שיעורים קטנים ואישיים עם מדריכות מוסמכות, כל יום בשבוע במגוון סגנונות וזמנים. חוו את השיפור בגמישות, הכוח והשקט הפניע כבר מהשיעור הראשון.
+                        </p>
+                        <div class="flex flex-wrap gap-4 mb-6">
+                            <button id="trial-button-hero" class="flex items-center px-6 py-3 bg-primary text-primary-fg font-semibold rounded-md hover:bg-primary/90 transition-colors focus-visible focus-visible:ring-2 focus-visible:ring-primary-fg focus-visible:ring-offset-2 whitespace-nowrap">
+                                הרשמו לשיעור ניסיון חינם
+                                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg>
+                            </button>
+                            <a href="#schedule" class="flex items-center px-6 py-3 border border-border rounded-md hover:bg-muted/20 transition-colors focus-visible focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 whitespace-nowrap">
+                                צפייה בלוח השיעורים
+                                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg>
+                            </a>
+                        </div>
+                        <div class="flex items-center text-sm text-muted">
+                            <div class="flex items-center space-x-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 8v4l3 3"></path></svg>
+                            </div>
+                            <span>דירוג ממוצע: 4.9 (127 ביקורות)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pt-16 pb-20 md:pt-24 md:pb-28">
+            <div class="container mx-auto px-5 md:px-8 lg:px-12">
+                <div class="flex justify-center space-x-6">
+                    <div class="flex items-center space-x-2 text-muted">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 9v2m0 4v2m6-4a9 9 0 01-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-display font-bold tracking-tight leading-[1.1]">מה הלקוחות אומרים</h2>
+                    <div class="flex items-center space-x-2 text-muted text-sm">
+                        <span>4.9</span>
+                        <span>/5</span>
+                        <span class="mx-1">·</span>
+                        <span>127</span>
+                        <span>ביקורות</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="schedule" class="pt-20 pb-24 md:pt-28 md:pb-32">
+            <div class="container mx-auto px-5 md:px-8 lg:px-12">
+                <div class="mb-12">
+                    <p class="ebony text-xs uppercase tracking-wider font-semibold mb-4">לוח השיעורים השבועי</p>
+                    <h2 class="text-3xl md:text-4xl font-display font-bold tracking-tight leading-[1.1] mb-8">מצאו את השיעור המושלם עבורכם</h2>
+                </div>
+                <div class="space-y-12">
+                    <!-- Sunday -->
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">יום ראשון</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 bg-surface border rounded-lg hover:bg-surface-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                                <div class="flex-1 space-x-3">
+                                    <time class="font-mono text-sm">07:00</time>
+                                    <span class="block text-sm font-medium">הזרימה בבוקר</span>
+                                    <span class="text-xs text-muted">כל הרמות</span>
+                                </div>
+                                <span class="px-3 py-0.5 bg-primary/10 text-primary text-xs rounded-full">פתוח להרשמה</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-surface border rounded-lg hover:bg-surface-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                                <div class="flex-1 space-x-3">
+                                    <time class="font-mono text-sm">09:30</time>
+                                    <span class="block text-sm font-medium">יוגה עדינה</span>
+                                    <span class="text-xs text-muted">מתחילים</span>
+                                </div>
+                                <span class="px-3 py-0.5 bg-primary/10 text-primary text-xs rounded-full">מקומות אחרונים</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-surface border rounded-lg hover:bg-surface-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                                <div class="flex-1 space-x-3">
+                                    <time class="font-mono text-sm">18:00</time>
+                                    <span class="block text-sm font-medium">ויניאסה דינמית</span>
+                                    <span class="text-xs text-muted">בינוני+</span>
+                                </div>
+                                <span class="px-3 py-0.5 bg-accent/10 text-accent text-xs rounded-full">פופולרי</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-surface border rounded-lg hover:bg-surface-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                                <div class="flex-1 space-x-3">
+                                    <time class="font-mono text-sm">20:00</time>
+                                    <span class="block text-sm font-medium">יוגה נידרה</span>
+                                    <span class="text-xs text-muted">כל הרמות</span>
+                                </div>
+                                <span class="px-3 py-0.5 bg-primary/10 text-primary text-xs rounded-full">פתוח להרשמה</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Monday -->
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">יום שני</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 bg-surface border rounded-lg hover:bg-surface-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                                <div class="flex-1 space-x-3">
+                                    <time class="font-mono text-sm">06:30</time>
+                                    <span class="block text-sm font-medium">העירות העדינה</span>
+                                    <span class="text-xs text-muted">כל הרמות</span>
+                                </div>
+                                <span class="px-3 py-0.5 bg-primary/10 text-primary text-xs rounded-full">פתוח להרשמה</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-surface border rounded-lg hover:bg-surface-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                                <div class="flex-1 space-x-3">
+                                    <time class="font-mono text-sm">12:15</time>
+                                    <span class="block text-sm font-medium">יוגה לכיסא</span>
+                                    <span class="text-xs text-muted">גיל הזהב</span>
+                                </div>
+                                <span class="px-3 py-0.5 bg-primary/10 text-primary text-xs rounded-full">פתוח להרשמה</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-surface border rounded-lg hover:bg-surface-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                                <div class="flex-1 space-x-3">
+                                    <time class="font-mono text-sm">19:30</time>
+                                    <span class="block text-sm font-medium">אשטנגה למתקדמים</span>
+                                    <span class="text-xs text-muted">מתקדם</span>
+                                </div>
+                                <span class="px-3 py-0.5 bg-accent/10 text-accent text-xs rounded-full">פופולרי</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tuesday -->
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">יום שלישי</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 bg-surface border rounded-lg hover:bg-surface-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                                <div class="flex-1 space-x-3">
+                                    <time class="font-mono text-sm">07:00</time>
+                                    <span class="block text-sm font-medium">זרימת בוקר דינמית</span>
+                                    <span class="text-xs text-muted">בינוני</span>
+                                </div>
+                                <span class="px-3 py-0.5 bg-primary/10 text-primary text-xs rounded-full">פתוח להרשמה</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-surface border rounded-lg hover:bg-surface-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                                <div class="flex-1 space-x-3">
+                                    <time class="font-mono text-sm">16:00</time>
+                                    <span class="block text-sm font-medium">יוגה לילדים (6-12)</span>
+                                    <span class="text-xs text-muted">משפחה</span>
+                                </div>
+                                <span class="px-3 py-0.5 bg-primary/10 text-primary text-xs rounded-full">פתוח להרשמה</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-surface border rounded-lg hover:bg-surface-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                                <div class="flex-1 space-x-3">
+                                    <time class="font-mono text-sm">19:00</time>
+                                    <span class="block text-sm font-medium">יוגה תרפית לגב</span>
+                                    <span class="text-xs text-muted">טיפולי</span>
+                                </div>
+                                <span class="px-3 py-0.5 bg-primary/10 text-primary text-xs rounded-full">מקומות אחרונים</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Wednesday -->
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">יום רביעי</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 bg-surface border rounded-lg hover:bg-surface-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                                <div class="flex-1 space-x-3">
+                                    <time class="font-mono text-sm">08:00</time>
+                                    <span class="block text-sm font-medium">האטה בוקר מאוזן</span>
+                                    <span class="text-xs text-muted">כל הרמות</span>
+                                </div>
+                                <span class="px-3 py-0.5 bg-primary/10 text-primary text-xs rounded-full">פתוח להרשמה</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-surface border rounded-lg hover:bg-surface-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                                <div class="flex-1 space-x-3">
+                                    <time class="font-mono text-sm">11:00</time>
+                                    <span class="block text-sm font-medium">יוגה לנשים בהריון</span>
+                                    <span class="text-xs text-muted">הריון</span>
+                                </div>
+                                <span class="px-3 py-0.5 bg-primary/10 text-primary text-xs rounded-full">פתוח להרשמה</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-surface border rounded-lg hover:bg-surface-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                                <div class="flex-1 space-x-3">
+                                    <time class="font-mono text-sm">18:30</time>
+                                    <span class="block text-sm font-medium">ויניאסה זורמת</span>
+                                    <span class="text-xs text-muted">בינוני</span>
+                                </div>
+                                <span class="px-3 py-0.5 bg-accent/10 text-accent text-xs rounded-full">פופולרי</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-surface border rounded-lg hover:bg-surface-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                                <div class="flex-1 space-x-3">
+                                    <time class="font-mono text-sm">20:30</time>
+                                    <span class="block text-sm font-medium">מדיטציה ונשימה</span>
+                                    <span class="text-xs text-muted">כל הרמות</span>
+                                </div>
+                                <span class="px-3 py-0.5 bg-primary/10 text-primary text-xs rounded-full">פתוח להרשמה</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Thursday -->
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">יום חמישי</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 bg-surface border rounded-lg hover:bg-surface-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                                <div class="flex-1 space-x-3">
+                                    <time class="font-mono text-sm">07:00</time>
+                                    <span class="block text-sm font-medium">זרימת בוקר עדינה</span>
+                                    <span class="text-xs text-muted">כל הרמות</span>
+                                </div>
+                                <span class="px-3 py-0.5 bg-primary/10 text-primary text-xs rounded-full">פתוח להרשמה</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-surface border rounded-lg hover:bg-surface-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                                <div class="flex-1 space-x-3">
+                                    <time class="font-mono text-sm">10:00</time>
+                                    <span class="block text-sm font-medium">יוגה לכאבי צוואר</span>
+                                    <span class="text-xs text-muted">טיפולי</span>
+                                </div>
+                                <span class="px-3 py-0.5 bg-primary/10 text-primary text-xs rounded-full">פתוח להרשמה</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-surface border rounded-lg hover:bg-surface-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                                <div class="flex-1 space-x-3">
+                                    <time class="font-mono text-sm">17:00</time>
+                                    <span class="block text-sm font-medium">יוגה זורמת עם מוזיקה חיה</span>
+                                    <span class="text-xs text-muted">כל הרמות</span>
+                                </div>
+                                <span class="px-3 py-0.5 bg-accent/10 text-accent text-xs rounded-full">פופולרי</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-surface border rounded-lg hover:bg-surface-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                                <div class="flex-1 space-x-3">
+                                    <time class="font-mono text-sm">19:30</time>
+                                    <span class="block text-sm font-medium">יוגה לנפש</span>
+                                    <span class="text-xs text-muted">מתחילים</span>
+                                </div>
+                                <span class="px-3 py-0.5 bg-primary/10 text-primary text-xs rounded-full">מקומות אחרונים</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Friday -->
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">יום שישי</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 bg-surface border rounded-lg hover:bg-surface-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                                <div class="flex-1 space-x-3">
+                                    <time class="font-mono text-sm">08:00</time>
+                                    <span class="block text-sm font-medium">בוקר שישי מזין</span>
+                                    <span class="text-xs text-muted">כל הרמות</span>
+                                </div>
+                                <span class="px-3 py-0.5 bg-primary/10 text-primary text-xs rounded-full">פתוח להרשמה</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-surface border rounded-lg hover:bg-surface-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                                <div class="flex-1 space-x-3">
+                                    <time class="font-mono text-sm">10:30</time>
+                                    <span class="block text-sm font-medium">יוגה משפחתית</span>
+                                    <span class="text-xs text-muted">כל הגילאים</span>
+                                </div>
+                                <span class="px-3 py-0.5 bg-primary/10 text-primary text-xs rounded-full">פתוח להרשמה</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="pt-20 pb-24 md:pt-28 md:pb-32">
+            <div class="container mx-auto px-5 md:px-8 lg:px-12">
+                <div class="mb-12">
+                    <p class="ebony text-xs uppercase tracking-wider font-semibold mb-4">מחירון שקוף וללא הפתעות</p>
+                    <h2 class="text-3xl md:text-4xl font-display font-bold tracking-tight leading-[1.1] mb-8">בחרו את החבילה שמתאימה לכם</h2>
+                </div>
+                <div class="grid gap-6 md:grid-cols-1 lg:grid-cols-3">
+                    <!-- Single Class -->
+                    <div class="p-6 bg-surface border rounded-lg hover:bg-surface-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                        <h3 class="text-xl font-semibold mb-4">שיעור בודד</h3>
+                        <p class="text-2xl md:text-3xl font-display font-bold text-primary mb-4">
+                            80<span class="text-xs"> ₪</span>
+                        </p>
+                        <p class="text-sm text-muted mb-6">מתאים למי שמגיע לעיתים רחוקות או רוצה להתנסות לפני הרשמה לחבילה</p>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-center space-x-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"></path></svg>
+                                שיעור אחד להשתמש תוך 30 יום
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"></path></svg>
+                                גישה לכל סוגי השיעורים
+                            </li>
+                        </ul>
+                        <button class="w-full mt-6 flex items-center px-5 py-3 bg-primary text-primary-fg font-semibold rounded-md hover:bg-primary/90 transition-colors focus-visible focus-visible:ring-2 focus-visible:ring-primary-fg focus-visible:ring-offset-2">
+                            הרשמו עכשיו
+                            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg>
+                        </button>
+                    </div>
+                    <!-- 5 Classes Package (Highlighted) -->
+                    <div class="p-6 bg-primary/5 border border-primary/20 rounded-lg hover:bg-primary/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-semibold">חבילת 5 שיעורים</h3>
+                            <span class="px-2 py-0.5 bg-primary text-primary-fg text-xs rounded-full">הכי פופולרי</span>
+                        </div>
+                        <p class="text-2xl md:text-3xl font-display font-bold text-primary mb-4">
+                            350<span class="text-xs"> ₪</span>
+                        </p>
+                        <p class="text-sm text-muted mb-6">חיסכון של 12.5% לעומת שיעור בודד - רק 70 ₪ לשיעור</p>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-center space-x-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"></path></svg>
+                                חמש שיעורים להשתמש תוך 60 יום
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"></path></svg>
+                                גישה לכל סוגי השיעורים
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"></path></svg>
+                                אפשרות להקפיא את החבילה עד חודש
+                            </li>
+                        </ul>
+                        <button class="w-full mt-6 flex items-center px-5 py-3 bg-primary text-primary-fg font-semibold rounded-md hover:bg-primary/90 transition-colors focus-visible focus-visible:ring-2 focus-visible:ring-primary-fg focus-visible:ring-offset-2">
+                            בחרו חבילה זו
+                            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg>
+                        </button>
+                    </div>
+                    <!-- 10 Classes Package -->
+                    <div class="p-6 bg-surface border rounded-lg hover:bg-surface-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                        <h3 class="text-xl font-semibold mb-4">חבילת 10 שיעורים</h3>
+                        <p class="text-2xl md:text-3xl font-display font-bold text-primary mb-4">
+                            600<span class="text-xs"> ₪</span>
+                        </p>
+                        <p class="text-sm text-muted mb-6">חיסכון של 25% לעומת שיעור בודד - רק 60 ₪ לשיעור</p>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-center space-x-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"></path></svg>
+                                עשרה שיעורים להשתמש תוך 90 יום
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"></path></svg>
+                                גישה לכל סוגי השיעורים
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"></path></svg>
+                                אפשרות להקפיא את החבילה עד חודשיים
+                            </li>
+                        </ul>
+                        <button class="w-full mt-6 flex items-center px-5 py-3 bg-primary text-primary-fg font-semibold rounded-md hover:bg-primary/90 transition-colors focus-visible focus-visible:ring-2 focus-visible:ring-primary-fg focus-visible:ring-offset-2">
+                            הרשמו עכשיו
+                            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="pt-20 pb-24 md:pt-28 md:pb-32">
+            <div class="container mx-auto px-5 md:px-8 lg:px-12">
+                <div class="mb-12">
+                    <p class="ebony text-xs uppercase tracking-wider font-semibold mb-4">הסיפור שלנו</p>
+                    <h2 class="text-3xl md:text-4xl font-display font-bold tracking-tight leading-[1.1] mb-8">איך הכל התחיל</h2>
+                </div>
+                <div class="grid gap-8 md:grid-cols-1 lg:grid-cols-2">
+                    <div class="reveal">
+                        <div class="relative h-64 w-full rounded-lg overflow-hidden bg-surface">
+                            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80')] bg-center bg-cover"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-bg/0 to-bg/90"></div>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <p class="text-lg leading-relaxed mb-6">
+                            שקט נוסד בשנת 2020 על ידי שתי מורות יוגה מנוסות, מיכל ואורית, שחיפשו ליצור מרחב שבו היוגה תהיה נגישה, אישית ועמוקה יותר. המרחב הקטן שלנו בפלורנטין נועד להיות מפלט מהקצב המהיר של תל אביב - מקום שבו כל נשימה היא הזדמנות לחזור לעצמכם.
+                        </p>
+                        <p class="text-lg leading-relaxed mb-6">
+                            אנו מאמינים ש йוגה היא לא רק תרגול פיזי, אלא דרך לחיים. לכן השיעורים שלנו משלבים תנועה מודעת, עבודה על הנשימה ומקום לשקט פניע. כל מדריכות הסטודיו מוסמכות ובעלות ניסיון בהוראה תרפויתית, כך שנוכל להתאים את התרגול לצרכים האישיים שלכם - בין אם אתם מתחילים או מתרגלים מנוסים.
+                        </p>
+                        <div class="flex items-center space-x-4">
+                            <div class="flex-shrink-0">
+                                <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                                    <span class="text-primary-fg font-semibold">מיכל</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg">מיכל לוי</h3>
+                                <p class="text-sm text-muted">מורה מוסמכת ליוגה ותרפיה ביוגה • 12 שנות ניסיון</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="flex-shrink-0">
+                                <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                                    <span class="text-primary-fg font-semibold">אורית</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg">אורית כהן</h3>
+                                <p class="text-sm text-muted">מורה בכירה ליוגה ויניאסה ואשטנגה • 15 שנות ניסיון</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="pt-20 pb-24 md:pt-28 md:pb-32">
+            <div class="container mx-auto px-5 md:px-8 lg:px-12">
+                <div class="mb-12">
+                    <p class="ebony text-xs uppercase tracking-wider font-semibold mb-4">המרחב שלנו</p>
+                    <h2 class="text-3xl md:text-4xl font-display font-bold tracking-tight leading-[1.1] mb-8">צלמו את הרגע בשקט</h2>
+                </div>
+                <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    <div class="relative aspect-w-3 aspect-h-2 rounded-lg overflow-hidden bg-surface">
+                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80')] bg-center bg-cover"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-accent/10 opacity-0 hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <div class="relative aspect-w-3 aspect-h-2 rounded-lg overflow-hidden bg-surface">
+                        <div class="absolute inset-0 bg-[url='https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80'] bg-center bg-cover"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-accent/10 opacity-0 hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <div class="relative aspect-w-3 aspect-h-2 rounded-lg overflow-hidden bg-surface">
+                        <div class="absolute inset-0 bg-[url='https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&w=800&q=80'] bg-center bg-cover"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-accent/10 opacity-0 hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <div class="relative aspect-w-3 aspect-h-2 rounded-lg overflow-hidden bg-surface">
+                        <div class="absolute inset-0 bg-[url='https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80'] bg-center bg-cover"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-accent/10 opacity-0 hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <div class="relative aspect-w-3 aspect-h-2 rounded-lg overflow-hidden bg-surface">
+                        <div class="absolute inset-0 bg-[url='https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80'] bg-center bg-cover"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-accent/10 opacity-0 hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <div class="relative aspect-w-3 aspect-h-2 rounded-lg overflow-hidden bg-surface">
+                        <div class="absolute inset-0 bg-[url='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80'] bg-center bg-cover"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-accent/10 opacity-0 hover:opacity-100 transition-opacity"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pt-20 pb-24 md:pt-28 md:pb-32">
+            <div class="container mx-auto px-5 md:px-8 lg:px-12">
+                <div class="mb-12">
+                    <p class="ebony text-xs uppercase tracking-wider font-semibold mb-4">שעות פעילות</p>
+                    <h2 class="text-3xl md:text-4xl font-display font-bold tracking-tight leading-[1.1] mb-8">מתי אנחנו פתוחים</h2>
+                </div>
+                <div class="grid gap-6 md:grid-cols-2">
+                    <div class="p-6 bg-surface border rounded-lg">
+                        <h3 class="text-lg font-semibold mb-4">שעות השבוע</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between text-sm">
+                                <span>ראשון - חמישי</span>
+                                <span>06:30 - 22:00</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span>יום שישי</span>
+                                <span>07:00 - 14:00</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span>יום שבת</span>
+                                <span class="text-muted">סגור</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-surface border rounded-lg">
+                        <h3 class="text-lg font-semibold mb-4">הזרמת שיעורים אונליין</h3>
+                        <p class="text-sm text-muted mb-4">
+                            לא יכולים להגיע פיזית? כל השיעורים שלנו מועברים גם בזום באיכות גבוהה. אתם מקבלים קישור לשיעור במייל לאחר ההרשמה.
+                        </p>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-center space-x-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"></path></svg>
+                                אותם תכנים כמו בשיעור הפיזי
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"></path></svg>
+                                אפשרות לשאול שאלות בזמן אמת
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"></path></svg>
+                                הקלטה זמינה למשך 7 ימים
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="pt-20 pb-24 md:pt-28 md:pb-32">
+            <div class="container mx-auto px-5 md:px-8 lg:px-12">
+                <div class="mb-12">
+                    <p class="ebony text-xs uppercase tracking-wider font-semibold mb-4">התקשרו או כתבו לנו</p>
+                    <h2 class="text-3xl md:text-4xl font-display font-bold tracking-tight leading-[1.1] mb-8">מוכנים להתחיל?</h2>
+                </div>
+                <div class="grid gap-8 md:grid-cols-2">
+                    <div class="space-y-6">
+                        <h3 class="text-xl font-semibold mb-4">אנחנו כאן לשאלותיכם</h3>
+                        <p class="text-sm text-muted mb-4">
+                            יש לכם שאלה על הלוח, המחירון או הצורך ביוגה בחייכם? אנו זמינים לענות על כל שאלה ולעזור לכם למצוא את השיעור המושלם.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                                <div class="space-y-1">
+                                    <p class="text-sm font-medium">טלפון</p>
+                                    <a href="tel:+97235551234" class="text-primary hover:text-primary/80 transition-colors">03-555-1234</a>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20.1 3.9C17.9 1.7 15 .5 12 .5 5.8.5.7 5.6.7 11.9c0 2 .5 3.9 1.5 5.6L.9 23l8-1c1.1.1 2.2.3 3.3.5l1.2-8c1.7-.5 3.6-1.3 5-2.4l6.9-.4c1.8-.4 3.6-.7 5.2-1.4l1.5-.6c.5-.1 1-.2 1.5-.2z"></path></svg>
+                                <div class="space-y-1">
+                                    <p class="text-sm font-medium">וואטסאפ</p>
+                                    <a href="https://wa.me/97235551234" class="text-primary hover:text-primary/80 transition-colors">03-555-1234</a>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"></path></svg>
+                                <div class="space-y-1">
+                                    <p class="text-sm font-medium">כתובת</p>
+                                    <p class="text-sm">רחוב שלמה 24, תל אביב-יפו</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <form id="contact-form" class="space-y-6">
+                            <div class="grid gap-4 md:grid-cols-2">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium mb-2">שם מלא *</label>
+                                    <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-surface border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" placeholder="שלום, אני יוסי כהן">
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-sm font-medium mb-2">טלפון *</label>
+                                    <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 bg-surface border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" placeholder="05x-xxx-xxxx" pattern="[0-9]{10,11}">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium mb-2">אימייל (לא חובה)</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-3 bg-surface border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" placeholder="yosico@example.com">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium mb-2">הודעה *</label>
+                                <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 bg-surface border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" placeholder="אני מעוניין לדעת יותר על שיעורי הבוקר או שיש לי שאלה ספציפית..."></textarea>
+                            </div>
+                            <div class="flex items-center space-x-3 text-sm text-muted">
+                                <input type="checkbox" id="consent" name="consent" required class="h-4 w-4 text-primary border-border rounded focus:ring-primary">
+                                <span>אני מסכים לקבל הודעות וואטסאפ ועדכונים מהסטודיו (ניתן להסיר בכל עת)</span>
+                            </div>
+                            <button type="submit" id="form-submit" class="w-full px-6 py-3 bg-primary text-primary-fg font-semibold rounded-md hover:bg-primary/90 transition-colors focus-visible focus-visible:ring-2 focus-visible:ring-primary-fg focus-visible:ring-offset-2">
+                                שליחת ההודעה
+                            </button>
+                        </form>
+                        <div id="form-success" class="hidden p-6 bg-primary/5 border border-primary/20 rounded-lg text-center">
+                            <svg class="mx-auto h-10 w-10 text-primary mb-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+                            <h3 class="text-xl font-semibold mb-4">תודה שפניתם אלינו!</h3>
+                            <p class="text-sm text-muted">
+                                נחזור אליכם תוך 24 שעות באמצעות וואטסאפ או טלפון. בעוד אתם מחכים, למה שלא תציצו בלוח השיעורים שלנו?
+                            </p>
+                            <a href="#schedule" class="inline-block mt-6 px-4 py-2 bg-primary text-primary-fg font-semibold rounded-md hover:bg-primary/90 transition-colors focus-visible focus-visible:ring-2 focus-visible:ring-primary-fg focus-visible:ring-offset-2">
+                                צפייה בלוח השיעורים
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pt-16 pb-20 md:pt-24 md:pb-28 bg-primary/5">
+            <div class="container mx-auto px-5 md:px-8 lg:px-12 text-center">
+                <h2 class="text-3xl md:text-4xl font-display font-bold tracking-tight leading-[1.1] mb-6">מוכנים להתחיל את הדרך לשקט?</h2>
+                <p class="text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-8">
+                    הרשמו עכשיו לשיעור ניסיון חינם וגלו איך יוגה יכולה לשנות את היום יום שלכם. מקומות מוגבלים - reserve את שלכם היום.
+                </p>
+                <button id="trial-button-final" class="inline-flex items-center px-6 py-3 bg-primary text-primary-fg font-semibold rounded-md hover:bg-primary/90 transition-colors focus-visible focus-visible:ring-2 focus-visible:ring-primary-fg focus-visible:ring-offset-2">
+                    הרשמו לשיעור ניסיון חינם
+                    <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg>
+                </button>
+            </div>
+        </section>
+
+        <footer class="pt-16 pb-12 md:pt-20 md:pb-16 border-t border-border/50">
+            <div class="container mx-auto px-5 md:px-8 lg:px-12">
+                <div class="grid gap-8 md:grid-cols-3">
+                    <div class="space-y-4">
+                        <a href="#" class="flex items-center space-x-2 text-xl font-display font-bold text-primary">
+                            שקט
+                        </a>
+                        <p class="text-sm text-muted">
+                            סטודיו ליוגה בתל אביב המציע שיעורים קטנים ואישיים לכל הרמות. מתמחים ביוגה תרפויתית, ויניאסה ואשטנגה בקבוצות קטנות לתשומת לב אישית.
+                        </p>
+                        <div class="flex space-x-4 mt-4">
+                            <a href="https://facebook.com/shaktyoga" class="text-muted hover:text-primary transition-colors focus-visible">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 12.13a10 10 0 1 1-5.86-9.11"></path></svg>
+                            </a>
+                            <a href="https://instagram.com/shaktyoga" class="text-muted hover:text-primary transition-colors focus-visible">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                            </a>
+                            <a href="https://linkedin.com/company/shaktyoga" class="text-muted hover:text-primary transition-colors focus-visible">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path></svg>
+                            </a>
+                            <a href="https://youtube.com/c/shaktyoga" class="text-muted hover:text-primary transition-colors focus-visible">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554c-.532 0-.966-.426-.966-.95v-.003c-.003-.414-.168-.75-.453-1.014l1.114-3.193c.065-.187.076-.402.026-.586-.157-.575-.374-1.041-.69-1.344-.703-.669-1.592-1.226-2.127-1.655-.256-.202-.517-.366-.756-.505l-.408-.425v-2.816c0-.532.426-.966.954-.966h3.45v-6.162c-1.26-.45-2.384-.995-3.084-1.624A13.974 13.974 0 0 0 8 9.75v-.002c-.476-.005-.954-.022-1.431-.074-.447-.048-.886-.122-1.294-.222l-.838-.238v-2.251c.716.065 1.409.16 2.085.286.594.106 1.169.245 1.702.415l-.253 1.778c-.393.173-.83.286-1.151.379v2.058c-.376.103-.769.193-1.159.266-1.218.231-2.07.609-2.343-1.194A12.095 12.095 0 0 0 4 11v2c0 .532.426.966.954.966h5.264V9h-3.117c-.532 0-.966-.426-.966-.957v-.002c0-.414.141-.75.378-1.002l1.176-1.653.242-.052c.189-.041.393-.065.595-.065.563 0 1.066.153 1.501.394.293.161.549.323.773.477l1.018.77v2.257h3.312c1.155 0 2.145.419 2.844 1.069.619.575.929 1.288.929 2.093v3.718h3.554c.532 0 .966.426.966.953v.003c0 .414-.168 .75-.453 1.014l-1.114 3.193c-.065.187-.076.402-.026.586.157.575.374 1.041.69 1.344.703.669 1.592 1.226 2.127 1.655.256.202.517.366.756.505l.408.425v2.816c0 .532-.426.966-.954.966h-3.45v6.162c1.26.45 2.384.995 3.084 1.624a13.974 13.974 0 0 0 16.047-5.749c.476.005 .954.022 1.431.074.447.048 .886.122 1.294.222l.838.238v2.251c-.716-.065-1.409-.16-2.085-.286-.594-.106-1.169-.245-1.702-.415l.253-1.778c.393-.173 .83-.286 1.151-.379v-2.058c.376-.103 .769-.193 1.159-.266 1.218-.231 2.07-.609 2.343-1.194A12.095 12.095 0 0 1 20 13v-2c0-.532-.426-.966-.954-.966h-5.264v2h3.117c.532 0 .966.426 .966 .957v.002c0 .414-.141 .75-.378 1.002l-1.176 1.653-.242 .052c-.189 .041-.393 .065-.595 .065-.563 0-1.066-.153-1.501-.394-.293-.161-.549-.323-.773-.477l-1.018-.77v-2.257h-3.312c-1.155 0-2.145-.419-2.844-1.069a12.022 12.022 0 0 0-.929-2.093v-3.718h-3.554z"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-semibold mb-4">קישורים מהירים</h3>
+                        <nav class="space-y-2">
+                            <a href="#schedule" class="text-muted hover:text-primary transition-colors focus-visible">לוח שיעורים</a>
+                            <a href="#pricing" class="text-muted hover:text-primary transition-colors focus-visible">מחירון</a>
+                            <a href="#about" class="text-muted hover:text-primary transition-colors focus-visible">אודות</a>
+                            <a href="#gallery" class="text-muted hover:text-primary transition-colors focus-visible">גלריה</a>
+                            <a href="#contact" class="text-muted hover:text-primary transition-colors focus-visible">צור קשר</a>
+                        </nav>
+                    </div>
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-semibold mb-4">התעדכנו בחדשותינו</h3>
+                        <form class="space-y-3">
+                            <input type="email" class="w-full px-4 py-3 bg-surface border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" placeholder="כתובת האימייל שלכם">
+                            <button type="submit" class="w-full px-4 py-3 bg-primary text-primary-fg font-semibold rounded-md hover:bg-primary/90 transition-colors focus-visible focus-visible:ring-2 focus-visible:ring-primary-fg focus-visible:ring-offset-2">
+                                הרשמו לניוזלטר
+                            </button>
+                        </form>
+                        <p class="text-xs text-muted mt-2">
+                            אנו שולחים ניוזלטר חודשי בלבד עם עדכונים על סדנאות מיוחדות ושינויים בלוח. לא תספמו לעולם.
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-10 pt-8 border-t border-border/50 text-center text-xs text-muted">
+                    &copy; <span id="year"></span> שקט סטודיו ליוגה. כל הזכויות שמורות.
+                </div>
+            </div>
+        </footer>
+
+        <!-- Trial Signup Modal -->
+        <div id="trial-modal" class="fixed inset-0 z-50 hidden overflow-y-auto opacity-0">
+            <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                <div class="relative w-full max-w-md max-h-full">
+                    <!-- Background backdrop -->
+                    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+                    <div class="relative bg-surface rounded-lg shadow-lg w-full">
+                        <!-- Content -->
+                        <div class="p-6 md:p-8">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-xl font-display font-bold text-primary">הרשמו לשיעור ניסיון חינם</h3>
+                                <button id="modal-close" class="rounded-md p-2 text-muted hover:bg-muted/20 focus-visible" aria-label="סגור">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"></path></svg>
+                                </button>
+                            </div>
+                            <p class="text-sm text-muted mb-6">
+                                מלאו את הפרטים ונחזור אליכם תוך 24 שעות לאישור השיעור. השיעור הניסיוני הוא ללא עלות וללא התחייבות.
+                            </p>
+                            <form id="trial-form" class="space-y-4">
+                                <div>
+                                    <label for="trial-name" class="block text-sm font-medium mb-2">שם מלא *</label>
+                                    <input type="text" id="trial-name" name="trial-name" required class="w-full px-4 py-3 bg-surface border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" placeholder="שלום, אני יוסי כהן">
+                                </div>
+                                <div>
+                                    <label for="trial-phone" class="block text-sm font-medium mb-2">טלפון *</label>
+                                    <input type="tel" id="trial-phone" name="trial-phone" required class="w-full px-4 py-3 bg-surface border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" placeholder="05x-xxx-xxxx" pattern="[0-9]{10,11}">
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <div class="flex-shrink-0">
+                                        <input type="checkbox" id="trial-consent" name="trial-consent" required class="h-4 w-4 text-primary border-border rounded focus:ring-primary">
+                                    </div>
+                                    <div>
+                                        <label for="trial-consent" class="text-sm font-medium ml-2">אני מסכים לקבל הודעות וואטסאפ ועדכונים מהסטודיו (ניתן להסיר בכל עת)</label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="w-full px-6 py-3 bg-primary text-primary-fg font-semibold rounded-md hover:bg-primary/90 transition-colors focus-visible focus-visible:ring-2 focus-visible:ring-primary-fg focus-visible:ring-offset-2">
+                                    שליחת הבקשה
+                                </button>
+                            </form>
+                            <div id="trial-success" class="hidden p-6 bg-primary/5 border border-primary/20 rounded-lg text-center">
+                                <svg class="mx-auto h-10 w-10 text-primary mb-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+                                <h3 class="text-xl font-semibold mb-4">הבקשה התקבלה!</h3>
+                                <p class="text-sm text-muted">
+                                    נחזור אליכם תוך 24 שעות באמצעות וואטסאפ או טלפון לאישור פרטי השיעור. נראים בשמחה בקרוב!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Mobile menu toggle
+                const menuButton = document.getElementById('mobile-menu-button');
+                const mobileMenu = document.getElementById('mobile-menu');
+                menuButton.addEventListener('click', function() {
+                    const expanded = menuButton.getAttribute('aria-expanded') === 'true' || false;
+                    menuButton.setAttribute('aria-expanded', !expanded);
+                    mobileMenu.classList.toggle('hidden');
+                });
+
+                // Scroll reveal
+                const revealElements = document.querySelectorAll('.reveal');
+                
+                const checkReveal = () => {
+                    const windowHeight = window.innerHeight;
+                    revealElements.forEach(el => {
+                        const elementTop = el.getBoundingClientRect().top;
+                        if (elementTop < windowHeight - 100) {
+                            el.classList.add('is-visible');
+                        }
+                    });
+                };
+                
+                window.addEventListener('load', checkReveal);
+                window.addEventListener('scroll', checkReveal);
+                
+                // Initially check for elements already in view
+                checkReveal();
+
+                // Modal for trial signup
+                const trialButtons = [
+                    document.getElementById('trial-button-hero'),
+                    document.getElementById('trial-button-final')
+                ];
+                const modal = document.getElementById('trial-modal');
+                const modalClose = document.getElementById('modal-close');
+                const trialForm = document.getElementById('trial-form');
+                const trialSuccess = document.getElementById('trial-success');
+                
+                trialButtons.forEach(button => {
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        // Store the button that opened the modal
+                        modal.dataset.trigger = button.id;
+                        modal.classList.remove('hidden');
+                        // Force reflow to enable transition
+                        void modal.offsetWidth;
+                        modal.style.opacity = '1';
+                        modal.querySelector('[aria-hidden="true"]').style.opacity = '1';
+                        document.body.style.overflow = 'hidden';
+                    });
+                });
+                
+                const closeModal = () => {
+                    modal.style.opacity = '0';
+                    modal.querySelector('[aria-hidden="true"]').style.opacity = '0';
+                    setTimeout(() => {
+                        modal.classList.add('hidden');
+                        document.body.style.overflow = '';
+                        // Return focus to the trigger
+                        const triggerId = modal.dataset.trigger;
+                        if (triggerId) {
+                            const trigger = document.getElementById(triggerId);
+                            if (trigger) trigger.focus();
+                        }
+                        delete modal.dataset.trigger;
+                    }, 300);
+                };
+                
+                modalClose.addEventListener('click', closeModal);
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closeModal();
+                });
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                        closeModal();
+                    }
+                });
+
+                // Trial form submission
+                trialForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Simple validation
+                    const name = document.getElementById('trial-name').value.trim();
+                    const phone = document.getElementById('trial-phone').value.trim();
+                    if (!name || !phone) {
+                        alert('אנא מלאו את כל השדות החובה');
+                        return;
+                    }
+                    // Hide form, show success
+                    trialForm.classList.add('hidden');
+                    trialSuccess.classList.remove('hidden');
+                });
+
+                // Contact form submission
+                const contactForm = document.getElementById('contact-form');
+                const contactSuccess = document.getElementById('form-success');
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Simple validation
+                    const name = contactForm.name.value.trim();
+                    const phone = contactForm.phone.value.trim();
+                    if (!name || !phone) {
+                        alert('אנא מלאו את כל השדות החובה');
+                        return;
+                    }
+                    // Hide form, show success
+                    contactForm.classList.add('hidden');
+                    contactSuccess.classList.remove('hidden');
+                });
+
+                // Set current year in footer
+                document.getElementById('year').textContent = new Date().getFullYear();
+            });
+        </script>
+    </div>
+</body>
+</html>
