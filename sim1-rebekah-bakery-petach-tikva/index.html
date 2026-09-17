@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Open Graph -->
+  <title>מאפיית רבקה - פתח תקווה</title>
+  <meta name="description" content="מאפיית רבקה בפתח תקווה - לחם מחמצת, עוגות ביתיות ומאפים טריים מהתנור. הזמנה לוואטסאפ, תפריט מלא ושעות פתיחה.">
+  <meta property="og:title" content="מאפיית רבקה - פתח תקווה">
+  <meta property="og:description" content="מאפיית רבקה בפתח תקווה - לחם מחמצת, עוגות ביתיות ומאפים טריים מהתנור. הזמנה לוואטסאפ, תפריט מלא ושעות פתיחה.">
+  <property="og:type" content="website">
+  <meta property="og:image" content="https://picsum.photos/seed/rebekah-bakery/1200/630">
+  <meta name="theme-color" content="#8B5E34">
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='4' fill='%238B5E34'/%3E%3Ctext x='12' y='16' fill='%23FAF8F5' font-size='14' font-family='Frank Ruhl Libre, Heebo, sans-serif' text-anchor='middle' font-weight='600'%3Eר%3C/text%3E%3C/svg%3E">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@600;700&family=Heebo:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#FAF8F5',
+            surface: '#FFFFFF',
+            text: '#3E2D22',
+            muted: '#8A7A6D',
+            border: '#E2D8D0',
+            primary: '#8B5E34',
+            primary_fg: '#FFFFFF',
+            accent: '#D4AF37',
+          },
+          fontFamily: {
+            display: ['Frank Ruhl Libre', 'serif'],
+            body: ['Heebo', 'sans-serif'],
+          },
+          borderRadius: {
+            md: '12px',
+          },
+          boxShadow: {
+            soft: '0 1px 2px rgba(0,0,0,.05), 0 8px 24px -12px rgba(0,0,0,.15)',
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom CSS for gold shimmer and scroll reveal */
+    .gold-shimmer {
+      position: relative;
+      overflow: hidden;
+    }
+    .gold-shimmer::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(212, 175, 55, 0.1),
+        transparent
+      );
+      transform: rotate(30deg);
+      animation: shimmer 4s infinite;
+    }
+    @keyframes shimmer {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(30deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(30deg); }
+    }
+    /* Hero noise texture */
+    .hero-noise {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.04;
+    }
+    /* Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 600ms ease, transform 600ms ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Focus ring */
+    button:focus-visible,
+    a:focus-visible,
+    [role="button"]:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(139, 94, 52, 0.5), 0 0 0 4px rgba(255,255,255,0.8);
+    }
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .gold-shimmer::before {
+        animation: none;
+      }
+      .reveal {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body class="bg-bg text-text antialiased">
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu" class="fixed inset-0 z-50 bg-surface/95 backdrop-blur-sm hidden">
+    <div class="flex h-full flex-col p-6 md:p-8 space-y-6">
+      <div class="flex justify-end mb-4">
+        <button id="mobile-menu-close" class="text-muted hover:text-text transition-colors" aria-label="סגור תפריט">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <nav class="space-y-4 space-x-reverse">
+        <a href="#hero" class="block text-lg font-semibold text-text hover:text-primary transition-colors">הראשי</a>
+        <a href="#about" class="block text-lg font-semibold text-text hover:text-primary transition-colors">הסיפור שלנו</a>
+        <a href="#menu" class="block text-lg font-semibold text-text hover:text-primary transition-colors">תפריט</a>
+        <a href="#hours" class="block text-lg font-semibold text-text hover:text-primary transition-colors">שעות פתיחה</a>
+        <a href="#gallery" class="block text-lg font-semibold text-text hover:text-primary transition-colors">גלריה</a>
+        <a href="#testimonials" class="block text-lg font-semibold text-text hover:text-primary transition-colors">מה הלקוחות אומרים</a>
+        <a href="#cta" class="block text-lg font-semibold text-text hover:text-primary transition-colors">הזמנה</a>
+      </nav>
+      <a href="https://wa.me/972501234567" class="block w-full flex items-center justify-center gap-3 px-5 py-3 bg-primary text-surface font-semibold rounded-md hover:bg-primary/90 transition-colors flex-nowrap">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+        </svg>
+        <span>הזמן לוואטסאפ</span>
+      </a>
+    </div>
+  </div>
+
+  <header class="border-b border-border">
+    <div class="max-w-7xl mx-auto px-6 md:px-8 lg:px-10">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between py-4">
+        <a href="#" class="flex items-center gap-3">
+          <span class="text-primary font-display text-2xl">מאפיית רבקה</span>
+        </a>
+        <nav id="desktop-nav" class="hidden md:flex space-x-6 space-x-reverse">
+          <a href="#hero" class="text-muted hover:text-text transition-colors">הראשי</a>
+          <a href="#about" class="text-muted hover:text-text transition-colors">הסיפור שלנו</a>
+          <a href="#menu" class="text-muted hover:text-text transition-colors">תפריט</a>
+          <a href="#hours" class="text-muted hover:text-text transition-colors">שעות פתיחה</a>
+          <a href="#gallery" class="text-muted hover:text-text transition-colors">גלריה</a>
+          <a href="#testimonials" class="text-muted hover:text-text transition-colors">מה הלקוחות אומרים</a>
+          <a href="#cta" class="text-muted hover:text-text transition-colors">הזמנה</a>
+        </nav>
+        <div class="flex items-center md:hidden">
+          <button id="mobile-menu-open" class="p-2 text-muted hover:text-text transition-colors" aria-label="פתח תפריט">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="hero" class="relative py-20 md:py-28 lg:py-32 gold-shimmer">
+      <div class="max-w-7xl mx-auto px-6 md:px-8 lg:px-10 text-center">
+        <div class="absolute inset-0 hero-noise"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-8 lg:px-10 text-center">
+          <div class="inline-flex items-center gap-2 text-primary_fg bg-primary/10 px-4 py-2 rounded-md text-sm font-semibold mb-6">
+            מאפיית רבקה
+          </div>
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-display tracking-tight leading-[1.02] mb-4 max-w-xl">
+            לחם מחמצת ועוגות ביתיות כמו פעם
+          </h1>
+          <p class="text-lg md:text-xl text-muted max-w-xl mb-8">
+            אופים כל בוקר מחומרים משובחים – טעם שמזכיר את בית הסבתא
+          </p>
+          <div class="flex flex-col md:flex-row gap-4 justify-center">
+            <a href="https://wa.me/972501234567" class="flex-1 md:flex-none px-5 py-3 bg-primary text-primary_fg font-semibold rounded-md hover:bg-primary/90 transition-colors flex items-center justify-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+              </svg>
+              הזמן לוואטסאפ
+            </a>
+            <a href="#menu" class="flex-1 md:flex-none px-5 py-3 border border-border text-muted hover:text-text hover:border-primary transition-colors flex items-center justify-center gap-2">
+              תפריט מלא
+            </a>
+          </div>
+          <div class="mt-10 flex justify-center gap-4">
+            <!-- Bread Mockup -->
+            <div class="relative w-24 h-32 bg-[linear-gradient(to_bottom,#D4AF37_30%,#8B5E34_70%)] rounded-lg shadow-soft">
+              <div class="absolute inset-0 bg-[linear-gradient(to_top,transparent_70%,rgba(255,255,255,0.2))] rounded-lg"></div>
+              <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-10 h-4 bg-[linear-gradient(to_top,#D4AF37_30%,#8B5E34_70%)] rounded-t-lg"></div>
+            </div>
+            <!-- Cake Mockup -->
+            <div class="relative w-28 h-28 bg-[linear-gradient(to_bottom,#D4AF37_40%,#8B5E34_60%)] rounded-full shadow-soft flex items-center justify-center">
+              <div class="absolute inset-0.5 bg-[linear-gradient(to_top,transparent_60%,rgba(255,255,255,0.15))] rounded-full"></div>
+              <div class="absolute inset-2 bg-[linear-gradient(to_bottom,#FAF8F5_30%,transparent_70%)] rounded-full"></div>
+              <div class="relative z-10 text-text font-display text-sm">
+                רבקה
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-20 md:py-28 lg:py-32">
+      <div class="max-w-7xl mx-auto px-6 md:px-8 lg:px-10">
+        <h2 class="text-3xl md:text-5xl font-display tracking-tight mb-8 text-center">
+          הסיפור שלנו
+        </h2>
+        <div class="grid md:grid-cols-2 gap-8 items-start">
+          <div>
+            <p class="text-base md:text-lg leading-relaxed mb-6">
+              מאפיית רבקה החלה את דרכה בשנת 2010 במטבח קטן בפתח תקווה, שם רבקה, אמא לשלושה וסבתא לחמישה, התחילה לאפות לחם מחמצת לפי המתכון המשפחתי שהעבירה לה אמה. מה שהתחיל כתחביב ביתי הפך במהרה למאפייה אהובה בקהילה, תוך שמירה על אותם ערכים: שימוש במחמצת ביתית שמטופלת מדי יום, קמח מלא מחיטה מקומית ותשומת לב לפרטים הקטנים.
+            </p>
+            <p class="text-base md:text-lg leading-relaxed">
+              היום, כל בוקר לפני עלות השחר, הצוות שלנו מכין את הבצק בעבודת יד, משאיר אותו לתפוח לאטו במחמצת הטבעית ואופים אותו באבן שמנת בתנור אבנים. התוצאה היא לחם עם קרום פריך ופנים אוורירי עם ניחוח עמוק של מחמצת, ועוגות שמשלבות מסורת ביתית עם נגיעות עכשוויות – כל פריט ניבט מהאהבה למקצוע והרצון להביא לשולחן שלכם טעם של פעם.
+            </p>
+          </div>
+          <!-- Hands Kneading Dough Mockup -->
+          <div class="relative w-full h-64 bg-[linear-gradient(135px,#FAF8F5_30%,transparent_70%)] rounded-lg overflow-hidden shadow-soft">
+            <div class="absolute inset-0 bg-[linear-gradient(to_bottom,#D4AF37_20%,#8B5E34_50%)] opacity-70"></div>
+            <div class="absolute bottom-0 left-0 w-full h-[60%] bg-[linear-gradient(to_top,transparent,#8B5E34_30%)]"></div>
+            <div class="absolute inset-4 bg-[linear-gradient(to_bottom,transparent_70%,#FAF8F5_100%)]"></div>
+            <div class="absolute bottom-8 left-1/4 w-10 h-2 bg-[linear-gradient(to_right,transparent,#D4AF37_50%,transparent)] rounded-full"></div>
+            <div class="absolute bottom-8 right-1/4 w-10 h-2 bg-[linear-gradient(to_left,transparent,#D4AF37_50%,transparent)] rounded-full"></div>
+            <div class="absolute bottom-12 left-1/3 w-6 h-1 bg-[linear-gradient(to_right,transparent,#D4AF37_50%,transparent)] rounded-full"></div>
+            <div class="absolute bottom-12 right-1/3 w-6 h-1 bg-[linear-gradient(to_left,transparent,#D4AF37_50%,transparent)] rounded-full"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu -->
+    <section id="menu" class="py-20 md:py-28 lg:py-32 bg-surface">
+      <div class="max-w-7xl mx-auto px-6 md:px-8 lg:px-10">
+        <h2 class="text-3xl md:text-5xl font-display tracking-tight mb-12 text-center">
+          תפריט
+        </h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Bread -->
+          <article class="flex flex-col items-start gap-4 bg-white p-6 rounded-lg shadow-soft hover:shadow-lg transition-shadow">
+            <div class="flex w-10 h-10 items-center justify-center bg-primary/10 rounded-md">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2h2c0-2.21-1.79-4-4-4zm0 10c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-text">לחם מחמצת 24 שעות</h3>
+            <p class="text-muted max-w-prose">
+              לחם מחמצת מסורתי עם טעם עמוק וקרום פריך, מוכן מחמצת ביתית שמטופלת במשך 24 שעות לפחות.
+            </p>
+            <p class="mt-2 font-mono text-accent text-lg">₪28</p>
+          </article>
+          <!-- Croissant -->
+          <article class="flex flex-col items-start gap-4 bg-white p-6 rounded-lg shadow-soft hover:shadow-lg transition-shadow">
+            <div class="flex w-10 h-10 items-center justify-center bg-primary/10 rounded-md">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2h2c0-2.21-1.79-4-4-4zm0 10c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-text">קרואסון חמאה</h3>
+            <p class="text-muted max-w-prose">
+              קרואסון פריך ועשיר בחמאה צרפתית אמיתית, מגליל handmade ואפייה עדינה לצבע זהוב מושלם.
+            </p>
+            <p class="mt-2 font-mono text-accent text-lg">₪12</p>
+          </article>
+          <!-- Cheesecake -->
+          <article class="flex flex-col items-start gap-4 bg-white p-6 rounded-lg shadow-soft hover:shadow-lg transition-shadow">
+            <div class="flex w-10 h-10 items-center justify-center bg-primary/10 rounded-md">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2h2c0-2.21-1.79-4-4-4zm0 10c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-text">עוגת גבינה אפויה</h3>
+            <p class="text-muted max-w-prose">
+              עוגת גבינה קלאסית עם בסיס עוגיות Digestive ומלית גבינה רכה בטעם וניל עדין, ללא גלוטן.
+            </p>
+            <p class="mt-2 font-mono text-accent text-lg">₪32</p>
+          </article>
+          <!-- Rugulach -->
+          <article class="flex flex-col items-start gap-4 bg-white p-6 rounded-lg shadow-soft hover:shadow-lg transition-shadow">
+            <div class="flex w-10 h-10 items-center justify-center bg-primary/10 rounded-md">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2h2c0-2.21-1.79-4-4-4zm0 10c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-text">רוגלך שוקולד וקינמון</h3>
+            <p class="text-muted max-w-prose">
+              מאפה מתוק שמרים במילוי שוקולד מריר וקינמון, מגולגל ידנית ואפוי עד להשחמה מושלמת.
+            </p>
+            <p class="mt-2 font-mono text-accent text-lg">₪8</p>
+          </article>
+          <!-- Whole Wheat Bread -->
+          <article class="flex flex-col items-start gap-4 bg-white p-6 rounded-lg shadow-soft hover:shadow-lg transition-shadow">
+            <div class="flex w-10 h-10 items-center justify-center bg-primary/10 rounded-md">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2h2c0-2.21-1.79-4-4-4zm0 10c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-text">לחם חיטה מלאה וזרעים</h3>
+            <p class="text-muted max-w-prose">
+              לחם בריא מחיטה מלאה עם זרעי פשתן, דלעת ושמן זית, עשיר בסיבים ובטעם אגוזי נעים.
+            </p>
+            <p class="mt-2 font-mono text-accent text-lg">₪30</p>
+          </article>
+          <!-- Chocolate Cake -->
+          <article class="flex flex-col items-start gap-4 bg-white p-6 rounded-lg shadow-soft hover:shadow-lg transition-shadow">
+            <div class="flex w-10 h-10 items-center justify-center bg-primary/10 rounded-md">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2h2c0-2.21-1.79-4-4-4zm0 10c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-text">עוגת שוקולד טריפל</h3>
+            <p class="text-muted max-w-prose">
+              שלוש שכבות עוגת שוקולד עשירה עם קרם גנאש שוקולד בלגיאני ופירורי עוגיות שוקולד מעל.
+            </p>
+            <p class="mt-2 font-mono text-accent text-lg">₪35</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hours -->
+    <section id="hours" class="py-20 md:py-28 lg:py-32">
+      <div class="max-w-7xl mx-auto px-6 md:px-8 lg:px-10">
+        <h2 class="text-3xl md:text-5xl font-display tracking-tight mb-10 text-center">
+          שעות פתיחה ויצירת קשר
+        </h2>
+        <div class="grid md:grid-cols-2 gap-10">
+          <div class="space-y-6">
+            <h3 class="text-xl font-semibold text-text mb-2">שעות פתיחה</h3>
+            <div class="space-y-3">
+              <div class="flex justify-between text-base md:text-lg">
+                <span>א׳–ה׳:</span>
+                <span>07:00–19:00</span>
+              </div>
+              <div class="flex justify-between text-base md:text-lg">
+                <span>ו׳:</span>
+                <span>07:00–14:00</span>
+              </div>
+              <div class="flex justify-between text-base md:text-lg">
+                <span>ש׳:</span>
+                <span>סגור</span>
+              </div>
+            </div>
+          </div>
+          <div class="space-y-6">
+            <h3 class="text-xl font-semibold text-text mb-2">הזמנה ויצירת קשר</h3>
+            <a href="https://wa.me/972501234567" class="flex w-full items-center justify-center gap-3 px-5 py-3 bg-primary text-primary_fg font-semibold rounded-md hover:bg-primary/90 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 012 2h-5l-5 5v-5z"/>
+              </svg>
+              <span>הזמן לוואטסאפ</span>
+            </a>
+            <a href="tel:031234567" class="flex w-full items-center justify-center gap-3 px-5 py-3 border border-border rounded-md hover:bg-primary/5 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.948V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z"/>
+              </svg>
+              <span>התקשר אלינו: 03-1234567</span>
+            </a>
+            <div class="flex items-center gap-3 px-4 py-2 bg-primary/10 rounded-md">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 12c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+              </svg>
+              <span>רחוב הרצל 12, פתח תקווה</span>
+            </div>
+            <a href="https://maps.google.com/?q=הרצל+12,+פתח+תקווה" class="flex items-center gap-3 px-4 py-2 bg-primary/10 rounded-md text-sm hover:bg-primary/20 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m3-3H9m6 3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span>פתח בניווט</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="py-20 md:py-28 lg:py-32 bg-surface">
+      <div class="max-w-7xl mx-auto px-6 md:px-8 lg:px-10">
+        <h2 class="text-3xl md:text-5xl font-display tracking-tight mb-10 text-center">
+          הגלריה
+        </h2>
+        <div class="overflow-x-auto whitespace-nowrap">
+          <div class="inline-flex space-x-6 space-x-reverse">
+            <!-- Bread -->
+            <div class="flex-shrink-0 w-48 h-48 bg-[linear-gradient(to_bottom,#D4AF37_30%,#8B5E34_70%)] rounded-lg shadow-soft relative">
+              <div class="absolute inset-0 bg-[linear-gradient(to_top,transparent_70%,rgba(255,255,255,0.2))] rounded-lg"></div>
+              <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-10 h-4 bg-[linear-gradient(to_top,#D4AF37_30%,#8B5E34_70%)] rounded-t-lg"></div>
+            </div>
+            <!-- Bourekas -->
+            <div class="flex-shrink-0 w-48 h-48 bg-[linear-gradient(135deg,#D4AF37_40%,#8B5E34_60%)] rounded-lg shadow-soft relative">
+              <div class="absolute inset-0 bg-[linear-gradient(to_top,transparent_60%,rgba(255,255,255,0.15))] rounded-lg"></div>
+              <div class="absolute inset-4 bg-[linear-gradient(to_bottom,#FAF8F5_30%,transparent_70%)] rounded-lg"></div>
+              <div class="absolute bottom-2 left-2 w-4 h-1 bg-[linear-gradient(to_right,transparent,#D4AF37_50%,transparent)] rounded-full"></div>
+              <div class="absolute bottom-2 right-2 w-4 h-1 bg-[linear-gradient(to_left,transparent,#D4AF37_50%,transparent)] rounded-full"></div>
+            </div>
+            <!-- Chocolate Cake -->
+            <div class="flex-shrink-0 w-48 h-48 bg-[linear-gradient(to_bottom,#8B5E34_60%,#D4AF37_40%)] rounded-full shadow-soft relative flex items-center justify-center">
+              <div class="absolute inset-0.5 bg-[linear-gradient(to_top,transparent_60%,rgba(255,255,255,0.15))] rounded-full"></div>
+              <div class="absolute inset-2 bg-[linear-gradient(to_bottom,#FAF8F5_30%,transparent_70%)] rounded-full"></div>
+              <div class="relative z-10 text-text font-display text-sm">
+                שוקולד
+              </div>
+            </div>
+            <!-- Cheese Pastry -->
+            <div class="flex-shrink-0 w-48 h-48 bg-[linear-gradient(to_bottom,#D4AF37_50%,#8B5E34_50%)] rounded-lg shadow-soft relative">
+              <div class="absolute inset-0 bg-[linear-gradient(to_top,transparent_50%,rgba(255,255,255,0.1))] rounded-lg"></div>
+              <div class="absolute inset-4 bg-[linear-gradient(to_bottom,#FAF8F5_30%,transparent_70%)] rounded-lg"></div>
+              <div class="absolute bottom-2 left-2 w-4 h-1 bg-[linear-gradient(to_right,transparent,#D4AF37_50%,transparent)] rounded-full"></div>
+              <div class="absolute bottom-2 right-2 w-4 h-1 bg-[linear-gradient(to_left,transparent,#D4AF37_50%,transparent)] rounded-full"></div>
+              <div class="absolute bottom-6 left-1/2 -translate-x-1/2 w-4 h-4 bg-[linear-gradient(135deg,#D4AF37_50%,#8B5E34_50%)] rounded-lg"></div>
+            </div>
+            <!-- Crumble -->
+            <div class="flex-shrink-0 w-48 h-48 bg-[linear-gradient(to_bottom,#8B5E34_40%,#D4AF37_60%)] rounded-lg shadow-soft relative">
+              <div class="absolute inset-0 bg-[linear-gradient(to_top,transparent_60%,rgba(255,255,255,0.15))] rounded-lg"></div>
+              <div class="absolute inset-4 bg-[linear-gradient(to_bottom,#FAF8F5_30%,transparent_70%)] rounded-lg"></div>
+              <div class="absolute bottom-4 left-4 w-6 h-2 bg-[linear-gradient(to_right,transparent,#D4AF37_50%,transparent)] rounded-full"></div>
+              <div class="absolute bottom-4 right-4 w-6 h-2 bg-[linear-gradient(to_left,transparent,#D4AF37_50%,transparent)] rounded-full"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-20 md:py-28 lg:py-32">
+      <div class="max-w-7xl mx-auto px-6 md:px-8 lg:px-10">
+        <h2 class="text-3xl md:text-5xl font-display tracking-tight mb-12 text-center">
+          מה הלקוחות אומרים
+        </h2>
+        <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Testimonial 1 -->
+          <blockquote class="bg-surface p-6 rounded-lg shadow-soft flex flex-col items-start gap-4">
+            <p class="text-base md:text-lg leading-relaxed text-muted italic max-w-prose">
+              "הדבר הכי טוב שקרה לשבת שלנו! הלחם מחמצת של רבקה טרי ועם טעם של פעם, והילדים לא מפסיקים לבקש את הרוגלך השוקולד. מומלץ בחום!"
+            </p>
+            <div class="flex w-full items-center gap-3">
+              <div class="flex h-8 w-8 items-center justify-center bg-primary/20 rounded-full">
+                <span class="text-primary_fg font-medium">נ</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-text">נועה לוי</h4>
+                <p class="text-sm text-muted">אמא לשלושה, פתח תקווה</p>
+              </div>
+            </div>
+          </blockquote>
+          <!-- Testimonial 2 -->
+          <blockquote class="bg-surface p-6 rounded-lg shadow-soft flex flex-col items-start gap-4">
+            <p class="text-base md:text-lg leading-relaxed text-muted italic max-w-prose">
+              "אני מגיע בכל שישי בבוקר לקנות את החלה ומסתובב עם קרואסון חם לדרך. האיכות קבועה, השירות עם חיוך והריח בפתח המאפייה פשוט משגע."
+            </p>
+            <div class="flex w-full items-center gap-3">
+              <div class="flex h-8 w-8 items-center justify-center bg-primary/20 rounded-full">
+                <span class="text-primary_fg font-medium">א</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-text">אורי כהן</h4>
+                <p class="text-sm text-muted">בעל עסק מקומי, פתח תקווה</p>
+              </div>
+            </div>
+          </blockquote>
+          <!-- Testimonial 3 -->
+          <blockquote class="bg-surface p-6 rounded-lg shadow-soft flex flex-col items-start gap-4">
+            <p class="text-base md:text-lg leading-relaxed text-muted italic max-w-prose">
+              "הזמנתי עוגת גבינה ליום ההולדת של אמא והיא הייתה פשוט מושלמת – לא מתוקה מדי, עם טעם גבינה אמיתי ובסיס פריך. כבר הזמנתי שוב לשבוע הבא!"
+            </p>
+            <div class="flex w-full items-center gap-3">
+              <div class="flex h-8 w-8 items-center justify-center bg-primary/20 rounded-full">
+                <span class="text-primary_fg font-medium">מ</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-text">מיכל אברהמי</h4>
+                <p class="text-sm text-muted">מהנדסת תוכנה, רמת גן</p>
+              </div>
+            </div>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta" class="py-20 md:py-28 lg:py-32 bg-primary/5">
+      <div class="max-w-7xl mx-auto px-6 md:px-8 lg:px-10 text-center">
+        <h2 class="text-3xl md:text-5xl font-display tracking-tight mb-6">
+          טעמו את ההבדל
+        </h2>
+        <p class="text-lg md:text-xl text-muted max-w-2xl mx-auto mb-8">
+          לחם טרי מחכה לכם – שלח הודעה עכשיו וקבלו 10% הנחה על ההזמנה הראשונה
+        </p>
+        <div class="flex flex-col md:flex-row gap-4 justify-center">
+          <a href="https://wa.me/972501234567" class="flex-1 md:flex-none px-5 py-3 bg-primary text-primary_fg font-semibold rounded-md hover:bg-primary/90 transition-colors flex items-center justify-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+            </svg>
+            הזמן לוואטסאפ
+          </a>
+          <a href="tel:031234567" class="flex-1 md:flex-none px-5 py-3 border border-border text-muted hover:text-text hover:border-primary transition-colors flex items-center justify-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.948V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z"/>
+            </svg>
+            התקשר אלינו
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-border">
+    <div class="max-w-7xl mx-auto px-6 md:px-8 lg:px-10">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 py-10">
+        <div>
+          <a href="#" class="flex items-center gap-3 mb-4">
+            <span class="text-primary font-display text-xl">מאפיית רבקה</span>
+          </a>
+          <p class="text-muted max-w-prose">
+            מאפייה משפחתית בפתח תקווה מאז 2010, אופים באהבה לחם מחמצת, עוגות ביתיות ומאפים טריים מחומרים משובחים.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-text mb-4">קישורים מהירים</h3>
+          <nav class="space-y-2 space-x-reverse">
+            <a href="#menu" class="text-muted hover:text-text transition-colors">תפריט</a>
+            <a href="#hours" class="text-muted hover:text-text transition-colors">שעות פתיחה</a>
+            <a href="#gallery" class="text-muted hover:text-text transition-colors">גלריה</a>
+            <a href="#cta" class="text-muted hover:text-text transition-colors">הזמנה</a>
+          </nav>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-text mb-4">עקבו אחרינו</h3>
+          <div class="flex space-x-4 space-x-reverse">
+            <a href="#" class="text-muted hover:text-primary transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 4h2a2 2 0 012 2v2h-2V6a2 2 0 00-2-2h-2v2h2V4zm2 12H6v-2.519A25.011 25.011 0 014.512 18a2 2 0 01-.002-.382h4.126A24.988 24.988 0 0112 15.75V9a3 3 0 013-3h2.253A24.988 24.988 0 0119.512 18a2 2 0 01-.002.382h4.126A25.011 25.011 0 0120 13.481V16h2zm-6 0h.01"/>
+              </svg>
+            </a>
+            <a href="#" class="text-muted hover:text-primary transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 001-1h3z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="lg:col-span-4 border-t pt-6 mt-10 text-center text-sm text-muted">
+          © 2026 מאפיית רבקה. כל הזכויות שמורות.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating Button (optional) -->
+  <a href="https://wa.me/972501234567" class="fixed bottom-6 right-6 z-50 flex items-center justify-center w-12 h-12 bg-primary rounded-full shadow-lg hover:bg-primary/90 transition-colors" aria-label="הזמן לוואטסאפ">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-surface" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 012 2h-5l-5 5v-5z"/>
+    </svg>
+  </a>
+
+  <script>
+    // Mobile menu
+    const mobileMenuOpen = document.getElementById('mobile-menu-open');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuOpen.addEventListener('click', () => {
+      mobileMenu.classList.remove('hidden');
+      // Optional: disable body scroll
+      document.body.style.overflow = 'hidden';
+    });
+    
+    mobileMenuClose.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      document.body.style.overflow = '';
+    });
+    
+    // Close mobile menu when clicking a link
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        document.body.style.overflow = '';
+      });
+    });
+    
+    // Active nav link based on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('#desktop-nav a, #mobile-menu nav a');
+    
+    function setActiveLink() {
+      let scrollPosition = window.scrollY + 100; // offset for header height
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+        if (
+          scrollPosition >= sectionTop &&
+          scrollPosition < sectionTop + sectionHeight
+        ) {
+          navLinks.forEach(link => {
+            link.classList.toggle('text-primary', link.getAttribute('href') === `#${sectionId}`);
+            link.classList.toggle('text-muted', link.getAttribute('href') !== `#${sectionId}`);
+          });
+        }
+      });
+    }
+    
+    window.addEventListener('scroll', setActiveLink);
+    // Also set on load
+    setActiveLink();
+    
+    // Scroll reveal
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+    
+    revealElements.forEach(el => {
+      revealObserver.observe(el);
+    });
+    
+    // Reveal elements that are already in view on load
+    revealElements.forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight && el.getBoundingClientRect().bottom >= 0) {
+        el.classList.add('is-visible');
+        revealObserver.unobserve(el);
+      }
+    });
+  </script>
+</body>
+</html>
