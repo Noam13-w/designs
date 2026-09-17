@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fleetly - ניהול צי חכם</title>
+<meta name="description" content="פלטפורמת ניהול צי שמאפשרת למנהלי משלחים קטנים להפסיק לרדוף אחרי הנהגים ולהתחיל לגדול.">
+<meta property="og:title" content="Fleetly - ניהול צי חכם">
+<meta property="og:description" content="פלטפורמת ניהול צי שמאפשרת למנהלי משלחים קטנים להפסיק לרדוף אחרי הנהגים ולהתחיל לגדול.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0EA5E9">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%230EA5E9'/%3E%3Ctext x='50' y='55' font-size='40' text-anchor='middle' fill='white' font-weight='600'%3EF%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: false,
+    theme: {
+      extend: {
+        colors: {
+          bg: 'var(--bg)',
+          surface: 'var(--surface)',
+          text: 'var(--text)',
+          muted: 'var(--muted)',
+          border: 'var(--border)',
+          primary: 'var(--primary)',
+          accent: 'var(--accent)',
+        },
+        fontFamily: {
+          display: ['Inter', 'sans-serif'],
+          body: ['Inter', 'sans-serif'],
+        },
+        borderRadius: {
+          sm: '6px',
+          md: '12px',
+          lg: '20px',
+          xl: '28px',
+        },
+        boxShadow: {
+          soft: '0 1px 2px rgba(0,0,0,.05), 0 8px 24px -12px rgba(0,0,0,.15)',
+          ring: '0 0 0 1px var(--border)',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  :root {
+    --bg: #FAFAFA;
+    --surface: #FFFFFF;
+    --text: #111827;
+    --muted: #6B7280;
+    --border: #E5E7EB;
+    --primary: #0EA5E9;
+    --accent: #00A8A8;
+  }
+  .dark {
+    --bg: #0B0D12;
+    --surface: #12151D;
+    --text: #E8EAF0;
+    --muted: #8B90A0;
+    --border: #232838;
+    --primary: #0EA5E9;
+    --accent: #00A8A8;
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 600ms ease, transform 600ms ease;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      transition: none;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
+</head>
+<body class="bg-bg text-text antialiased">
+  <!-- Dark/Light toggle in nav -->
+  <header class="sticky top-0 z-50 bg-surface/90 backdrop-blur-sm border-b border-border">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 flex items-center justify-between py-4">
+      <div class="flex items-center space-x-3">
+        <!-- Logo: wordmark -->
+        <span class="text-xl font-bold text-primary">Fleetly</span>
+      </div>
+      <nav class="hidden md:flex space-x-6">
+        <a href="#hero" class="text-muted hover:text-text transition-colors">למה Fleetly</a>
+        <a href="#pricing" class="text-muted hover:text-text transition-colors">תעריפים</a>
+        <a href="#integrations" class="text-muted hover:text-text transition-colors">אינטגרציות</a>
+        <a href="#demo-form" class="bg-primary text-white px-4 py-2 rounded-sm hover:bg-primary/90 transition-colors">התחל נסיון חינם</a>
+      </nav>
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-btn" class="md:hidden flex items-center p-2 rounded-sm hover:bg-muted/20 focus-visible:ring-2 focus-visible:ring-primary/20" aria-label="פתח תפריט" aria-controls="mobile-menu" aria-expanded="false">
+        <svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true">
+          <path d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      <!-- Dark/Light toggle -->
+      <label class="flex items-center space-x-2 text-sm cursor-pointer focus-visible:ring-2 focus-visible:ring-primary/20">
+        <span class="text-muted">מצב כהה</span>
+        <input type="checkbox" id="theme-toggle" class="h-6 w-6 rounded border border-gray-600 bg-transparent checked:bg-primary checked:border-primary focus-visible:ring-0" aria-hidden="true">
+      </label>
+    </div>
+  </header>
+
+  <!-- Mobile menu panel -->
+  <div id="mobile-menu" class="md:hidden fixed inset-0 z-40 bg-bg/80 backdrop-blur-sm transform -translate-x-full transition-transform duration-300 ease-out" aria-hidden="true">
+    <div class="flex flex-col h-full px-6 pt-8 space-y-4">
+      <a href="#hero" class="block py-3 px-0 text-lg font-medium text-text hover:text-primary focus-visible:ring-2 focus-visible:ring-primary/20">למה Fleetly</a>
+      <a href="#pricing" class="block py-3 px-0 text-lg font-medium text-text hover:text-primary focus-visible:ring-2 focus-visible:ring-primary/20">תעריפים</a>
+      <a href="#integrations" class="block py-3 px-0 text-lg font-medium text-text hover:text-primary focus-visible:ring-2 focus-visible:ring-primary/20">אינטגרציות</a>
+      <a href="#demo-form" class="block py-3 px-0 text-lg font-medium text-text bg-primary text-white px-4 py-2 rounded-sm hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary/20">התחל נסיון חינם</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="hero" class="reveal py-20 md:py-28 lg:py-32">
+      <div class="max-w-7xl mx-auto px-5 md:px-8 grid md:grid-cols-2 gap-8 items-start">
+        <!-- Text content -->
+        <div class="space-y-4">
+          <p class="text-xs uppercase tracking-wider text-primary font-semibold">ניהול צי חכם</p>
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.02] text-text">
+            תפסיק לרדוף אחרי הנהגים שלך. התחל לגדל את הצי שלך.
+          </h1>
+          <p class="text-lg md:text-xl text-muted max-w-md">
+            פלטפורמה מאוחדת שמספקת מיקום בזמן אמת, תכנון מסלולים אוטומטי ותובנות צריכת דלק כדי שתוכל להתמקד בפיתוח העסק ולא במרדף אחרי הנהגים.
+          </p>
+          <div class="flex flex-wrap gap-4 mt-6">
+            <a href="#demo-form" class="h-11 bg-primary text-white px-5 font-medium flex items-center justify-center hover:bg-primary/90 transition-colors focus-visible:ring-2 focus-visible:ring-primary/20">
+              התחל נסיון חינם
+              <svg class="w-5 h-5 stroke-current" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" aria-hidden="true">
+                <path d="M5 12h14"></path>
+                <path d="M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+            <a href="#" class="text-primary hover:text-primary/80 flex items-center space-x-2 text-sm focus-visible:ring-2 focus-visible:ring-primary/20">
+              צפה בסרטון הדגמה
+              <svg class="w-4 h-4 stroke-current" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" aria-hidden="true">
+                <path d="M8 5v14l11-7z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <!-- Visual: dashboard mockup + wave SVG -->
+        <div class="relative flex items-end justify-end">
+          <!-- Dashboard mockup -->
+          <div class="relative w-full max-w-[320px] h-[200px] bg-surface rounded-sm border border-border shadow-soft overflow-hidden hover:-translate-y-1 hover:shadow duration-200">
+            <!-- Top bar -->
+            <div class="flex items-center space-x-2 px-3 py-2 bg-muted/10">
+              <div class="w-2 h-2 bg-muted/40 rounded-full"></div>
+              <div class="w-2 h-2 bg-muted/40 rounded-full"></div>
+              <div class="w-2 h-2 bg-muted/40 rounded-full"></div>
+              <span class="text-xs text-muted">fleetly.app</span>
+            </div>
+            <!-- Content -->
+            <div class="p-4 space-y-3">
+              <div class="flex space-x-3">
+                <div class="w-10 h-2 bg-muted/20 rounded"></div>
+                <div class="w-10 h-2 bg-muted/20 rounded"></div>
+                <div class="w-10 h-2 bg-muted/20 rounded"></div>
+                <div class="w-10 h-2 bg-muted/20 rounded"></div>
+              </div>
+              <div class="flex space-x-3">
+                <div class="w-1/3 h-4 bg-muted/20 rounded"></div>
+                <div class="w-1/3 h-4 bg-muted/20 rounded"></div>
+                <div class="w-1/3 h-4 bg-muted/20 rounded"></div>
+              </div>
+              <div class="flex justify-between">
+                <div class="w-1/2 h-4 bg-muted/20 rounded"></div>
+                <div class="w-1/2 h-4 bg-muted/20 rounded"></div>
+              </div>
+            </div>
+          </div>
+          <!-- Wave SVG bottom -->
+          <svg class="absolute left-0 bottom-0 w-full h-20" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true">
+            <path fill="var(--accent)" fill-opacity="0.1" d="M0 40Q180 60 360 40T720 40T1080 40L1440 0V100H0Z"></path>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="reveal py-20 md:py-28 lg:py-32 bg-surface">
+      <div class="max-w-7xl mx-auto px-5 md:px-8">
+        <div class="text-center mb-12">
+          <p class="text-xs uppercase tracking-wider text-primary font-semibold">תעריפים</p>
+          <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-text">בחר את המסלול שמתאים לגודל הצי שלך</h2>
+          <p class="text-muted mt-4 max-w-xl">
+            תשלום חודשי או שנתי – ללא התחייבות, ניתן להחליף מסלול בכל זמן.
+          </p>
+        </div>
+
+        <!-- Toggle -->
+        <div class="flex justify-center mb-10">
+          <label class="flex items-center space-x-4 text-sm cursor-pointer focus-visible:ring-2 focus-visible:ring-primary/20">
+            <span class="text-muted">תשלום שנתי</span>
+            <input type="checkbox" id="billing-toggle" class="h-6 w-6 rounded border border-gray-600 bg-transparent checked:bg-accent checked:border-accent focus-visible:ring-0" aria-hidden="true">
+            <span class="text-muted">תשלום חודשי</span>
+          </label>
+        </div>
+
+        <!-- Cards -->
+        <div class="grid gap-6 md:grid-cols-3">
+          <!-- Starter -->
+          <div class="relative bg-surface border border-border rounded-sm p-6 hover:shadow-soft transition-shadow">
+            <div class="absolute inset-y-0 start-0 w-1 bg-accent/20 transition-background-color duration-200 hover:bg-accent"></div>
+            <h3 class="text-xl font-semibold text-text mb-2">Starter</h3>
+            <p class="text-2xl font-bold text-primary mb-4">
+              <span id="price-starter-monthly">₪49</span><span class="text-xs text-muted"> לחודש</span>
+            </p>
+            <ul class="space-y-3 text-muted mb-6">
+              <li class="flex items-center space-x-2"><svg class="w-4 h-4 stroke-current" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> עד 5 רכבים</li>
+              <li class="flex items-center space-x-2"><svg class="w-4 h-4 stroke-current" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4m0 4h4"></path></svg>tracking ב‑GPS בזמן אמת</li>
+              <li class="flex items-center space-x-2"><svg class="w-4 h-4 stroke-current" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" aria-hidden="true"><path d="M9 12h6"></path><path d="M9 16V12h6"></path></svg> דוחות יומיים בסיסיים</li>
+              <li class="flex items-center space-x-2"><svg class="w-4 h-4 stroke-current" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" aria-hidden="true"><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12" y2="20"></line></li></svg> תמיכה באימייל</li>
+            </ul>
+            <a href="#demo-form" class="w-full h-11 bg-primary text-white font-medium hover:bg-primary/90 transition-colors focus-visible:ring-2 focus-visible:ring-primary/20">בחר תכנית</a>
+          </div>
+
+          <!-- Growth -->
+          <div class="relative bg-surface border border-border rounded-sm p-6 hover:shadow-soft transition-shadow">
+            <div class="absolute inset-y-0 start-0 w-1 bg-accent/20 transition-background-color duration-200 hover:bg-accent"></div>
+            <h3 class="text-xl font-semibold text-text mb-2">Growth</h3>
+            <p class="text-2xl font-bold text-primary mb-4">
+              <span id="price-growth-monthly">₪99</span><span class="text-xs text-muted"> לחודש</span>
+            </p>
+            <ul class="space-y-3 text-muted mb-6">
+              <li class="flex items-center space-x-2"><svg class="w-4 h-4 stroke-current" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> עד 15 רכבים</li>
+              <li class="flex items-center space-x-2"><svg class="w-4 h-4 stroke-current" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4m0 4h4"></path></svg>tracking ב‑GPS מתקדם + גאופנסינג</li>
+              <li class="flex items-center space-x-2"><svg class="w-4 h-4 stroke-current" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" aria-hidden="true"><path d="M9 12h6"></path><path d="M9 16V12h6"></path></svg> דוחות שבועיים + ניתוח דלק</li>
+              <li class="flex items-center space-x-2"><svg class="w-4 h-4 stroke-current" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" aria-hidden="true"><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12" y2="20"></line></li></svg> תמיכה בטלפון + צ'אט</li>
+              <li class="flex items-center space-x-2"><svg class="w-4 h-4 stroke-current" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12.05 9a5 5 0 1 1 4.95 5"></path></svg> אינטגרציות בסיסיות</li>
+            </ul>
+            <a href="#demo-form" class="w-full h-11 bg-primary text-white font-medium hover:bg-primary/90 transition-colors focus-visible:ring-2 focus-visible:ring-primary/20">בחר תכנית</a>
+          </div>
+
+          <!-- Scale -->
+          <div class="relative bg-surface border border-border rounded-sm p-6 hover:shadow-soft transition-shadow">
+            <div class="absolute inset-y-0 start-0 w-1 bg-accent/20 transition-background-color duration-200 hover:bg-accent"></div>
+            <h3 class="text-xl font-semibold text-text mb-2">Scale</h3>
+            <p class="text-2xl font-bold text-primary mb-4">
+              <span id="price-scale-monthly">₪199</span><span class="text-xs text-muted"> לחודש</span>
+            </p>
+            <ul class="space-y-3 text-muted mb-6">
+              <li class="flex items-center space-x-2"><svg class="w-4 h-4 stroke-current" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> עד 50 רכבים</li>
+              <li class="flex items-center space-x-2"><svg class="w-4 h-4 stroke-current" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4m0 4h4"></path></svg>tracking ב‑GPS enterprise + ניבוי תחזוקה</li>
+              <li class="flex items-center space-x-2"><svg class="w-4 h-4 stroke-current" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" aria-hidden="true"><path d="M9 12h6"></path><path d="M9 16V12h6"></path></svg> דוחות חודשיים מותאמים + ROI</li>
+              <li class="flex items-center space-x-2"><svg class="w-4 h-4 stroke-current" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" aria-hidden="true"><line x1="12" y1="8" x2="12" y2="20"></line><line x1="12" y1="16" x2="12" y2="20"></line></li></svg> תמיכה 24/7 + מנהל חשבון אישי</li>
+              <li class="flex items-center space-x-2"><svg class="w-4 h-4 stroke-current" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12.05 9a5 5 0 1 1 4.95 5"></path></svg> אינטגרציות מלאות + API</li>
+            </ul>
+            <a href="#demo-form" class="w-full h-11 bg-primary text-white font-medium hover:bg-primary/90 transition-colors focus-visible:ring-2 focus-visible:ring-primary/20">בחר תכנית</a>
+          </div>
+        </div>
+
+        <!-- Note about annual pricing -->
+        <div class="center text-sm text-muted mt-8">
+          המחירים לשנתי כוללים 10% הנחה (מוצגים בחישוב חודשי לצורך השוואה).
+        </div>
+      </div>
+    </section>
+
+    <!-- Integrations Section -->
+    <section id="integrations" class="reveal py-20 md:py-28 lg:py-32">
+      <div class="max-w-7xl mx-auto px-5 md:px-8">
+        <div class="text-center mb-12">
+          <p class="text-xs uppercase tracking-wider text-primary font-semibold">אינטגרציות</p>
+          <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-text">מתחבר למערכות שאתה כבר משתמש בהם</h2>
+        </div>
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4 justify-center items-center">
+          <!-- Google Maps -->
+          <div class="flex flex-col items-center space-y-3">
+            <svg class="w-5 h-5 stroke-current" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" aria-hidden="true">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+            <span class="text-sm text-muted">Google Maps</span>
+          </div>
+          <!-- Shopify -->
+          <div class="flex flex-col items-center space-y-3">
+            <svg class="w-5 h-5 stroke-current" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" aria-hidden="true">
+              <rect x="2" y="3" width="20" height="18" rx="2" ry="2"></rect>
+              <path d="M2 7h20"></path>
+              <path d="M2 13h20"></path>
+              <path d="M2 18h20"></path>
+            </svg>
+            <span class="text-sm text-muted">Shopify</span>
+          </div>
+          <!-- WhatsApp Business -->
+          <div class="flex flex-col items-center space-y-3">
+            <svg class="w-5 h-5 stroke-current" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" aria-hidden="true">
+              <path d="M22 12.91l-5.44-.02a1 1 0 0 0-.96.58l-.02 1.79V20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2.48a1 1 0 0 0-.38-.86L2 12.91V8a1 1 0 0 1 .58-.96l3.75-.02 1.1-.63a1 1 0 0 0 .58-1.42l-.63-1.1-.02-3.75A1 1 0 0 1 2 4h14a1 1 0 0 1 .96.58l.02 1.79v3.46a1 1 0 0 0 .38.86z"></path>
+            </svg>
+            <span class="text-sm text-muted">WhatsApp Business</span>
+          </div>
+          <!-- QuickBooks -->
+          <div class="flex flex-col items-center space-y-3">
+            <svg class="w-5 h-5 stroke-current" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" aria-hidden="true">
+              <path d="M4 4h16v16H4z"></path>
+              <path d="M8 8h8v8H8z"></path>
+            </svg>
+            <span class="text-sm text-muted">QuickBooks</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo Form Section -->
+    <section id="demo-form" class="reveal py-20 md:py-28 lg:py-32 bg-surface">
+      <div class="max-w-7xl mx-auto px-5 md:px-8 text-center">
+        <div class="space-y-6">
+          <p class="text-xs uppercase tracking-wider text-primary font-semibold">התחל עכשיו</p>
+          <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-text">התחל עכשיו – בקש הדגמה אישית</h2>
+          <p class="text-muted max-w-xl">
+            מלא את הפרטים ונחזור אליך תוך 24 שעות כדי להציג את הפלטפורמה ולהתאים אותה לצרכי הצי שלך.
+          </p>
+        </div>
+
+        <div id="form-container" class="max-w-md mx-auto space-y-5">
+          <form id="demo-form" class="space-y-4">
+            <div class="grid gap-4 md:grid-cols-2">
+              <div>
+                <label for="name" class="block text-sm font-medium text-text mb-1">שם מלא</label>
+                <input type="text" id="name" name="name" required class="w-full px-4 py-2 rounded-sm bg-border/10 text-text border border-border focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="שם מלא">
+              </div>
+              <div>
+                <label for="company" class="block text-sm font-medium text-text mb-1">חברה</label>
+                <input type="text" id="company" name="company" required class="w-full px-4 py-2 rounded-sm bg-border/10 text-text border border-border focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="שם החברה">
+              </div>
+            </div>
+            <div>
+              <label for="phone" class="block text-sm font-medium text-text mb-1">טלפון</label>
+              <input type="tel" id="phone" name="phone" required class="w-full px-4 py-2 rounded-sm bg-border/10 text-text border border-border focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="050-1234567">
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-text mb-1">אימייל</label>
+              <input type="email" id="email" name="email" required class="w-full px-4 py-2 rounded-sm bg-border/10 text-text border border-border focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="name@company.com">
+            </div>
+            <button type="submit" class="w-full h-11 bg-primary text-white font-medium hover:bg-primary/90 transition-colors focus-visible:ring-2 focus-visible:ring-primary/20">
+              שליחה
+            </button>
+          </form>
+        </div>
+
+        <div id="form-success" class="hidden space-y-4">
+          <svg class="mx-auto w-10 h-10 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <p class="text-lg font-semibold text-text">הבקשה התקבלה!</p>
+          <p class="text-muted max-w-md">
+            נציגנו יחזור אליך בקרוב כדי לתאם את ההדגמה האישית. תודה על העניין ב‑Fleetly.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-surface/90 backdrop-blur-sm border-t border-border">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 py-12">
+      <div class="grid md:grid-cols-3 gap-8 pt-10 pb-6 border-t border-border">
+        <div class="space-y-3">
+          <span class="text-xl font-bold text-primary">Fleetly</span>
+          <p class="text-sm text-muted max-w-sm">פלטפורמת ניהול צי שמאפשרת למנהלי משלחים קטנים להפסיק לרדוף אחרי הנהגים ולהתחיל לגדול.</p>
+          <div class="flex space-x-4 mt-3">
+            <a href="#" class="text-muted hover:text-text transition-colors">לינקדאין</a>
+            <a href="#" class="text-muted hover:text-text transition-colors">פייסבוק</a>
+            <a href="#" class="text-muted hover:text-text transition-colors">אינסטגרם</a>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold text-text mb-2">פלטפורמה</h3>
+          <nav class="space-y-1">
+            <a href="#hero" class="text-muted hover:text-text">למה Fleetly</a>
+            <a href="#pricing" class="text-muted hover:text-text">תעריפים</a>
+            <a href="#integrations" class="text-muted hover:text-text">אינטגרציות</a>
+          </nav>
+        </div>
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold text-text mb-2">תמיכה</h3>
+          <nav class="space-y-1">
+            <a href="#" class="text-muted hover:text-text">תיעוד</a>
+            <a href="#" class="text-muted hover:text-text">בלוג</a>
+            <a href="#" class="text-muted hover:text-text">צור קשר</a>
+          </nav>
+        </div>
+      </div>
+      <div class="text-center text-sm text-muted mt-6">
+        © 2025 Fleetly. כל הזכויות שמורות. תל אביב, ישראל
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuBtn.addEventListener('click', () => {
+      const open = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+      mobileMenuBtn.setAttribute('aria-expanded', String(!open));
+      mobileMenu.setAttribute('aria-hidden', String(open));
+      mobileMenu.classList.toggle('-translate-x-full');
+    });
+    // Close mobile menu when clicking a link
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        mobileMenu.classList.add('-translate-x-full');
+      });
+    });
+
+    // Dark/Light toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlEl = document.documentElement;
+    themeToggle.addEventListener('change', () => {
+      if (themeToggle.checked) {
+        htmlEl.classList.add('dark');
+      } else {
+        htmlEl.classList.remove('dark');
+      }
+    });
+
+    // Billing toggle (monthly/yearly)
+    const billingToggle = document.getElementById('billing-toggle');
+    const priceElements = {
+      starterMonthly: document.getElementById('price-starter-monthly'),
+      growthMonthly: document.getElementById('price-growth-monthly'),
+      scaleMonthly: document.getElementById('price-scale-monthly')
+    };
+    const yearlyPrices = {
+      starter: 49 * 12 * 0.9, // 10% discount
+      growth: 99 * 12 * 0.9,
+      scale: 199 * 12 * 0.9
+    };
+    const monthlyPrices = {
+      starter: 49,
+      growth: 99,
+      scale: 199
+    };
+    function updatePrices() {
+      const isYearly = billingToggle.checked;
+      const starterPrice = isYearly ? (yearlyPrices.starter / 12).toFixed(0) : monthlyPrices.starter;
+      const growthPrice = isYearly ? (yearlyPrices.growth / 12).toFixed(0) : monthlyPrices.growth;
+      const scalePrice = isYearly ? (yearlyPrices.scale / 12).toFixed(0) : monthlyPrices.scale;
+      priceElements.starterMonthly.textContent = '₪' + starterPrice;
+      priceElements.growthMonthly.textContent = '₪' + growthPrice;
+      priceElements.scaleMonthly.textContent = '₪' + scalePrice;
+    }
+    billingToggle.addEventListener('change', updatePrices);
+    // Initialize
+    updatePrices();
+
+    // Form validation and success state
+    const form = document.getElementById('demo-form');
+    const formContainer = document.getElementById('form-container');
+    const formSuccess = document.getElementById('form-success');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (form.checkValidity()) {
+        formContainer.classList.add('hidden');
+        formSuccess.classList.remove('hidden');
+      } else {
+        form.reportValidity();
+      }
+    });
+
+    // Scroll reveal
+    const revealElements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealElements.forEach(el => {
+      observer.observe(el);
+    });
+    // Also reveal elements that are already in view on load
+    revealElements.forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight && el.getBoundingClientRect().bottom >= 0) {
+        el.classList.add('is-visible');
+        observer.unobserve(el);
+      }
+    });
+  </script>
+</body>
+</html>

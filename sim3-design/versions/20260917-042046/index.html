@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ליאורה מזרחי – מוזיקה עצמאית</title>
+  <meta name="description" content="ליאורה מזרחי – מוזיקאית עצמאית. שירים originals, הופעות קרובות ודרכי יצירת קשר.">
+  <meta name="theme-color" content="#5D3A9A">
+  <meta property="og:title" content="ליאורה מזרחי – מוזיקה עצמאית">
+  <meta property="og:description" content="ליאורה מזרחי – מוזיקאית עצמאית. שירים originals, הופעות קרובות ודרכי יצירת קשר.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://picsum.photos/seed/skysoft/1600/900">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect rx='12' ry='12' width='64' height='64' fill='%235D3A9A'/%3E%3Ctext x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23FFFFFF' font-family='Inter' font-weight='500' font-size='28'%3Eלמ%3C/text%3E%3C/svg%3E">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#F5F5F5',
+            bgAlt: '#FFE8B2',
+            primary: '#5D3A9A',
+            secondary: '#A8C686',
+            text: '#2C2C2C',
+            muted: '#6B6B6B',
+            borders: '#E0E0E0'
+          },
+          fontFamily: {
+            inter: ['Inter', 'sans-serif'],
+          },
+          fontSize: {
+            title: ['48pt', { lineHeight: '1.4', letterSpacing: '-0.02em' }],
+            subtitle: ['28pt', { lineHeight: '1.5', fontWeight: '500' }],
+            body: ['18pt', { lineHeight: '1.8', fontWeight: '400' }],
+          },
+          borderRadius: {
+            md: '12px',
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 600ms ease, transform 600ms ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* subtle noise background */
+    .noise-bg {
+      position: relative;
+    }
+    .noise-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.05;
+      pointer-events: none;
+    }
+    /* Reduce motion */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        transition: none;
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: none;
+      }
+      * {
+        transition: none !important;
+      }
+    }
+    /* Increase line-height for Hebrew headings */
+    h1, h2, h3 {
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body class="bg-bg text-text antialiased">
+  <!-- Skip to main content -->
+  <a href="#main" class="sr-only focus:not-sr-only focus:z-50 focus:block focus:p-2 focus:bg-primary focus:text-white focus:m-2">דלג לתוכן principale</a>
+
+  <!-- ==== Header ==== -->
+  <header class="sticky top-0 z-50 bg-bg/90 backdrop-blur-sm border-b border-borders/20 py-4 md:py-6">
+    <div class="container max-w-7xl mx-auto px-5 md:px-8 flex flex-col items-center gap-2 md:flex-row md:justify-between">
+      <a href="#" class="text-xl font-inter font-medium text-primary p-2">ליאורה מזרחי</a>
+      <nav class="hidden md:flex space-x-6">
+        <a href="#about" class="hover:text-primary transition-colors p-2">אודות</a>
+        <a href="#music" class="hover:text-primary transition-colors p-2">מוזיקה</a>
+        <a href="#shows" class="hover:text-primary transition-colors p-2">הופעות</a>
+        <a href="#contact" class="hover:text-primary transition-colors p-2">צור קשר</a>
+      </nav>
+      <button id="mobile-menu-btn" class="md:hidden flex items-center p-3 rounded-md hover:bg-bgAlt/50" aria-label="פתח תפריט" aria-controls="mobile-menu" aria-expanded="false">
+        <svg class="w-6 h-6 stroke-current" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+          <path stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="md:hidden hidden mt-4 w-full bg-bg/90 backdrop-blur-sm border-t border-borders/20">
+      <nav class="flex flex-col space-y-3 px-5 py-4">
+        <a href="#about" class="block text-center hover:text-primary transition-colors p-2">אודות</a>
+        <a href="#music" class="block text-center hover:text-primary transition-colors p-2">מוזיקה</a>
+        <a href="#shows" class="block text-center hover:text-primary transition-colors p-2">הופעות</a>
+        <a href="#contact" class="block text-center hover:text-primary transition-colors p-2">צור קשר</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ==== Hero ==== -->
+    <section class="relative bg-[url('https://picsum.photos/seed/skysoft/1600/900')] bg-cover bg-center min-h-[60vh] flex flex-col items-center justify-center py-10 md:py-14 noise-bg">
+      <div class="absolute inset-0 bg-bg/20"></div>
+      <div class="relative z-10 flex flex-col items-center text-center space-y-4 px-5 md:px-8">
+        <h1 class="title text-center text-text">ליאורה מזרחי</h1>
+        <p class="subtitle text-center text-muted max-w-prose">קול שנוגע בנשמה</p>
+        <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+          <a href="https://open.spotify.com/search/ליאורה%20מזרחי" target="_blank" rel="noopener" dir="ltr" class="flex-1 bg-primary text-white px-6 py-8 font-medium hover:bg-primary/90 transition-colors transform hover:-translate-y-1 min-h-11 text-base">האזנה ב‑Spotify</a>
+          <a href="#shows" class="flex-1 border border-primary text-primary px-6 py-8 bg-primary/10 hover:bg-primary/20 transition-colors transform hover:-translate-y-1 min-h-11 text-base">הופעות קרובות</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==== About ==== -->
+    <section id="about" class="container max-w-7xl mx-auto px-5 md:px-8 py-20 md:py-28 reveal border-t border-borders/20">
+      <div class="grid md:grid-cols-2 gap-8 items-start">
+        <div>
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="ליאורה מזרחי באור רך" class="w-full h-auto rounded-md shadow-sm">
+        </div>
+        <div class="space-y-6">
+          <h2 class="subtitle text-text">על האמנית</h2>
+          <p class="body text-muted">ליאורה מזרחי היא יוצרת וזמרת עצמאית שמשלבת מוטיבים מזרחיים עם אלקטרוניקה עדינה. לאחר שלושה אלבומים עצמאיים ומאות הופעות ברחבי הארץ, היא ממשיכה ליצור מוזיקה שמדברת ישירות ללב.</p>
+          <p class="body text-muted">האזינו לסינגל האחרון “שמי תכלת” הזמין בכל פלטפורמות הסטרימינג.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==== Music ==== -->
+    <section id="music" class="bg-bgAlt py-20 md:py-28 reveal border-t border-borders/20">
+      <div class="container max-w-7xl mx-auto px-5 md:px-8">
+        <h2 class="subtitle text-center text-text mb-6">מוזיקה</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <!-- Card 1 -->
+          <div class="bg-white rounded-md shadow-sm p-6 flex flex-col items-start space-y-4 hover:shadow-md transition-shadow">
+            <div class="flex items-center space-x-3">
+              <svg class="w-5 h-5 stroke-primary" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <h3 class="font-medium text-text">שמי תכלת</h3>
+            </div>
+            <p class="text-sm text-muted">משך: 3:42</p>
+            <a href="https://open.spotify.com/track/example" target="_blank" rel="noopener" dir="ltr" class="w-full bg-primary text-white text-center py-3 px-5 font-medium hover:bg-primary/90 transition-colors min-h-11 text-base">האזנה</a>
+          </div>
+          <!-- Card 2 -->
+          <div class="bg-white rounded-md shadow-sm p-6 flex flex-col items-start space-y-4 hover:shadow-md transition-shadow">
+            <div class="flex items-center space-x-3">
+              <svg class="w-5 h-5 stroke-primary" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <h3 class="font-medium text-text">לילה שקט</h3>
+            </div>
+            <p class="text-sm text-muted">משך: 4:10</p>
+            <a href="https://open.spotify.com/track/example2" target="_blank" rel="noopener" dir="ltr" class="w-full bg-primary text-white text-center py-3 px-5 font-medium hover:bg-primary/90 transition-colors min-h-11 text-base">האזנה</a>
+          </div>
+          <!-- Card 3 -->
+          <div class="bg-white rounded-md shadow-sm p-6 flex flex-col items-start space-y-4 hover:shadow-md transition-shadow">
+            <div class="flex items-center space-x-3">
+              <svg class="w-5 h-5 stroke-primary" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <h3 class="font-medium text-text">שבר חלום</h3>
+            </div>
+            <p class="text-sm text-muted">משך: 3:58</p>
+            <a href="https://open.spotify.com/track/example3" target="_blank" rel="noopener" dir="ltr" class="w-full bg-primary text-white text-center py-3 px-5 font-medium hover:bg-primary/90 transition-colors min-h-11 text-base">האזנה</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==== Shows ==== -->
+    <section id="shows" class="py-20 md:py-28 reveal border-t border-borders/20">
+      <div class="container max-w-7xl mx-auto px-5 md:px-8">
+        <h2 class="subtitle text-center text-text mb-6">הופעות קרובות</h2>
+        <div class="space-y-6">
+          <!-- Show 1 -->
+          <div class="bg-white rounded-md shadow-sm p-6 flex flex-col md:flex-row items-start justify-between space-y-4 md:space-y-0 md:space-x-6">
+            <div class="space-y-2">
+              <h3 class="font-medium text-text">זאפה הרצליה</h3>
+              <p class="text-muted">יום שישי, 14 באפריל 2026 • 21:00</p>
+              <p class="text-muted">רחוב יהודה הלוי 12, הרצליה</p>
+            </div>
+            <a href="https://example.com/tickets" target="_blank" rel="noopener" dir="ltr" class="bg-primary text-white px-6 py-8 font-medium hover:bg-primary/90 transition-colors min-h-11 text-base">רכישת כרטיסים</a>
+          </div>
+          <!-- Show 2 -->
+          <div class="bg-white rounded-md shadow-sm p-6 flex flex-col md:flex-row items-start justify-between space-y-4 md:space-y-0 md:space-x-6">
+            <div class="space-y-2">
+              <h3 class="font-medium text-text">במה ביפו</h3>
+              <p class="text-muted">יום רביעי, 19 באפריל 2026 • 20:30</p>
+              <p class="text-muted">סמטאות העין 4, יפו</p>
+            </div>
+            <a href="https://example.com/tickets2" target="_blank" rel="noopener" dir="ltr" class="bg-primary text-white px-6 py-8 font-medium hover:bg-primary/90 transition-colors min-h-11 text-base">רכישת כרטיסים</a>
+          </div>
+          <!-- Show 3 -->
+          <div class="bg-white rounded-md shadow-sm p-6 flex flex-col md:flex-row items-start justify-between space-y-4 md:space-y-0 md:space-x-6">
+            <div class="space-y-2">
+              <h3 class="font-medium text-text">האנגר 11 תל אביב</h3>
+              <p class="text-muted">יום שבת, 22 באפריל 2026 • 22:00</p>
+              <p class="text-muted">המפרץ 4, תל אביב יפו</p>
+            </div>
+            <a href="https://example.com/tickets3" target="_blank" rel="noopener" dir="ltr" class="bg-primary text-white px-6 py-8 font-medium hover:bg-primary/90 transition-colors min-h-11 text-base">רכישת כרטיסים</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==== Contact ==== -->
+    <section id="contact" class="bg-bgAlt py-20 md:py-28 reveal border-t border-borders/20">
+      <div class="container max-w-7xl mx-auto px-5 md:px-8">
+        <h2 class="subtitle text-center text-text mb-6">צור קשר</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Form -->
+          <form id="contact-form" class="space-y-6">
+            <div>
+              <label for="name" class="block text-sm font-medium text-text mb-1">שם</label>
+              <input type="text" id="name" name="name" required class="w-full h-12 px-4 border border-borders/30 rounded-md bg-white/80 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 text-base min-h-11" placeholder="ליאורה מזרחי">
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-text mb-1">אימייל</label>
+              <input type="email" id="email" name="email" required class="w-full h-12 px-4 border border-borders/30 rounded-md bg-white/80 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 text-base min-h-11" placeholder="liora@example.com">
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium text-text mb-1">הודעה</label>
+              <textarea id="message" name="message" rows="5" required class="w-full h-12 px-4 border border-borders/30 rounded-md bg-white/80 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 text-base min-h-11" placeholder="כתוב את הודעתך כאן..."></textarea>
+            </div>
+            <button type="submit" class="w-full bg-primary text-white px-6 py-8 font-medium hover:bg-primary/90 transition-colors transform hover:-translate-y-1 min-h-11 text-base">שליחה</button>
+          </form>
+          <div id="form-success" class="hidden space-y-4 text-center">
+            <svg class="mx-auto w-10 h-10 stroke-primary" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"></polyline></svg>
+            <p class="body text-text">ההודעה נשלחה בהצלחה! אחזור אליך בהקדם.</p>
+          </div>
+          <!-- Contact details -->
+          <div class="space-y-6">
+            <div class="space-y-3">
+              <h3 class="subtitle text-text">אימייל</h3>
+              <p class="body text-muted"><a href="mailto:liora@example.com" class="text-primary hover:underline" dir="ltr">liora@example.com</a></p>
+            </div>
+            <div class="space-y-3">
+              <h3 class="subtitle text-text">אינסטגרם</h3>
+              <p class="body text-muted"><a href="https://instagram.com/liora.mizrahi" target="_blank" rel="noopener" class="text-primary hover:underline p-3" dir="ltr">@liora.mizrahi</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==== Footer ==== -->
+  <footer class="bg-primary text-white py-10">
+    <div class="container max-w-7xl mx-auto px-5 md:px-8 flex flex-col items-center gap-6 md:flex-row md:justify-between">
+      <div class="flex flex-col items-center space-y-2 md:text-left">
+        <a href="#" class="font-inter font-medium text-xl p-2">ליאורה מזרחי</a>
+        <p class="text-sm">מוזיקה עצמאית • 2026</p>
+      </div>
+      <div class="flex space-x-4">
+        <a href="#" class="hover:text-white/80 transition-colors p-3" aria-label="אינסטגרם">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"/></svg>
+        </a>
+        <a href="#" class="hover:text-white/80 transition-colors p-3" aria-label="פייסבוק">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a href="#" class="hover:text-white/80 transition-colors p-3" aria-label="יוטיוב">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M10 15L5 9l11-6v12l-11-6z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="text-center text-sm text-white/80 mt-6 border-t border-white/10 pt-4">
+      © 2026 ליאורה מזרחי. כל הזכויות שמורות.
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      const isOpen = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', String(!isOpen));
+      mobileMenu.classList.toggle('hidden');
+      menuBtn.classList.toggle('open');
+    });
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Form handling
+    const form = document.getElementById('contact-form');
+    const successMsg = document.getElementById('form-success');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      // Simple validation
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+      if (name && email && message) {
+        form.classList.add('hidden');
+        successMsg.classList.remove('hidden');
+      } else {
+        alert('אנא מלא את כל השדות');
+      }
+    });
+
+    // Scroll reveal
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealCallback = (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+    const revealObserver = new IntersectionObserver(revealCallback, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    });
+    revealElements.forEach(el => {
+      revealObserver.observe(el);
+    });
+    // Reveal any that are already in view
+    revealElements.forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight && el.getBoundingClientRect().bottom >= 0) {
+        el.classList.add('is-visible');
+      }
+    });
+  </script>
+</body>
+</html>

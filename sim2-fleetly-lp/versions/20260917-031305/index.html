@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<title>Fleetly – Fleet Management Made Simple</title>
+<meta name="description" content="Fleetly simplifies fleet management for small delivery businesses with live tracking, fuel analytics, and seamless integrations. Start a free trial today.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<!-- Favicon -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%232563EB'/%3E%3Ctext x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Space%20Grotesk,sans-serif' font-size='36' font-weight='600'%3EF%3C/text%3E%3C/svg%3E">
+<!-- OG Tags -->
+<meta property="og:title" content="Fleetly – Fleet Management Made Simple">
+<meta property="og:description" content="Fleetly simplifies fleet management for small delivery businesses with live tracking, fuel analytics, and seamless integrations. Start a free trial today.">
+<meta property="og:image" content="https://picsum.photos/seed/fleetly/1200/630">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#2563EB">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bg: '#F8FAFC',
+          surface: '#FFFFFF',
+          text: '#0F172A',
+          muted: '#64748B',
+          primary: '#2563EB',
+          accent: '#10B981'
+        },
+        fontFamily: {
+          display: ['Space Grotesk', 'sans-serif'],
+          body: ['Inter', 'sans-serif']
+        },
+        borderRadius: {
+          md: '12px'
+        },
+        boxShadow: {
+          soft: '0 1px 2px rgba(0,0,0,.05), 0 8px 24px -12px rgba(0,0,0,.15)'
+        }
+      }
+    }
+  }
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  .reveal { opacity: 0; transform: translateY(12px); transition: opacity 600ms ease, transform 600ms ease; }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { transition: none; }
+    .reveal.is-visible { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body class="bg-bg text-text antialiased">
+<header class="bg-surface shadow-soft sticky top-0 z-20">
+  <div class="container mx-auto px-6 md:px-8 flex items-center justify-between py-4">
+    <a href="#" class="flex items-center space-x-2 text-2xl font-bold text-primary font-display">
+      Fleetly
+    </a>
+    <nav class="hidden md:flex space-x-6">
+      <a href="#hero" class="text-muted hover:text-primary transition-colors">Home</a>
+      <a href="#how-it-works" class="text-muted hover:text-primary transition-colors">How it works</a>
+      <a href="#pricing" class="text-muted hover:text-primary transition-colors">Pricing</a>
+      <a href="#integrations" class="text-muted hover:text-primary transition-colors">Integrations</a>
+      <a href="#demo-form" class="text-muted hover:text-primary transition-colors">Demo</a>
+    </nav>
+    <button id="mobile-menu-btn" class="md:hidden flex items-center p-2 rounded-md hover:bg-muted/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20" aria-controls="mobile-menu" aria-expanded="false">
+      <svg id="menu-icon" class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="md:hidden hidden bg-surface py-4 space-y-2">
+    <a href="#hero" class="block px-6 py-3 text-muted hover:text-primary transition-colors">Home</a>
+    <a href="#how-it-works" class="block px-6 py-3 text-muted hover:text-primary transition-colors">How it works</a>
+    <a href="#pricing" class="block px-6 py-3 text-muted hover:text-primary transition-colors">Pricing</a>
+    <a href="#integrations" class="block px-6 py-3 text-muted hover:text-primary transition-colors">Integrations</a>
+    <a href="#demo-form" class="block px-6 py-3 text-muted hover:text-primary transition-colors">Demo</a>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section id="hero" class="relative py-20 md:py-28 lg:py-32 reveal">
+    <div class="container mx-auto px-6 md:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div class="space-y-6">
+          <p class="text-xs uppercase tracking-wider font-semibold text-primary">Fleet management for small delivery fleets</p>
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-text tracking-tight leading-[1.02]">See every van, route and cost in one real‑time view</h1>
+          <p class="text-lg text-muted max-w-xl">Fleetly pulls GPS, fuel and job data into a simple dashboard so you can cut fuel waste, improve on‑time deliveries and scale without the chaos.</p>
+          <div class="flex flex-wrap gap-4">
+            <button id="primary-cta" class="px-5 py-4 bg-primary text-white font-semibold rounded-md hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20">Start free trial</button>
+            <a href="#demo-form" class="px-5 py-4 border border-muted hover:border-primary hover:text-primary transition-colors rounded-md font-medium text-muted hover:bg-primary/5">Watch demo</a>
+          </div>
+          <p class="text-sm text-muted flex items-center gap-2">
+            <svg class="w-4 h-4 stroke-current" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 8v4l2 2"></path>
+            </svg>
+            Used by 200+ delivery teams, 9.8/10 rating
+          </p>
+        </div>
+        <div class="relative w-full h-[300px] lg:h-[400px]">
+          <svg class="absolute inset-0 w-full h-full" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+            <rect width="400" height="300" rx="12" fill="#1E293B"/>
+            <path d="M40 180 C100 80, 200 120, 300 60 C350 40, 380 100, 380 180" stroke="#2563EB" stroke-width="4" fill="none"/>
+            <circle cx="80" cy="180" r="8" fill="#10B981"/>
+            <circle cx="200" cy="120" r="8" fill="#10B981"/>
+            <circle cx="320" cy="60" r="8" fill="#10B981"/>
+            <g class="font-inter text-white text-sm">
+              <rect x="20" y="20" width="100" height="30" rx="6" fill="#2563EB"/>
+              <text x="25" y="38" font-weight="600" fill="white">-15% fuel</text>
+              <rect x="140" y="20" width="100" height="30" rx="6" fill="#2563EB"/>
+              <text x="145" y="38" font-weight="600" fill="white">98% on‑time</text>
+              <rect x="260" y="20" width="100" height="30" rx="6" fill="#2563EB"/>
+              <text x="265" y="38" font-weight="600" fill="white">12 active vans</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how-it-works" class="py-16 md:py-20 lg:py-24 reveal">
+    <div class="container mx-auto px-6 md:px-8">
+      <h2 class="text-3xl md:text-5xl text-center font-bold text-text mb-12">How it works</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start text-center">
+        <div class="space-y-4">
+          <div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-md">
+            <svg class="w-6 h-6 stroke-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2v7"></path>
+              <path d="M5 12h2a2 2 0 0 0 2-2v-1a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1a2 2 0 0 0 2 2h2"></path>
+              <path d="M12 22V7"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-text">Connect your vehicles</h3>
+          <p class="text-muted">Plug in the Fleetly adapter or use existing telematics.</p>
+        </div>
+        <div class="space-y-4">
+          <div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-md">
+            <svg class="w-6 h-6 stroke-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M2 12h3"></path>
+              <path d="M19 12h3"></path>
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 16v-4"></path>
+              <path d="M8 12h.01"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-text">Watch live</h3>
+          <p class="text-muted">See routes, fuel usage and job status on the map.</p>
+        </div>
+        <div class="space-y-4">
+          <div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-md">
+            <svg class="w-6 h-6 stroke-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 8v4"></path>
+              <path d="M12 16h.01"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-text">Act &amp; optimize</h3>
+          <p class="text-muted">Get alerts, run reports and save up to 15% on operating costs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="py-16 md:py-20 lg:py-24 reveal">
+    <div class="container mx-auto px-6 md:px-8">
+      <h2 class="text-3xl md:text-5xl text-center font-bold text-text mb-6">Simple, transparent pricing</h2>
+      <p class="text-center text-muted max-w-xl mx-auto mb-12">Choose the plan that fits your fleet size and needs.</p>
+      <div class="flex flex-col items-center mb-8">
+        <label class="flex items-center gap-4 text-muted font-medium">
+          <input type="checkbox" id="pricing-toggle" class="h-4 w-4 rounded border-primary text-primary focus:ring-primary">
+          <span>Yearly billing (save 20%)</span>
+        </label>
+      </div>
+      <div id="pricing-cards" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="border rounded-md p-6 space-y-4 hover:shadow-lg transition-shadow hover:border-primary/50">
+          <h3 class="text-2xl font-bold text-text">Starter</h3>
+          <p class="text-lg font-semibold text-primary" id="starter-price">$49<span class="text-xs">/mo per van</span></p>
+          <p class="text-sm text-muted">Up to 5 vans</p>
+          <ul class="space-y-2 text-left text-sm">
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 stroke-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>Live tracking</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 stroke-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 13 19 7 11 13 3"></polyline></svg>Basic reports</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 stroke-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="22"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>Email support</li>
+          </ul>
+          <button class="w-full py-4 bg-primary text-white font-semibold rounded-md hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20">Choose plan</button>
+        </div>
+        <div class="border border-primary/20 bg-primary/5 rounded-md p-6 space-y-4 hover:shadow-lg transition-shadow hover:border-primary/50">
+          <h3 class="text-2xl font-bold text-text">Growth</h3>
+          <p class="text-lg font-semibold text-primary" id="growth-price">$39<span class="text-xs">/mo per van</span></p>
+          <p class="text-sm text-muted">6‑20 vans</p>
+          <ul class="space-y-2 text-left text-sm">
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 stroke-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>Live tracking</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 stroke-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 13 19 7 11 13 3"></polyline></svg>Fuel analytics</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 stroke-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="22"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>Driver SMS alerts</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 stroke-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2h-1l-3-9V6a3 3 0 0 0-.59-1.85l-2.41-.59a2 2 0 0 0-.71-.7l-.41-.87a2 2 0 0 0-1.38-.34H6a2 2 0 0 0-2 2v11a3 3 0 0 0 .59 1.85l2.41.59a2 2 0 0 1 .71 .7l.41.87a2 2 0 0 0 1.38 .34h5a2 2 0 0 0 2-2v-5a2 2 0 0 1 2-2z"></path></svg>Slack integration</li>
+          </ul>
+          <button class="w-full py-4 bg-primary text-white font-semibold rounded-md hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20">Choose plan</button>
+        </div>
+        <div class="border rounded-md p-6 space-y-4 hover:shadow-lg transition-shadow hover:border-primary/50">
+          <h3 class="text-2xl font-bold text-text">Scale</h3>
+          <p class="text-lg font-semibold text-primary" id="scale-price">$29<span class="text-xs">/mo per van</span></p>
+          <p class="text-sm text-muted">21‑50 vans</p>
+          <ul class="space-y-2 text-left text-sm">
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 stroke-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>Live tracking</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 stroke-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12h6"></path><path d="M9 18h6"></path></svg>Custom integrations</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 stroke-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>Dedicated account manager</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 stroke-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3h18"></path><path d="M3 9h18"></path><path d="M3 15h18"></path></svg>API access</li>
+          </ul>
+          <button class="w-full py-4 bg-primary text-white font-semibold rounded-md hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20">Choose plan</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Integrations -->
+  <section id="integrations" class="py-16 md:py-20 lg:py-24 reveal">
+    <div class="container mx-auto px-6 md:px-8">
+      <h2 class="text-3xl md:text-5xl text-center font-bold text-text mb-8">Works with the tools you already use</h2>
+      <div class="flex flex-wrap justify-center gap-8">
+        <div class="flex items-center gap-3 text-muted">
+          <svg class="w-5 h-5 stroke-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+          <span>Google Maps</span>
+        </div>
+        <div class="flex items-center gap-3 text-muted">
+          <svg class="w-5 h-5 stroke-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path></svg>
+          <span>Shopify</span>
+        </div>
+        <div class="flex items-center gap-3 text-muted">
+          <svg class="w-5 h-5 stroke-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          <span>WhatsApp Business</span>
+        </div>
+        <div class="flex items-center gap-3 text-muted">
+          <svg class="w-5 h-5 stroke-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a2 2 0 0 1 2 2v6.4a2 2 0 0 1-.58 1.4l-1.2.4a2 2 0 0 0-.58.6A2 2 0 0 1 4 12h14a2 2 0 0 1 2 2V5a2 2 0 0 0-4 0v3.4a2 2 0 0 1-.58-.8l-.4-.2a2 2 0 0 0-.58-.6A2 2 0 0 1 6 5V3H2z"></path></svg>
+          <span>QuickBooks</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo Form -->
+  <section id="demo-form" class="py-16 md:py-20 lg:py-24 bg-surface reveal">
+    <div class="container mx-auto px-6 md:px-8">
+      <h2 class="text-3xl md:text-5xl text-center font-bold text-text mb-6">Get a personalized demo</h2>
+      <p class="text-center text-muted max-w-xl mx-auto mb-10">See how Fleetly fits your fleet in 15 minutes.</p>
+      <form id="demo-form" class="space-y-6 max-w-md mx-auto bg-white p-8 rounded-md shadow-soft">
+        <div>
+          <label for="name" class="block text-sm font-medium text-muted mb-2">Name</label>
+          <input type="text" id="name" required class="w-full px-4 py-3 border border-muted rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="Your full name">
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-medium text-muted mb-2">Work email</label>
+          <input type="email" id="email" required class="w-full px-4 py-3 border border-muted rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="you@company.com">
+        </div>
+        <div>
+          <label for="phone" class="block text-sm font-medium text-muted mb-2">Phone (optional)</label>
+          <input type="tel" id="phone" class="w-full px-4 py-3 border border-muted rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="+1 (555) 123-4567">
+        </div>
+        <div>
+          <label for="company-size" class="block text-sm font-medium text-muted mb-2">Company size</label>
+          <select id="company-size" class="w-full px-4 py-3 border border-muted rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20">
+            <option value="">Select van count</option>
+            <option value="1-5">1‑5 vans</option>
+            <option value="6-20">6‑20 vans</option>
+            <option value="21-50">21‑50 vans</option>
+          </select>
+        </div>
+        <button type="submit" id="form-submit" class="w-full py-4 bg-primary text-white font-semibold rounded-md hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20">Get personalized demo</button>
+      </form>
+      <div id="form-success" class="hidden max-w-md mx-auto bg-primary/5 border border-primary/20 rounded-md p-8 text-center text-primary">
+        <svg class="w-12 h-12 mx-auto mb-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <h3 class="text-xl font-bold">Thanks!</h3>
+        <p class="text-muted mt-2">We’ll contact you within one business day.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="bg-surface border-t border-muted/20 py-12">
+  <div class="container mx-auto px-6 md:px-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+    <div class="space-x-4 flex-wrap">
+      <a href="#" class="text-muted hover:text-primary transition-colors">Privacy</a>
+      <a href="#" class="text-muted hover:text-primary transition-colors">Terms</a>
+      <a href="#" class="text-muted hover:text-primary transition-colors">Security</a>
+    </div>
+    <div class="flex space-x-4">
+      <a href="#" class="text-muted hover:text-primary transition-colors" aria-label="Facebook">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+      </a>
+      <a href="#" class="text-muted hover:text-primary transition-colors" aria-label="Twitter">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6.9l-5-5L6 9l5 5 5-5Z"></path></svg>
+      </a>
+      <a href="#" class="text-muted hover:text-primary transition-colors" aria-label="LinkedIn">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path></svg>
+      </a>
+      <a href="#" class="text-muted hover:text-primary transition-colors" aria-label="Instagram">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 21.5c-2 0-3.5-1.5-3.5-3.5V8.5c0-2 1.5-3.5 3.5-3.5s3.5 1.5 3.5 3.5v3.5h3c2 0 3.5 1.5 3.5 3.5s-1.5 3.5-3.5 3.5h-3zM8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"></path></svg>
+      </a>
+    </div>
+    <p class="text-xs text-muted mt-4 md:mt-0">&copy; 2025 Fleetly. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  menuBtn.addEventListener('click', () => {
+    const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+    menuBtn.setAttribute('aria-expanded', !expanded);
+    mobileMenu.classList.toggle('hidden');
+    if (!expanded) {
+      // show close icon (X)
+      menuIcon.innerHTML = '<line x1="3" y1="6" x2="21" y2="18"></line><line x1="3" y1="18" x2="21" y2="6"></line>';
+    } else {
+      // show hamburger
+      menuIcon.innerHTML = '<line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>';
+    }
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Pricing toggle
+  const toggle = document.getElementById('pricing-toggle');
+  const starterPrice = document.getElementById('starter-price');
+  const growthPrice = document.getElementById('growth-price');
+  const scalePrice = document.getElementById('scale-price');
+  const starterMonthly = 49;
+  const growthMonthly = 39;
+  const scaleMonthly = 29;
+  function updatePrices(yearly) {
+    if (yearly) {
+      starterPrice.innerHTML = `$${Math.round(starterMonthly * 0.8)}<span class="text-xs">/mo per van</span>`;
+      growthPrice.innerHTML = `$${Math.round(growthMonthly * 0.8)}<span class="text-xs">/mo per van</span>`;
+      scalePrice.innerHTML = `$${Math.round(scaleMonthly * 0.8)}<span class="text-xs">/mo per van</span>`;
+    } else {
+      starterPrice.innerHTML = `$${starterMonthly}<span class="text-xs">/mo per van</span>`;
+      growthPrice.innerHTML = `$${growthMonthly}<span class="text-xs">/mo per van</span>`;
+      scalePrice.innerHTML = `$${scaleMonthly}<span class="text-xs">/mo per van</span>`;
+    }
+  }
+  toggle.addEventListener('change', () => {
+    updatePrices(toggle.checked);
+  });
+  updatePrices(false);
+
+  // Form validation & success
+  const form = document.getElementById('demo-form');
+  const success = document.getElementById('form-success');
+  const submitBtn = document.getElementById('form-submit');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const phone = form.phone.value.trim();
+    const companySize = form['company-size'].value;
+    let valid = true;
+    if (name === '') {
+      form.name.classList.add('border-red-500');
+      valid = false;
+    } else {
+      form.name.classList.remove('border-red-500');
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      form.email.classList.add('border-red-500');
+      valid = false;
+    } else {
+      form.email.classList.remove('border-red-500');
+    }
+    if (!valid) return;
+    form.classList.add('hidden');
+    success.classList.remove('hidden');
+  });
+  // Live validation: remove error on input
+  form.name.addEventListener('input', () => form.name.classList.remove('border-red-500'));
+  form.email.addEventListener('input', () => form.email.classList.remove('border-red-500'));
+  form.phone.addEventListener('input', () => form.phone.classList.remove('border-red-500'));
+  form['company-size'].addEventListener('change', () => form['company-size'].classList.remove('border-red-500'));
+
+  // Scroll reveal
+  document.addEventListener('DOMContentLoaded', () => {
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    reveals.forEach(el => {
+      observer.observe(el);
+      const rect = el.getBoundingClientRect();
+      if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+        el.classList.add('is-visible');
+      }
+    });
+  });
+</script>
+</body>
+</html>

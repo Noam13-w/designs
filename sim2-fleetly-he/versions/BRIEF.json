@@ -1,0 +1,73 @@
+{
+ "slug": "fleetly-he",
+ "title": "Fleetly - ניהול צי חכם",
+ "one_liner": "פלטפורמה ניהול צי שמאפשרת למנהלי משלחים קטנים להפסיק לרדוף אחרי הנהגים ולהתחיל לגדול.",
+ "language": "he",
+ "dir": "rtl",
+ "audience": "מנהלי משלחים ובעלים של עסקי משלוחים קטנים עם 5-50 רכבים בישראל",
+ "brand_personality": [
+  "מהמקצועי",
+  "אמין",
+  "חדשני"
+ ],
+ "concept": "הקונספט המרכזי הוא שליטה ושקיפות: עיצוב נקי שמראה שהפלטפורמה מביאה סדר לתוהו של ניהול צי, עם גלי גל עדינים בצבע טל שמרמזים על זרימה וחלקות. ה heroes מכיל את המשפט המרכזי בעברית מימין לשמאל, עם כפתור פעולה ראשי בצבע שמיים וקישור משני לצפייה בסרטון הדגמה. השפה visual משמרת את האמינות של B2B SaaS דרך טיפוגרפיה מאוזנת, מרחקים נדיבים ושימוש באלמנטים גרפיים SVG במקום תמונות מלאי.",
+ "palette": {
+  "bg": "#FAFAFA",
+  "surface": "#FFFFFF",
+  "text": "#111827",
+  "muted": "#6B7280",
+  "primary": "#0EA5E9",
+  "accent": "#00A8A8",
+  "notes": "primary matches request sky blue, accent teal for pricing cards, bg light concrete gray for overall page, surface white for cards, text dark for contrast, muted for secondary text."
+ },
+ "typography": {
+  "display": "Inter",
+  "body": "Inter",
+  "scale": "14/16/20/24/30/36/48",
+  "notes": "Inter for both heading and body, using a modular scale based on 4px grid."
+ },
+ "layout": "sections use py-20 md:py-28 lg:py-32 with container max-w-7xl px-5 md:px-8; radius sm (6px) on cards and inputs; soft shadow on hover; reveal-on-scroll motion for sections; pricing cards use bg-surface with border and teal accent on active toggle; wave graphic as SVG background hero-bottom.",
+ "pages": [
+  "index.html"
+ ],
+ "sections": [
+  {
+   "id": "hero",
+   "goal": "למשוך תשומת לב ולהעביר במהירות את ערך ההצעה המרכזית.",
+   "content": "עין עליונה (אין כיתוב משני), כותרת ראשית: \"תפסיק לרדוף אחרי הנהגים שלך. התחל לגדל את הצי שלך.\", תת‑כותרת קצרה המתארת איך הפלטפורמה עושה את זה, כפתור ראשי \"התחל נסיון חינם\" בצבע primary, קישור משני \"צפה בסרטון הדגמה\", וגרף גל SVG בתחתית ה-hero יחד עם מודק דשבורד בנוי מדיבים."
+  },
+  {
+   "id": "pricing",
+   "goal": "להציג את שלושת המסלולים ולאפשר בחירה בין תשלום חודשי לשנתי.",
+   "content": "מפסק בחירה חודשי/שנתי למעלה, שלושה כרטיסים (Starter, Growth, Scale) עם מחיר, רשימת תכונות וכפתור \"בחר תכנית\"; הכרטיס האקטיבי מדגיש בקו תחתון וברקע accent-teal קל."
+  },
+  {
+   "id": "integrations",
+   "goal": "להראות התאמה לכלים שכבר בשימוש.",
+   "content": "כותרת \"מתחבר למערכות שאתה כבר משתמש בהם\" ולוגואים של Google Maps, Shopify, WhatsApp Business ו-QuickBooks מוצגים כ-SVG אינליין או סימני טקסט monotone."
+  },
+  {
+   "id": "demo-form",
+   "goal": "לכידת לידים באמצעות טופס בקשת הדגמה.",
+   "content": "כותרת \"התחל עכשיו – בקש הדגמה אישית\", שדות טופס: שם מלא, חברה, טלפון, אימייל (כולל placeholders בעברית), כפתור שליחה \"שליחה\"; אחרי הצלחה הודעת תודה במקום הטופס."
+  }
+ ],
+ "components": [
+  "מובייל נב",
+  "מפסק תשלום חודשי/שנתי",
+  "ולידציה של טופס והצגת הצלחה",
+  "גילוי גלול (reveal-on-scroll)",
+  "תפריט נייד עם ארגבורגר"
+ ],
+ "copy_voice": "מקצועי, ברור ומרגיע – משפטים קצרים בדיבור שני person, מתמקד בתועלת ובהפחתת עומס.",
+ "imagery": "כל הוויזואליה מיוצרת באמצעות CSS ו־SVG: גלי רקע בגרדיאנט אנכי, מודק צמ״ש (דאשבורד) הבנוי מדיבים שמדמים חלון דפדפן עם סידEBAR, כרטיסים וגרפים, ואייקונים אינליין SVG בסטיל Lucide. אין שימוש בתמונות מלאי.",
+ "must_avoid": [
+  "לורם איפסום",
+  "טקסט מזויף כמו 'החברה שלך'",
+  "שימוש בצבעי ברירת מחדל של טיילווינד (כחול 500)",
+  "מרכזיות מוגזמת של כל האלמנטים",
+  "אייקונים כאימוג׳י",
+  "תמונות ממקורות לא מורשים",
+  "מעברי צבע חזקים שפוגעים בקריאות"
+ ]
+}

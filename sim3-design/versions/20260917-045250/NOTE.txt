@@ -1,0 +1,1 @@
+v7: הוסף גופן עברי משלים (Heebo) לקובץ ה-CSS דרך Google Fonts ועדכן את ה-stack של הגופן כך שהעברית תוצג תחילה ב-Heebo ואם לא זמין אז ב-Inter. עדכן את ההגדרות ב-tailwind.config בחלק של fontFamily כדי לכלול את Heebo כמשלים ל-Inter.

@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>נשימה עמוקה – ייעוץ רוחני ומדיטציה</title>
+  <meta name="description" content="עיצוב מינימליסטי ואוורירי שמשתמש בצבעי שמים ושקט כדי להזמין מבקרים למסע פנימי של שלווה ומודעות">
+  <meta name="theme-color" content="#3B5A2A">
+  <meta property="og:title" content="נשימה עמוקה – ייעוץ רוחני ומדיטציה">
+  <meta property="og:description" content="עיצוב מינימליסטי ואוורירי שמשתמש בצבעי שמים ושקט כדי להזמין מבקרים למסע פנימי של שלווה ומודעות">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#F5F5F5',
+            surface: '#FFFFFF',
+            text: '#2C2C2C',
+            muted: '#6B6B6B',
+            primary: '#3B5A2A',
+            accent: '#A8C686',
+          },
+          fontFamily: {
+            display: ['Inter', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+          borderRadius: {
+            md: '12px',
+          },
+          boxShadow: {
+            soft: '0 1px 2px rgba(0,0,0,.05), 0 8px 24px -12px rgba(0,0,0,.15)',
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .hero-bg {
+      background: linear-gradient(180deg, #F5F5F5, #FFE8B2);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.08;
+      pointer-events: none;
+    }
+    .hero-line {
+      position: absolute;
+      left: 5%;
+      right: 5%;
+      top: 48%;
+      height: 1px;
+      background: rgba(168,198,134,0.3);
+      transform: translateY(-50%);
+    }
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      pointer-events: none;
+    }
+    .blob-1 {
+      width: 300px;
+      height: 300px;
+      background: #3B5A2A;
+      top: -10%;
+      left: -10%;
+      animation: drift 18s ease-in-out infinite alternate;
+    }
+    .blob-2 {
+      width: 240px;
+      height: 240px;
+      background: #A8C686;
+      bottom: -10%;
+      right: -10%;
+      animation: drift 22s ease-in-out infinite alternate-reverse;
+    }
+    @keyframes drift {
+      0% { transform: translate(0,0) scale(1); }
+      100% { transform: translate(30px, -30px) scale(1.05); }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal {
+        transition: opacity .6s ease, transform .6s ease;
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .blob-1, .blob-2 {
+        transition: transform .6s ease;
+      }
+    }
+    html, body { overflow-x: hidden; }
+    :focus-visible {
+      outline: 2px solid rgba(59,90,42,0.2);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body class="bg-bg text-text antialiased">
+  <!-- Hero background blobs -->
+  <div class="absolute inset-0 -z-10">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-surface/80 backdrop-blur-md border-b border-muted/20">
+    <div class="container flex items-center justify-between px-5 md:px-8 py-4">
+      <a href="#" class="text-xl font-display font-light text-text">נשימה עמוקה</a>
+      <nav class="hidden md:flex gap-x-6">
+        <a href="#about" class="text-text/80 hover:text-text transition-colors">אודות</a>
+        <a href="#services" class="text-text/80 hover:text-text transition-colors">שירותים</a>
+        <a href="#testimonials" class="text-text/80 hover:text-text transition-colors">המלצות</a>
+        <a href="#contact" class="text-text/80 hover:text-text transition-colors">צור קשר</a>
+      </nav>
+      <button id="menu-btn" class="md:hidden flex items-center p-2 rounded-md hover:bg-muted/10" aria-label="פתיחת תפריט" aria-controls="mobile-menu" aria-expanded="false">
+        <svg class="w-5 h-5 stroke-current" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"></path></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden hidden bg-surface/90 backdrop-blur-md border-t border-muted/20">
+    <div class="container px-5 py-6 space-y-4">
+      <a href="#about" class="block text-lg font-medium text-text hover:text-primary">אודות</a>
+      <a href="#services" class="block text-lg font-medium text-text hover:text-primary">שירותים</a>
+      <a href="#testimonials" class="block text-lg font-medium text-text hover:text-primary">המלצות</a>
+      <a href="#contact" class="block text-lg font-medium text-text hover:text-primary">צור קשר</a>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section id="hero" class="hero-bg py-20 md:py-28 lg:py-32">
+    <div class="hero-line"></div>
+    <div class="container flex flex-col items-center gap-6 text-start md:text-center">
+      <p class="text-xs uppercase font-semibold text-text/80"> שלווה פנימה </p>
+      <h1 class="font-display font-light text-5xl md:text-6xl lg:text-7xl text-text leading-[1.2] tracking-none"> נשימה עמוקה – ייעוץ רוחני ומדיטציה לחיים מאוזנים </h1>
+      <p class="text-base md:text-lg text-text/80 max-w-xl leading-relaxed"> תרגולים מותאמים אישית שמביאים שקט, מודעות וצמיחה אישית </p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="#contact" class="btn-primary inline-flex items-center px-6 py-3 bg-primary text-white font-medium rounded-md hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary/20 transition-colors"> התחילו בססין חינם </a>
+        <a href="#services" class="btn-secondary inline-flex items-center px-6 py-3 border border-primary text-primary font-medium rounded-md hover:bg-primary/10 focus-visible:ring-2 focus-visible:ring-primary/20 transition-colors"> למידע נוסף </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="reveal py-20 md:py-28 lg:py-32">
+    <div class="container grid md:grid-cols-2 gap-8 items-start">
+      <div class="space-y-4">
+        <p class="text-xs uppercase font-semibold text-text/80"> עלינו </p>
+        <h2 class="font-display font-medium text-3xl md:text-4xl text-text leading-[1.3]"> על נשימה עמוקה </h2>
+        <p class="text-base md:text-lg text-text/80 leading-relaxed max-w-2xl"> אני מלווה אנשים בדרכם לשקט פנימי דרך שילוב של ייעוץ רוחני ומדיטציה מודרכת. הניסיון שלי כולל יותר מעשור של עבודה עם יחידים וקבוצות, דגש על התאמה אישית וסביבה בטוחה. </p>
+      </div>
+      <div class="flex justify-center">
+        <div class="relative w-24 h-24">
+          <div class="absolute inset-0 flex items-center justify-center bg-accent/20 rounded-full shadow-soft">
+            <span class="text-text font-medium">נ״ש</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="reveal py-20 md:py-28 lg:py-32">
+    <div class="container">
+      <p class="text-xs uppercase font-semibold text-text/80 mb-4 text-center"> השירותים שלנו </p>
+      <h2 class="font-display font-medium text-3xl md:text-4xl text-text text-center mb-8 leading-[1.3]"> מה אנחנו מציעים </p>
+      <div class="grid gap-6 md:grid-cols-3">
+        <!-- ייעוץ אישי -->
+        <div class="relative flex flex-col items-start p-6 bg-surface border border-muted/20 rounded-md shadow-sm hover:shadow-soft transition-shadow">
+          <div class="w-8 h-8 mb-4 flex items-center justify-center bg-primary/10 rounded-md">
+            <svg class="w-5 h-5 stroke-current stroke-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <h3 class="font-display font-medium text-lg text-text mb-2 leading-none"> ייעוץ אישי </h3>
+          <p class="text-sm text-text/80 leading-relaxed"> פגישות אחד על אחד שמזהות חסמים פנימיים ומספקות כלים מעשיים לשינוי. </p>
+        </div>
+        <!-- סדנאות קבוצתיות -->
+        <div class="relative flex-col items-start p-6 bg-surface border border-muted/20 rounded-md shadow-sm hover:shadow-soft transition-shadow">
+          <div class="w-8 h-8 mb-4 flex items-center justify-center bg-primary/10 rounded-md">
+            <svg class="w-5 h-5 stroke-current stroke-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"/><path d="M22 21v-2a6 6 0 0 0-6-6h-4a6 6 0 0 0-6 6v2"/></svg>
+          </div>
+          <h3 class="font-display font-medium text-lg text-text mb-2 leading-none"> סדנאות קבוצתיות </h3>
+          <p class="text-sm text-text/80 leading-relaxed"> מפגשים שבועיים של קבוצות קטנות לתרגול מדיטציה ושיתוף חוויות בצמיחה משותפת. </p>
+        </div>
+        <!-- מדיטציה מודרכת -->
+        <div class="relative flex-col items-start p-6 bg-surface border border-muted/20 rounded-md shadow-sm hover:shadow-soft transition-shadow">
+          <div class="w-8 h-8 mb-4 flex items-center justify-center bg-primary/10 rounded-md">
+            <svg class="w-5 h-5 stroke-current stroke-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3 class="font-display font-medium text-lg text-text mb-2 leading-none"> מדיטציה מודרכת </h3>
+          <p class="text-sm text-text/80 leading-relaxed"> הקלטות מודרכות בזמנים שונים להתרגלות יומיומית ולהפחתת לחץ. </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="reveal py-20 md:py-28 lg:py-32">
+    <div class="container">
+      <p class="text-xs uppercase font-semibold text-text/80 mb-4 text-center"> מה מספרים הלקוחות </p>
+      <h2 class="font-display font-medium text-3xl md:text-4xl text-text text-center mb-8 leading-[1.3]"> חוויות אישיות </h2>
+      <div class="grid gap-6 md:grid-cols-2">
+        <!-- Testimonial 1 -->
+        <div class="flex flex-col items-start p-6 bg-surface border border-muted/20 rounded-md shadow-sm">
+          <p class="text-text/80 leading-relaxed mb-4">“לאחר שלושה חודשים של ייעוץ אישי הרגשתי חיבור מחדש לעצמי, השינה השתפרה והחרדה ירדה משמעותית。”</p>
+          <div class="flex items-start space-x-3">
+            <div class="flex h-8 w-8 items-center justify-center bg-accent/20 rounded-md">
+              <span class="text-text font-medium">נ״ל</span>
+            </div>
+            <div class="space-y-1">
+              <p class="font-medium text-text">נועה לוי</p>
+              <p class="text-sm text-text/80">מורה ליוגה, תל אביב</p>
+            </div>
+          </div>
+        </div>
+        <!-- Testimonial 2 -->
+        <div class="flex flex-col items-start p-6 bg-surface border border-muted/20 rounded-md shadow-sm">
+          <p class="text-text/80 leading-relaxed mb-4">“הסדנה הקבוצתית נתנה לי כלים להתמודד עם לחץ בעבודה ויצרה קהילה תומכת。”</p>
+          <div class="flex items-start space-x-3">
+            <div class="flex h-8 w-8 items-center justify-center bg-accent/20 rounded-md">
+              <span class="text-text font-medium">א״כ</span>
+            </div>
+            <div class="space-y-1">
+              <p class="font-medium text-text">אורי כהן</p>
+              <p class="text-sm text-text/80">מהנדס, חיפה</p>
+            </div>
+          </div>
+        </div>
+        <!-- Testimonial 3 -->
+        <div class="flex flex-col items-start p-6 bg-surface border border-muted/20 rounded-md shadow-sm">
+          <p class="text-text/80 leading-relaxed mb-4">“המדיטציה המודרכת הבוקר הפכה לחלק קבוע מהשגרה שלי ומביאה לי מיקוד ושלווה।”</p>
+          <div class="flex items-start space-x-3">
+            <div class="flex h-8 w-8 items-center justify-center bg-accent/20 rounded-md">
+              <span class="text-text font-medium">מ״א</span>
+            </div>
+            <div class="space-y-1">
+              <p class="font-medium text-text">מיכל אברהמי</p>
+              <p class="text-sm text-text/80">מעצבת גרפית, רמת גן</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="reveal py-20 md:py-28 lg:py-32 bg-surface">
+    <div class="container grid md:grid-cols-2 gap-8">
+      <form id="contact-form" class="space-y-6">
+        <p class="text-xs uppercase font-semibold text-text/80"> צור קשר </p>
+        <h2 class="font-display font-medium text-3xl md:text-4xl text-text leading-[1.3]"> יש שאלה או רוצים לקבוע פגישה ראשונה? </p>
+        <div class="space-y-4">
+          <label class="block text-sm font-medium text-text mb-1" for="name"> שם </label>
+          <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-muted/20 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 text-text bg-surface" placeholder="שם מלא">
+          <p id="name-error" class="hidden text-sm text-red-600"> אנא הכנס את שמך </p>
+        </div>
+        <div class="space-y-4">
+          <label class="block text-sm font-medium text-text mb-1" for="email"> אימייל </label>
+          <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-muted/20 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 text-text bg-surface" placeholder="info@example.com">
+          <p id="email-error" class="hidden text-sm text-red-600"> אנא הכנס אימייל תקין </p>
+        </div>
+        <div class="space-y-4">
+          <label class="block text-sm font-medium text-text mb-1" for="phone"> טלפון </label>
+          <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-muted/20 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 text-text bg-surface" placeholder="050-1234567">
+        </div>
+        <div class="space-y-4">
+          <label class="block text-sm font-medium text-text mb-1" for="message"> הודעה </label>
+          <textarea id="message" name="message" rows="5" required class="w-full px-4 py-2 border border-muted/20 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 text-text bg-surface" placeholder="ההודעה שלכם..."></textarea>
+          <p id="message-error" class="hidden text-sm text-red-600"> אנא הכנס הודעה </p>
+        </div>
+        <button type="submit" id="submit-btn" class="w-full px-6 py-3 bg-primary text-white font-medium rounded-md hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+          שלח הודעה
+        </button>
+      </form>
+      <div id="form-success" class="hidden space-y-6 text-center">
+        <p class="text-xl font-medium text-primary"> ההודעה נשלחה בהצלחה! </p>
+        <p class="text-text/80"> נחזור אליכם בקרוב. </p>
+      </div>
+      <div class="space-y-6">
+        <p class="text-xs uppercase font-semibold text-text/80"> פרטי יצירת קשר </p>
+        <div class="space-y-4">
+          <p class="font-medium text-text"> טלפון: <a href="tel:+972501234567" class="text-text/80 hover:text-primary transition-colors underline">050-1234567</a> </p>
+          <p class="font-medium text-text"> וואטסאפ: <a href="https://wa.me/972501234567" class="text-text/80 hover:text-primary transition-colors underline">וואטסאפ</a> </p>
+          <p class="font-medium text-text"> אימייל: <a href="mailto:info@neshima.org" class="text-text/80 hover:text-primary transition-colors underline">info@neshima.org</a> </p>
+          <p class="font-medium text-text"> כתובת: רחוב השלווה 12, תל אביב </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-muted/20 py-12">
+    <div class="container grid md:grid-cols-3 gap-8 text-sm">
+      <div>
+        <h3 class="font-display font-medium text-lg text-text mb-4"> נשימה עמוקה </h3>
+        <p class="text-text/80"> ייעוץ רוחני ומדיטציה לחיים מאוזנים </p>
+      </div>
+      <div class="space-y-2">
+        <p class="font-medium text-text mb-2"> קישורים מהירים </p>
+        <nav class="space-y-1">
+          <a href="#about" class="text-text/80 hover:text-text transition-colors underline">אודות</a>
+          <a href="#services" class="text-text/80 hover:text-text transition-colors underline">שירותים</a>
+          <a href="#testimonials" class="text-text/80 hover:text-text transition-colors underline">המלצות</a>
+          <a href="#contact" class="text-text/80 hover:text-text transition-colors underline">צור קשר</a>
+        </nav>
+      </div>
+      <div class="space-y-2">
+        <p class="font-medium text-text mb-2"> עקוב אחרינו </p>
+        <div class="flex gap-3">
+          <a href="#" class="text-text/80 hover:text-primary transition-colors" aria-label="פייסבוק">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a href="#" class="text-text/80 hover:text-primary transition-colors" aria-label="אינסטגרם">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center text-xs text-text/80 mt-8 border-t border-muted/20 pt-4"> © 2025 נשימה עמוקה. כל הזכויות שמורות. </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      const expanded = menuBtn.getAttribute('aria-expanded') === 'true' || false;
+      menuBtn.setAttribute('aria-expanded', !expanded);
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Form handling with inline validation
+    const form = document.getElementById('contact-form');
+    const successMsg = document.getElementById('form-success');
+    const submitBtn = document.getElementById('submit-btn');
+    const fields = [
+      { id: 'name', errorId: 'name-error', validate: (v) => v.trim() !== '' },
+      { id: 'email', errorId: 'email-error', validate: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
+      { id: 'message', errorId: 'message-error', validate: (v) => v.trim() !== '' }
+    ];
+    function showError(fieldId, show) {
+      const err = document.getElementById(fieldId);
+      err.classList.toggle('hidden', !show);
+    }
+    function validateField(field) {
+      const input = document.getElementById(field.id);
+      const valid = field.validate(input.value.trim());
+      showError(field.errorId, !valid);
+      return valid;
+    }
+    form.addEventListener('input', (e) => {
+      if (e.target.matches('input, textarea')) {
+        const field = fields.find(f => f.id === e.target.id);
+        if (field) validateField(field);
+      }
+    });
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let valid = true;
+      fields.forEach(f => {
+        if (!validateField(f)) valid = false;
+      });
+      if (!valid) return;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'שולח...';
+      // Simulate send
+      setTimeout(() => {
+        form.classList.add('hidden');
+        successMsg.classList.remove('hidden');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'שלח הודעה';
+      }, 800);
+    });
+
+    // Scroll reveal with staggered delay
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealCallback = (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+    const revealOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
+    const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
+    revealElements.forEach((el, index) => {
+      const rect = el.getBoundingClientRect();
+      const inView = rect.top >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight);
+      if (inView) {
+        el.classList.add('is-visible');
+      } else {
+        // set delay based on index
+        el.style.transitionDelay = `${index * 60}ms`;
+        revealObserver.observe(el);
+      }
+    });
+  </script>
+</body>
+</html>

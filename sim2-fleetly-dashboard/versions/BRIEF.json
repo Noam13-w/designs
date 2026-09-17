@@ -1,0 +1,72 @@
+{
+ "slug": "fleetly-dashboard",
+ "title": "Fleetly Fleet Management Dashboard",
+ "one_liner": "A dense, glanceable dashboard that gives operations managers real-time insight into fleet performance and alerts.",
+ "language": "en",
+ "dir": "ltr",
+ "audience": "Operations managers overseeing commercial fleets who need to monitor vehicle status, deliveries, and issues at a glance.",
+ "brand_personality": [
+  "Professional",
+  "Data-driven",
+  "Reliable"
+ ],
+ "concept": "The design centers on a high‑density command‑center layout where the most critical metrics occupy the top row, a live map visualizes vehicle distribution, and a sortable table surfaces actionable details. The sky‑blue accent highlights interactive elements and active states, while a clean Inter typeface and ample whitespace ensure readability despite the information density. Dark and light modes share the same spatial hierarchy, letting users switch contexts without relearning the layout.",
+ "palette": {
+  "bg": "#F8FAFC",
+  "surface": "#FFFFFF",
+  "text": "#1E293B",
+  "muted": "#64748B",
+  "primary": "#0EA5E9",
+  "accent": "#0EA5E9",
+  "notes": "Light mode values shown; dark mode inverts bg/#0F172A, surface/#1E293B, text/#F8FAFC, muted/#94A3B8 while keeping primary accent #0EA5E9 for contrast."
+ },
+ "typography": {
+  "display": "Inter",
+  "body": "Inter",
+  "scale": "14/16/20/24/32/48",
+  "notes": "Inter used for both headings and body; weights: semibold for headings, regular for body; tabular-nums applied to numbers."
+ },
+ "layout": "Uses an 8px grid; fixed sidebar 260px wide (collapsible to 80px on <640px); top bar 64px; sections spaced with py-6 md:py-8; cards employ radius-md (12px) and shadow-sm with hover lift -translate-y-1; motion includes 150ms hover/focus transitions and fade‑in reveal on load, respecting prefers-reduced-motion.",
+ "pages": [
+  "index.html"
+ ],
+ "sections": [
+  {
+   "id": "stats",
+   "goal": "Show key fleet metrics at a glance",
+   "content": "Four statistic cards: Active Vehicles (number), Deliveries Today (number), Avg Delivery Time (minutes), Alerts (count with badge). Each card displays a large numeric value, label, and an inline SVG icon."
+  },
+  {
+   "id": "map",
+   "goal": "Visualize real‑time vehicle locations",
+   "content": "A map placeholder (800px width, 400px height) rendered with SVG grid lines and animated dots representing vehicles; includes a status-color legend and a refresh button."
+  },
+  {
+   "id": "table",
+   "goal": "Provide sortable, filterable vehicle roster",
+   "content": "Table with columns Plate Number, Driver, Status, Last Location, Fuel Level; status shown as colored pill; includes a global search input above the table and sortable column headers with SVG sort arrows."
+  }
+ ],
+ "components": [
+  "sidebar navigation",
+  "top bar",
+  "stat card",
+  "map placeholder",
+  "vehicle table",
+  "search input",
+  "status pill",
+  "theme toggle"
+ ],
+ "copy_voice": "Clear, concise, professional; uses imperative labels and units; avoids jargon; focuses on actionable data.",
+ "imagery": "No stock photos; all visuals are CSS/SVG: map uses an SVG grid with animated dots; stat cards and table use inline Lucide‑style icons (stroke 1.75); status pills are colored divs; hover states use subtle transforms.",
+ "must_avoid": [
+  "Stock photography",
+  "Ornamental gradients",
+  "Excessive corner rounding",
+  "Default blue links",
+  "Lorem ipsum placeholder text",
+  "Hardcoded pixel values that break the 8px grid",
+  "Overly bold colors that reduce readability",
+  "Complex charts that distract from core data"
+ ]
+}

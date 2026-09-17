@@ -1,0 +1,80 @@
+{
+ "slug": "fleetly-lp",
+ "title": "Fleetly – Fleet Management Made Simple",
+ "one_liner": "A clean, modern SaaS landing that turns chaotic delivery operations into a single, actionable view.",
+ "language": "en",
+ "dir": "ltr",
+ "audience": "Operations managers and owners of small delivery businesses with 5‑50 vans",
+ "brand_personality": [
+  "trustworthy",
+  "efficient",
+  "approachable"
+ ],
+ "concept": "The hero presents a live‑tracking map mockup overlaid with key performance indicators (fuel saved, on‑time deliveries, active vans) to instantly convey that Fleetly consolidates scattered fleet data into one clear dashboard. This visual promise of instant operational clarity sets the tone for the rest of the page, where each section reinforces the idea of simplicity and control. The design avoids generic illustrations and instead uses purpose‑built SVG mockups and subtle data visualizations to prove the product’s value at a glance.",
+ "palette": {
+  "bg": "#F8FAFC",
+  "surface": "#FFFFFF",
+  "text": "#0F172A",
+  "muted": "#64748B",
+  "primary": "#2563EB",
+  "accent": "#10B981",
+  "notes": "Light gray background for ample whitespace, white surface for cards, dark slate text for high contrast, muted slate for secondary info, blue-600 as primary brand color, emerald-500 accent for highlights and CTA contrast."
+ },
+ "typography": {
+  "display": "Space Grotesk",
+  "body": "Inter",
+  "scale": "16/20/24/32/40/48/56",
+  "notes": "Display font for headlines and eyebrow, body font for copy. Scale provides a clear hierarchy from base text to hero heading."
+ },
+ "layout": "Sections use Tailwind’s default grid with container max-w-7xl px-6 md:px-8. Vertical rhythm: py-16 md:py-20 lg:py-24. Border radius md (12px) applied to cards, buttons and modals. Soft shadow (0 1px 2px rgba(0,0,0,.05), 0 8px 24px -12px rgba(0,0,0,.15)) for lifted elements. Motion: scroll‑reveal (opacity + translateY 12px) with staggered 60ms delay, respects prefers-reduced-motion.",
+ "pages": [
+  "index.html"
+ ],
+ "sections": [
+  {
+   "id": "hero",
+   "goal": "Communicate instant operational clarity and capture leads.",
+   "content": "Eyebrow: Fleet management for small delivery fleets\\nHeadline: See every van, route and cost in one real‑time view\\nSubhead: Fleetly pulls GPS, fuel and job data into a simple dashboard so you can cut fuel waste, improve on‑time deliveries and scale without the chaos.\\nPrimary CTA: Start free trial\\nSecondary CTA: Watch demo\\nTrust line: Used by 200+ delivery teams, 9.8/10 rating\\nHero visual: SVG mockup of a dark‑mode map with a blue route line, three moving van icons, and overlay KPI badges (‑15% fuel, 98% on‑time, 12 active vans)."
+  },
+  {
+   "id": "how-it-works",
+   "goal": "Explain the simple three‑step workflow.",
+   "content": "Three numbered steps in a row (vertical on mobile).\\nStep 1: Connect your vehicles – plug in the Fleetly adapter or use existing telematics.\\nStep 2: Watch live – see routes, fuel usage and job status on the map.\\nStep 3: Act & optimize – get alerts, run reports and save up to 15% on operating costs.\\nEach step includes an inline SVG icon (plug, eye, shield) and a concise benefit."
+  },
+  {
+   "id": "pricing",
+   "goal": "Present clear tiered pricing and facilitate plan selection.",
+   "content": "Monthly/Yearly toggle (JS) with 20% yearly discount.\\nThree cards: Starter – $49/mo per van (up to 5 vans) – includes live tracking, basic reports, email support.\\nGrowth – $39/mo per van (6‑20 vans) – adds fuel analytics, driver SMS alerts, Slack integration.\\nScale – $29/mo per van (21‑50 vans) – includes custom integrations, dedicated account manager, API access.\\nMiddle card highlighted with a ring border and subtle bg-primary/5 background.\\nFeature checklist with check‑mark icons.\\nCTA button per tier: Choose plan."
+  },
+  {
+   "id": "integrations",
+   "goal": "Show compatibility with essential business tools.",
+   "content": "Section subtitle: Works with the tools you already use.\\nFour items displayed as text wordmarks in Space Grotesk, weight varied, opacity-80: Google Maps, Shopify, WhatsApp Business, QuickBooks.\\nOptional: simple SVG marks (map pin, cart, chat bubble, ledger) to the left of each name."
+  },
+  {
+   "id": "demo-form",
+   "goal": "Capture demo requests with a low‑friction form.",
+   "content": "Headline: Get a personalized demo\\nSubhead: See how Fleetly fits your fleet in 15 minutes.\\nForm fields: Name (required), Work email (required), Phone (optional), Company size (select: 1‑5, 6‑20, 21‑50 vans).\\nSubmit button: Get personalized demo.\\nOn success: form replaced with a thank‑you card – Thanks! We’ll contact you within one business day.\\nInline validation: real‑time email format, required field highlights."
+  }
+ ],
+ "components": [
+  "mobile nav (hamburger to full‑width panel)",
+  "pricing toggle (monthly/yearly switch with JS state)",
+  "form validation & success state (JS)",
+  "scroll‑reveal IntersectionObserver"
+ ],
+ "copy_voice": "Clear, confident, benefit‑focused. Uses active voice, concrete numbers, and avoids jargon. Speaks directly to operations managers: ‘cut fuel waste’, ‘see every van’, ‘save up to 15%’. Tone is professional yet approachable, reinforcing trust and efficiency.",
+ "imagery": "All visuals are CSS/SVG art: hero map with SVG route line and circular van icons; feature icons as inline SVG (plug, eye, shield); pricing cards use subtle shadows and rounded borders; integrations shown as text wordmarks in the display font with optional simple SVG marks; demo form uses styled inputs with focus rings. No stock photos or external images.",
+ "must_avoid": [
+  "Stock photography",
+  "Lorem ipsum or placeholder text",
+  "Default Tailwind blue as the only accent",
+  "Centered‑everything layout",
+  "Unnecessary gradients or neon colors",
+  "Overly complex charts or data visualizations that distract",
+  "Fake testimonials with generic names",
+  "Missing focus‑visible states",
+  "Horizontal overflow on any breakpoint",
+  "Using alert() or inline event handlers"
+ ]
+}
