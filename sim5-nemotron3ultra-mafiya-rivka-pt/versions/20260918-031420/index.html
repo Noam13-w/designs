@@ -1,0 +1,894 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>מאפיית רבקה – לחמים, עוגות ומאפים טריים בפתח תקווה</title>
+  <meta name="description" content="מאפיית רבקה בפתח תקווה – מאפייה ביתית עם לחמי שאור, עוגות ביתיות ומאפים טריים הנאפים במקום מדי בוקר. הזמינו בוואטסאפ 050-1234567.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="מאפיית רבקה – לחם של בית, אהבה של פעם">
+  <meta property="og:description" content="מאפייה ביתית בפתח תקווה: לחמי שאור כוסמין, עוגות ביתיות, מאפי חמאה טריים. אפייה יומית במקום, כשר למהדרין.">
+  <meta property="og:image" content="https://picsum.photos/seed/mafiya-rivka-og/1200/630">
+  <meta name="theme-color" content="#4A3728">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%234A3728'/%3E%3Ctext x='50' y='68' font-family='Playfair Display, serif' font-size='60' font-weight='600' fill='%23C9A84C' text-anchor='middle'%3Eר%3C/text%3E%3C/svg%3E">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#FAF3EB',
+            surface: '#F5E6D3',
+            'surface-2': '#EEE2D3',
+            text: '#2D231A',
+            muted: '#8B7359',
+            primary: '#4A3728',
+            'primary-fg': '#FAF3EB',
+            accent: '#C9A84C',
+            'accent-fg': '#2D231A',
+            border: '#DCC8B0',
+          },
+          fontFamily: {
+            display: ['Playfair Display', 'Georgia', 'serif'],
+            body: ['Heebo', 'system-ui', 'sans-serif'],
+          },
+          borderRadius: {
+            sm: '6px',
+            md: '12px',
+            lg: '20px',
+            xl: '28px',
+          },
+          boxShadow: {
+            soft: '0 1px 2px rgba(45,35,26,.06), 0 8px 24px -12px rgba(45,35,26,.18)',
+            'soft-lg': '0 2px 4px rgba(45,35,26,.08), 0 16px 48px -16px rgba(45,35,26,.22)',
+            ring: '0 0 0 2px #FAF3EB, 0 0 0 4px #C9A84C',
+          },
+          transitionDuration: {
+            '400': '400ms',
+            '600': '600ms',
+          },
+          transitionTimingFunction: {
+            'reveal': 'cubic-bezier(.2,.7,.2,1)',
+          },
+          backgroundImage: {
+            'noise': "url('data:image/svg+xml,%3Csvg viewBox=\"0 0 256 256\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cfilter id=\"n\"%3E%3CfeTurbulence type=\"fractalNoise\" baseFrequency=\"0.9\" numOctaves=\"4\" stitchTiles=\"stitch\"/%3E%3C/filter%3E%3Crect width=\"100%25\" height=\"100%25\" filter=\"url(%23n)\" opacity=\"0.03\"/%3E%3C/svg%3E')",
+            'warm-gradient': 'radial-gradient(ellipse 80% 60% at 20% 0%, rgba(201,168,76,.12) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 80% 100%, rgba(74,55,40,.08) 0%, transparent 50%)',
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    /* Base */
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+    body {
+      font-family: 'Heebo', system-ui, sans-serif;
+      background-color: #FAF3EB;
+      background-image: var(--tw-bg-opacity, 1), url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"),
+        radial-gradient(ellipse 80% 60% at 20% 0%, rgba(201,168,76,.12) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 100%, rgba(74,55,40,.08) 0%, transparent 50%);
+      background-blend-mode: overlay, normal, normal;
+      color: #2D231A;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .font-display { font-family: 'Playfair Display', Georgia, serif; }
+    .font-body { font-family: 'Heebo', system-ui, sans-serif; }
+
+    /* Focus visible */
+    :focus:not(:focus-visible) { outline: none; }
+    :focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 2px #FAF3EB, 0 0 0 4px #C9A84C;
+      border-radius: 8px;
+    }
+    a:focus-visible, button:focus-visible, [role="tab"]:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 2px #FAF3EB, 0 0 0 4px #C9A84C;
+      border-radius: 8px;
+    }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 600ms cubic-bezier(.2,.7,.2,1), transform 600ms cubic-bezier(.2,.7,.2,1); }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* WhatsApp pulse */
+    @keyframes wa-pulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+      50% { transform: scale(1.03); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+    }
+    .wa-pulse { animation: wa-pulse 2.2s ease-out infinite; }
+    @media (prefers-reduced-motion: reduce) { .wa-pulse { animation: none; } }
+
+    /* Steam animation */
+    @keyframes steam-rise {
+      0% { transform: translateY(0) scale(1); opacity: 0.6; }
+      100% { transform: translateY(-40px) scale(0.7); opacity: 0; }
+    }
+    .steam path { animation: steam-rise 3s ease-in-out infinite; transform-origin: center bottom; }
+    .steam path:nth-child(2) { animation-delay: 0.5s; }
+    .steam path:nth-child(3) { animation-delay: 1s; }
+    .steam path:nth-child(4) { animation-delay: 1.5s; }
+    .steam path:nth-child(5) { animation-delay: 2s; }
+    @media (prefers-reduced-motion: reduce) { .steam path { animation: none; opacity: 0.4; } }
+
+    /* Flour particles */
+    @keyframes flour-float {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.6; }
+      90% { opacity: 0.3; }
+      100% { transform: translateY(-60px) rotate(180deg); opacity: 0; }
+    }
+    .flour circle { animation: flour-float 4s ease-in-out infinite; transform-origin: center; }
+    .flour circle:nth-child(2) { animation-delay: 0.7s; animation-duration: 4.5s; }
+    .flour circle:nth-child(3) { animation-delay: 1.4s; animation-duration: 3.8s; }
+    .flour circle:nth-child(4) { animation-delay: 2.1s; animation-duration: 4.2s; }
+    .flour circle:nth-child(5) { animation-delay: 2.8s; animation-duration: 3.5s; }
+    .flour circle:nth-child(6) { animation-delay: 3.5s; animation-duration: 4.8s; }
+    @media (prefers-reduced-motion: reduce) { .flour circle { animation: none; opacity: 0.3; } }
+
+    /* Menu tabs */
+    .tab-panel { display: none; animation: fade-in 300ms ease-out; }
+    .tab-panel.active { display: block; }
+    @keyframes fade-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+    /* Menu card hover */
+    .menu-card { transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease; }
+    .menu-card:hover { transform: translateY(-2px); box-shadow: 0 1px 2px rgba(45,35,26,.06), 0 12px 32px -12px rgba(45,35,26,.22); border-color: rgba(201,168,76,0.3); }
+    .menu-card:focus-within { transform: translateY(-2px); box-shadow: 0 1px 2px rgba(45,35,26,.06), 0 12px 32px -12px rgba(45,35,26,.22); border-color: rgba(201,168,76,0.3); }
+
+    /* Decorative lines */
+    .section-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent); border: none; margin: 0; }
+
+    /* Map card grid */
+    .map-grid { background-image: linear-gradient(rgba(201,168,76,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.08) 1px, transparent 1px); background-size: 24px 24px; }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #F5E6D3; }
+    ::-webkit-scrollbar-thumb { background: #C9A84C; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #B89644; }
+
+    /* Selection */
+    ::selection { background: #C9A84C; color: #2D231A; }
+
+    /* Hero window frame */
+    .window-frame { border-radius: 28px; border: 4px solid rgba(201,168,76,0.4); background: linear-gradient(180deg, rgba(255,249,235,0.3) 0%, transparent 100%); }
+    .window-pane { border-radius: 24px; }
+
+    /* Nav scroll state */
+    .nav-scrolled { box-shadow: 0 1px 2px rgba(45,35,26,.06), 0 8px 24px -12px rgba(45,35,26,.18); background: rgba(250,243,235,0.95); backdrop-filter: blur(8px); }
+
+    /* Skip link */
+    .skip-link { position: absolute; top: -100%; left: 50%; transform: translateX(-50%); padding: 12px 24px; background: #4A3728; color: #FAF3EB; font-weight: 500; border-radius: 8px; z-index: 10000; }
+    .skip-link:focus { top: 16px; }
+
+    /* Mobile nav panel */
+    .mobile-panel { transform: translateX(100%); transition: transform 300ms cubic-bezier(.2,.7,.2,1); }
+    .mobile-panel.open { transform: translateX(0); }
+    @media (prefers-reduced-motion: reduce) { .mobile-panel { transition: none; } }
+
+    /* Print */
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white !important; color: black !important; }
+      a { text-decoration: underline; }
+    }
+  </style>
+</head>
+<body class="font-body antialiased">
+  <a href="#main" class="skip-link">דלג לתוכן ראשי</a>
+
+  <!-- Navigation -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-bg/95 backdrop-blur-sm border-b border-border transition-all duration-300" role="banner">
+    <nav class="max-w-6xl mx-auto px-5 md:px-8" aria-label="ניווט ראשי">
+      <div class="flex items-center justify-between h-16 md:h-18">
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-2 text-primary font-display font-semibold text-xl md:text-2xl focus-visible:outline-none focus-visible:ring-0" aria-label="מאפיית רבקה - דף הבית">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="text-accent">
+            <circle cx="16" cy="16" r="15" stroke="currentColor" stroke-width="2"/>
+            <path d="M16 8C11.5817 8 8 11.5817 8 16C8 20.4183 11.5817 24 16 24C20.4183 24 24 20.4183 24 16C24 11.5817 20.4183 8 16 8Z" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M16 11V21M11 16H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span>מאפיית רבקה</span>
+        </a>
+
+        <!-- Desktop nav -->
+        <ul class="hidden md:flex items-center gap-1 md:gap-6" role="menubar">
+          <li role="none"><a href="#menu" class="text-text/80 hover:text-primary font-medium text-sm transition-colors" role="menuitem">תפריט</a></li>
+          <li role="none"><a href="#hours" class="text-text/80 hover:text-primary font-medium text-sm transition-colors" role="menuitem">שעות</a></li>
+          <li role="none"><a href="#about" class="text-text/80 hover:text-primary font-medium text-sm transition-colors" role="menuitem">אודות</a></li>
+          <li role="none"><a href="#location" class="text-text/80 hover:text-primary font-medium text-sm transition-colors" role="menuitem">מיקום</a></li>
+        </ul>
+
+        <!-- CTA + Hamburger -->
+        <div class="flex items-center gap-3">
+          <a href="https://wa.me/972501234567" target="_blank" rel="noopener" class="hidden sm:inline-flex items-center gap-2 bg-accent text-accent-fg font-semibold px-5 py-2.5 rounded-lg shadow-soft wa-pulse hover:bg-[#B89644] hover:-translate-y-0.5 transition-all duration-200" aria-label="הזמינו בוואטסאפ 050-1234567">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            <span class="text-sm">הזמינו בוואטסאפ</span>
+          </a>
+          <button type="button" class="md:hidden p-2 rounded-lg text-text hover:bg-surface-2 transition-colors" aria-expanded="false" aria-controls="mobile-menu" aria-label="פתח תפריט ניווט" id="nav-toggle">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" id="hamburger-icon">
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" id="close-icon" class="hidden">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile panel -->
+      <div id="mobile-menu" class="mobile-panel md:hidden fixed inset-0 bg-bg z-40 p-8 flex flex-col" role="dialog" aria-modal="true" aria-label="תפריט ניווט" hidden>
+        <div class="flex justify-end mb-12">
+          <button type="button" class="p-2 rounded-lg text-text hover:bg-surface-2 transition-colors" aria-label="סגור תפריט" id="mobile-close">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+        <ul class="flex-1 flex flex-col items-center justify-center gap-6" role="menubar">
+          <li role="none"><a href="#menu" class="font-display text-2xl md:text-3xl text-text hover:text-primary transition-colors" role="menuitem">תפריט</a></li>
+          <li role="none"><a href="#hours" class="font-display text-2xl md:text-3xl text-text hover:text-primary transition-colors" role="menuitem">שעות פתיחה</a></li>
+          <li role="none"><a href="#about" class="font-display text-2xl md:text-3xl text-text hover:text-primary transition-colors" role="menuitem">אודות</a></li>
+          <li role="none"><a href="#location" class="font-display text-2xl md:text-3xl text-text hover:text-primary transition-colors" role="menuitem">מיקום</a></li>
+        </ul>
+        <a href="https://wa.me/972501234567" target="_blank" rel="noopener" class="w-full max-w-xs mx-auto text-center bg-accent text-accent-fg font-semibold px-6 py-3.5 rounded-lg shadow-soft wa-pulse hover:bg-[#B89644] transition-all" aria-label="הזמינו בוואטסאפ 050-1234567">
+          <span class="flex items-center justify-center gap-2"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg> הזמינו בוואטסאפ 050-1234567</span>
+        </a>
+      </div>
+      <div id="mobile-backdrop" class="mobile-panel md:hidden fixed inset-0 bg-black/40 z-30" hidden aria-hidden="true"></div>
+    </nav>
+  </header>
+
+  <main id="main" role="main">
+    <!-- Hero -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center py-20 md:py-28 lg:py-32 px-5 md:px-8 overflow-hidden" aria-labelledby="hero-title">
+      <div class="absolute inset-0 bg-warm-gradient pointer-events-none" aria-hidden="true"></div>
+      <div class="relative max-w-6xl mx-auto w-full">
+        <!-- Trust line -->
+        <div class="text-center mb-8 reveal" style="transition-delay: 0ms;" aria-hidden="true">
+          <span class="inline-flex items-center gap-2 text-sm font-medium text-muted px-4 py-2 rounded-full bg-surface border border-border">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <span>★ 4.9 • 320+ לקוחות קבועים • כשר למהדרין</span>
+          </span>
+        </div>
+
+        <!-- Eyebrow -->
+        <p class="text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-accent text-center mb-4 reveal" style="transition-delay: 80ms;" aria-hidden="true">מאפייה ביתית • פתח תקווה • אפייה יומית במקום</p>
+
+        <!-- Headline -->
+        <h1 id="hero-title" class="font-display font-semibold text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-primary leading-[1.1] text-center mb-6 tracking-tight text-wrap-balance reveal" style="transition-delay: 160ms;">מאפיית רבקה</h1>
+
+        <!-- Subhead -->
+        <p class="text-lg md:text-xl text-muted max-w-2xl mx-auto text-center mb-10 reveal" style="transition-delay: 240ms;">לחמים, עוגות ומאפים טריים מדי בוקר – בידיים, בלב ובמסורת של פעם</p>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 reveal" style="transition-delay: 320ms;">
+          <a href="https://wa.me/972501234567" target="_blank" rel="noopener" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-accent text-accent-fg font-semibold px-8 py-4 rounded-lg shadow-soft wa-pulse hover:bg-[#B89644] hover:-translate-y-0.5 hover:shadow-soft-lg transition-all duration-200 text-base" aria-label="הזמינו בוואטסאפ 050-1234567">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            <span>הזמינו בוואטסאפ 050-1234567</span>
+          </a>
+          <a href="#menu" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 text-primary font-semibold px-6 py-3.5 rounded-lg border-2 border-primary/20 hover:border-primary hover:bg-primary/5 transition-all duration-200 text-base" aria-label="צפו בתפריט המלא">
+            <span>צפו בתפריט</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </a>
+        </div>
+
+        <!-- Hero Visual: Window Frame -->
+        <div class="relative max-w-3xl mx-auto reveal" style="transition-delay: 400ms;" aria-hidden="true">
+          <div class="window-frame p-1">
+            <div class="window-pane relative aspect-[4/3] md:aspect-[3/2] bg-gradient-to-b from-amber-50/30 via-surface/50 to-surface/30 overflow-hidden">
+              <!-- Kitchen illustration -->
+              <svg class="absolute inset-0 w-full h-full" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <!-- Definitions -->
+                <defs>
+                  <filter id="soft-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#4A3728" flood-opacity="0.12"/>
+                  </filter>
+                </defs>
+
+                <!-- Background warmth -->
+                <rect width="600" height="400" fill="url(#warmBg)"/>
+                <defs>
+                  <linearGradient id="warmBg" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#FFF8F0"/>
+                    <stop offset="100%" stop-color="#F5E6D3"/>
+                  </linearGradient>
+                </defs>
+
+                <!-- Shelf -->
+                <rect x="40" y="320" width="520" height="12" rx="3" fill="#D4B85A" opacity="0.3" filter="url(#soft-shadow)"/>
+
+                <!-- Bowls -->
+                <!-- Large bowl -->
+                <g filter="url(#soft-shadow)">
+                  <path d="M140 280 Q140 240 180 240 L420 240 Q460 240 460 280 L460 320 L140 320 Z" fill="#FAF3EB" stroke="#C9A84C" stroke-width="2"/>
+                  <path d="M180 240 Q200 220 240 220 Q280 220 300 240" stroke="#C9A84C" stroke-width="2" fill="none" opacity="0.5"/>
+                  <!-- Dough in bowl -->
+                  <path d="M180 260 Q180 230 240 230 Q300 230 300 260 Q300 275 240 280 Q180 275 180 260" fill="#E8D5B7" opacity="0.9"/>
+                  <path d="M200 255 Q200 240 240 240 Q280 240 280 255" stroke="#C9A84C" stroke-width="1" fill="none" opacity="0.4"/>
+                </g>
+
+                <!-- Small bowl -->
+                <g filter="url(#soft-shadow)" transform="translate(420, 260)">
+                  <path d="M0 40 Q0 10 30 10 L80 10 Q110 10 110 40 L110 60 L0 60 Z" fill="#FAF3EB" stroke="#C9A84C" stroke-width="1.5"/>
+                  <circle cx="55" cy="30" r="18" fill="#FFF3E0" opacity="0.8"/>
+                  <path d="M45 30 Q55 22 65 30" stroke="#C9A84C" stroke-width="1" fill="none" opacity="0.5"/>
+                </g>
+
+                <!-- Wooden spoon -->
+                <g filter="url(#soft-shadow)" transform="translate(350, 180) rotate(-30)">
+                  <path d="M0 0 L20 0 Q35 -10 50 -5 Q65 0 80 0 L100 0 L100 12 L0 12 Z" fill="#8B5E3C"/>
+                  <ellipse cx="100" cy="6" rx="14" ry="6" fill="#A06B3C"/>
+                </g>
+
+                <!-- Rolling pin -->
+                <g filter="url(#soft-shadow)" transform="translate(100, 160) rotate(15)">
+                  <rect x="0" y="0" width="120" height="10" rx="5" fill="#D4A574"/>
+                  <rect x="-8" y="0" width="8" height="10" rx="2" fill="#A06B3C"/>
+                  <rect x="120" y="0" width="8" height="10" rx="2" fill="#A06B3C"/>
+                </g>
+
+                <!-- Steam -->
+                <g class="steam" transform="translate(300, 220)" stroke="#C9A84C" stroke-width="1.5" fill="none" opacity="0.6">
+                  <path d="M0 0 Q-10 -15 0 -30 Q10 -45 0 -60" stroke-linecap="round"/>
+                  <path d="M20 0 Q10 -15 20 -30 Q30 -45 20 -60" stroke-linecap="round"/>
+                  <path d="M-10 0 Q-20 -15 -10 -30 Q0 -45 -10 -60" stroke-linecap="round"/>
+                  <path d="M35 0 Q25 -15 35 -30 Q45 -45 35 -60" stroke-linecap="round"/>
+                  <path d="M-25 0 Q-35 -15 -25 -30 Q-15 -45 -25 -60" stroke-linecap="round"/>
+                </g>
+
+                <!-- Flour particles -->
+                <g class="flour" fill="#C9A84C" opacity="0.5">
+                  <circle cx="180" cy="200" r="1.5"/>
+                  <circle cx="250" cy="180" r="1"/>
+                  <circle cx="320" cy="210" r="1.2"/>
+                  <circle cx="380" cy="170" r="0.8"/>
+                  <circle cx="220" cy="160" r="1"/>
+                  <circle cx="290" cy="150" r="1.3"/>
+                </g>
+
+                <!-- Window reflection hint -->
+                <path d="M0 0 L600 0 L600 400 L0 400 Z M100 50 Q300 20 500 50 L500 350 Q300 380 100 350 Z" fill="white" fill-rule="evenodd" opacity="0.03"/>
+              </svg>
+            </div>
+          </div>
+          <!-- Window label -->
+          <p class="text-center text-xs text-muted mt-4 font-medium tracking-wide">חלון המטבח של רבקה</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider" aria-hidden="true">
+
+    <!-- Menu -->
+    <section id="menu" class="py-20 md:py-28 lg:py-32 px-5 md:px-8" aria-labelledby="menu-title">
+      <div class="max-w-6xl mx-auto">
+        <header class="text-center mb-12 md:mb-16 reveal">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent mb-3">מה בתנור היום</p>
+          <h2 id="menu-title" class="font-display font-semibold text-3xl md:text-4xl lg:text-5xl text-primary leading-[1.15] text-wrap-balance">התפריט שלנו</h2>
+        </header>
+
+        <!-- Tabs -->
+        <div class="flex flex-wrap justify-center gap-2 mb-10 md:mb-12" role="tablist" aria-label="קטגוריות תפריט" id="menu-tabs">
+          <button role="tab" aria-selected="true" aria-controls="panel-breads" id="tab-breads" class="tab-btn px-5 py-2.5 rounded-lg bg-surface border border-border text-text font-medium text-sm transition-all duration-200 hover:border-accent hover:text-primary focus:outline-none focus:ring-0" data-tab="breads">לחמים</button>
+          <button role="tab" aria-selected="false" aria-controls="panel-cakes" id="tab-cakes" class="tab-btn px-5 py-2.5 rounded-lg bg-bg border border-border text-text font-medium text-sm transition-all duration-200 hover:border-accent hover:text-primary focus:outline-none focus:ring-0" data-tab="cakes" tabindex="-1">עוגות</button>
+          <button role="tab" aria-selected="false" aria-controls="panel-pastries" id="tab-pastries" class="tab-btn px-5 py-2.5 rounded-lg bg-bg border border-border text-text font-medium text-sm transition-all duration-200 hover:border-accent hover:text-primary focus:outline-none focus:ring-0" data-tab="pastries" tabindex="-1">מאפים</button>
+        </div>
+
+        <!-- Tab Panels -->
+        <!-- Breads -->
+        <div role="tabpanel" id="panel-breads" aria-labelledby="tab-breads" class="tab-panel active reveal" tabindex="0">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6" id="breads-grid">
+            <!-- Items injected by JS -->
+          </div>
+        </div>
+
+        <!-- Cakes -->
+        <div role="tabpanel" id="panel-cakes" aria-labelledby="tab-cakes" class="tab-panel reveal" tabindex="0" hidden>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6" id="cakes-grid">
+            <!-- Items injected by JS -->
+          </div>
+        </div>
+
+        <!-- Pastries -->
+        <div role="tabpanel" id="panel-pastries" aria-labelledby="tab-pastries" class="tab-panel reveal" tabindex="0" hidden>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6" id="pastries-grid">
+            <!-- Items injected by JS -->
+          </div>
+        </div>
+
+        <!-- Note -->
+        <p class="text-center text-sm text-muted mt-10 reveal">המחירים כוללים מע״מ • המלאי משתנה מדי יום • ניתן להזמין מראש בוואטסאפ</p>
+      </div>
+    </section>
+
+    <hr class="section-divider" aria-hidden="true">
+
+    <!-- Hours -->
+    <section id="hours" class="py-20 md:py-28 lg:py-32 px-5 md:px-8" aria-labelledby="hours-title">
+      <div class="max-w-6xl mx-auto">
+        <div class="max-w-xl mx-auto reveal">
+          <div class="bg-primary/5 border border-accent/30 rounded-lg p-6 md:p-8 text-center">
+            <h3 id="hours-title" class="font-display font-semibold text-2xl md:text-3xl text-primary mb-6 md:mb-8">שעות פתיחה</h3>
+            <dl class="space-y-5 md:space-y-6" role="list">
+              <div class="flex items-center justify-center gap-4" role="listitem">
+                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-accent/15 flex items-center justify-center" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                </div>
+                <div class="text-start">
+                  <dt class="font-semibold text-text">א׳ – ה׳</dt>
+                  <dd class="text-primary font-medium text-lg">06:00 – 20:00</dd>
+                </div>
+              </div>
+              <div class="flex items-center justify-center gap-4" role="listitem">
+                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-accent/15 flex items-center justify-center" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                </div>
+                <div class="text-start">
+                  <dt class="font-semibold text-text">יום ו׳</dt>
+                  <dd class="text-primary font-medium text-lg">06:00 – 14:00</dd>
+                </div>
+              </div>
+              <div class="flex items-center justify-center gap-4" role="listitem">
+                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-muted/15 flex items-center justify-center" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8B7359" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                </div>
+                <div class="text-start">
+                  <dt class="font-semibold text-text">שבת</dt>
+                  <dd class="text-muted font-medium text-lg">סגור</dd>
+                </div>
+              </div>
+            </dl>
+            <p class="mt-6 md:mt-8 text-sm text-muted border-t border-border pt-6">האפייה מתחילה ב־04:00 לפנות בוקר – הכל טרי לפתיחה</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider" aria-hidden="true">
+
+    <!-- About -->
+    <section id="about" class="py-20 md:py-28 lg:py-32 px-5 md:px-8" aria-labelledby="about-title">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-10 md:gap-14 items-start">
+          <!-- Text column (right in RTL) -->
+          <div class="reveal" style="transition-delay: 0ms;">
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent mb-3">הסיפור שלנו</p>
+            <h2 id="about-title" class="font-display font-semibold text-3xl md:text-4xl lg:text-5xl text-primary leading-[1.15] mb-6 text-wrap-balance">בידיים, בלב, כל בוקר מחדש</h2>
+            <div class="space-y-5 text-muted leading-relaxed text-base md:text-lg">
+              <p>מאפיית רבקה נולדה מהאהבה ללחם אמיתי – בלי קיצורי דרך, בלי משפרי אפייה, רק קמח, מים, שמרים טבעיים וזמן.</p>
+              <p>אנחנו בוחרים חומרי גלם מקומיים: קמח כוסמין מלא מהגליל, חמאה צרפתית, שוקולד בלגי 70%, פירות עונה מהשוק.</p>
+              <p>כל כיכר, עוגה ומאפה נאפים במקום מדי יום, משעות הקטנות של הלילה – כדי שתקבלו אותם חמים, ריחניים ומלאי נשמה.</p>
+            </div>
+          </div>
+
+          <!-- Illustration column (left in RTL) -->
+          <div class="reveal lg:order-first" style="transition-delay: 160ms;" aria-hidden="true">
+            <div class="relative aspect-square max-w-md mx-auto">
+              <svg class="w-full h-full" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Bowl -->
+                <path d="M80 280 Q80 200 160 200 L240 200 Q320 200 320 280 L320 320 L80 320 Z" stroke="#4A3728" stroke-width="3" fill="#FAF3EB" opacity="0.8"/>
+                <!-- Dough -->
+                <path d="M110 260 Q110 220 200 220 Q290 220 290 260 Q290 285 200 295 Q110 285 110 260" fill="#E8D5B7" stroke="#C9A84C" stroke-width="1" opacity="0.9"/>
+                <path d="M140 250 Q140 235 200 235 Q260 235 260 250" stroke="#C9A84C" stroke-width="1" fill="none" opacity="0.4"/>
+                <!-- Hands -->
+                <!-- Left hand -->
+                <g stroke="#4A3728" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M120 260 Q100 270 85 290 Q75 305 80 325"/>
+                  <path d="M115 265 Q95 275 80 295"/>
+                  <path d="M110 270 Q90 280 75 300"/>
+                  <path d="M105 275 Q85 285 70 305"/>
+                </g>
+                <!-- Right hand -->
+                <g stroke="#4A3728" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M280 260 Q300 270 315 290 Q325 305 320 325"/>
+                  <path d="M285 265 Q305 275 320 295"/>
+                  <path d="M290 270 Q310 280 325 300"/>
+                  <path d="M295 275 Q315 285 330 305"/>
+                </g>
+                <!-- Flour dust -->
+                <g fill="#C9A84C" opacity="0.5">
+                  <circle cx="150" cy="180" r="1.5"/>
+                  <circle cx="200" cy="170" r="1"/>
+                  <circle cx="250" cy="185" r="1.2"/>
+                  <circle cx="180" cy="160" r="0.8"/>
+                  <circle cx="220" cy="155" r="1"/>
+                  <circle cx="270" cy="165" r="1.3"/>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider" aria-hidden="true">
+
+    <!-- Location -->
+    <section id="location" class="py-20 md:py-28 lg:py-32 px-5 md:px-8" aria-labelledby="location-title">
+      <div class="max-w-6xl mx-auto">
+        <div class="max-w-2xl mx-auto reveal">
+          <div class="map-grid rounded-lg border border-border p-6 md:p-8 relative overflow-hidden">
+            <!-- Decorative pin -->
+            <div class="absolute top-6 left-6 md:top-8 md:left-8" aria-hidden="true">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="24" cy="24" r="20" fill="#C9A84C"/>
+                <circle cx="24" cy="24" r="12" fill="#FAF3EB"/>
+                <circle cx="24" cy="24" r="6" fill="#4A3728"/>
+              </svg>
+            </div>
+
+            <div class="relative z-10 text-center">
+              <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent mb-3">המקום שלנו</p>
+              <h3 id="location-title" class="font-display font-semibold text-2xl md:text-3xl lg:text-4xl text-primary mb-4">רחוב ההגנה 42, פתח תקווה</h3>
+              <p class="text-muted mb-8 max-w-sm mx-auto">חניה חופשית ברחוב • כניסה נגישה • 2 דק׳ מצומת סגולה</p>
+
+              <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://waze.com/ul?q=רחוב%20ההגנה%2042%20פתח%20תקווה" target="_blank" rel="noopener" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-primary text-primary-fg font-semibold px-6 py-3.5 rounded-lg shadow-soft hover:bg-[#3D2E22] hover:-translate-y-0.5 transition-all duration-200" aria-label="נווט בווייז לרחוב ההגנה 42 פתח תקווה">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>
+                  <span>נווט בווייז</span>
+                </a>
+                <a href="tel:+97231234567" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 border-2 border-primary/30 text-primary font-semibold px-6 py-3.5 rounded-lg hover:border-primary hover:bg-primary/5 transition-all duration-200" aria-label="התקשרו 03-1234567">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                  <span dir="ltr">03-1234567</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-surface py-16 md:py-20 px-5 md:px-8" role="contentinfo" aria-labelledby="footer-title">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-12">
+        <!-- Column 1: Brand -->
+        <div class="lg:col-span-1">
+          <a href="#" class="flex items-center gap-2 text-surface font-display font-semibold text-xl md:text-2xl mb-4 focus-visible:outline-none focus-visible:ring-0" aria-label="מאפיית רבקה - דף הבית">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="text-accent">
+              <circle cx="16" cy="16" r="15" stroke="currentColor" stroke-width="2"/>
+              <path d="M16 8C11.5817 8 8 11.5817 8 16C8 20.4183 11.5817 24 16 24C20.4183 24 24 20.4183 24 16C24 11.5817 20.4183 8 16 8Z" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M16 11V21M11 16H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span>מאפיית רבקה</span>
+          </a>
+          <p class="text-surface/70 text-sm leading-relaxed mb-6">לחם של בית, אהבה של פעם</p>
+          <div class="flex items-center gap-4" role="list" aria-label="רשתות חברתיות">
+            <a href="https://instagram.com/mafiya_rivka" target="_blank" rel="noopener" class="text-surface/60 hover:text-accent transition-colors p-1 rounded" aria-label="אינסטגרם - mafiya_rivka" role="listitem">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="https://wa.me/972501234567" target="_blank" rel="noopener" class="text-surface/60 hover:text-accent transition-colors p-1 rounded" aria-label="וואטסאפ 050-1234567" role="listitem">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2: Hours -->
+        <div>
+          <h4 class="font-display font-medium text-lg text-accent mb-4" id="footer-hours">שעות פתיחה</h4>
+          <dl class="space-y-3 text-sm text-surface/80" role="list">
+            <div class="flex justify-between gap-4" role="listitem"><dt class="font-medium">א׳ – ה׳</dt><dd dir="ltr">06:00 – 20:00</dd></div>
+            <div class="flex justify-between gap-4" role="listitem"><dt class="font-medium">יום ו׳</dt><dd dir="ltr">06:00 – 14:00</dd></div>
+            <div class="flex justify-between gap-4" role="listitem"><dt class="font-medium">שבת</dt><dd class="text-surface/50">סגור</dd></div>
+          </dl>
+        </div>
+
+        <!-- Column 3: Contact -->
+        <div>
+          <h4 class="font-display font-medium text-lg text-accent mb-4" id="footer-contact">צרו קשר</h4>
+          <address class="not-italic space-y-3 text-sm text-surface/80" role="list">
+            <div class="flex items-center gap-3" role="listitem">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="text-accent flex-shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <a href="tel:+97231234567" class="hover:text-accent transition-colors" dir="ltr">03-1234567</a>
+            </div>
+            <div class="flex items-center gap-3" role="listitem">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="text-accent flex-shrink-0"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+              <a href="https://wa.me/972501234567" target="_blank" rel="noopener" class="hover:text-accent transition-colors" dir="ltr">050-1234567</a>
+            </div>
+            <div class="flex items-center gap-3" role="listitem">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="text-accent flex-shrink-0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>רחוב ההגנה 42, פתח תקווה</span>
+            </div>
+            <div class="flex items-center gap-3" role="listitem">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="text-accent flex-shrink-0"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              <a href="https://instagram.com/mafiya_rivka" target="_blank" rel="noopener" class="hover:text-accent transition-colors" dir="ltr">@mafiya_rivka</a>
+            </div>
+          </address>
+        </div>
+
+        <!-- Column 4: Legal -->
+        <div>
+          <h4 class="font-display font-medium text-lg text-accent mb-4" id="footer-legal">משפטי</h4>
+          <nav class="space-y-3 text-sm text-surface/70" aria-label="קישורים משפטיים">
+            <p>© 2025 מאפיית רבקה • כל הזכויות שמורות</p>
+            <a href="#" class="block hover:text-accent transition-colors">נגישות</a>
+            <a href="#" class="block hover:text-accent transition-colors">מדיניות פרטיות</a>
+            <a href="#" class="block hover:text-accent transition-colors">תנאי שימוש</a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="border-t border-primary/30 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-sm text-surface/60 text-center md:text-start">נבנה באהבה עבור הקהילה של פתח תקווה</p>
+        <div class="flex items-center gap-6 text-sm text-surface/60">
+          <span class="flex items-center gap-1" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <span>4.9</span>
+          </span>
+          <span>מבוסס על 320+ ביקורות</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Menu Data & Interactions Script -->
+  <script>
+    // ============ MENU DATA ============
+    const menuData = {
+      breads: [
+        { name: 'לחם שאור כוסמין', desc: 'קמח כוסמין מלא, מחמצת טבעית, מלח ים', price: 28, icon: 'bread' },
+        { name: 'לחם כפרי קלאסי', desc: 'קמח לבן, מחמצת, קראסט פריך ופנים רך', price: 24, icon: 'bread' },
+        { name: 'חלה לשבת', desc: 'ביצים, חמאה, דבש, קלועה ביד', price: 32, icon: 'braid' },
+        { name: 'בגט צרפתי', desc: 'קמח טייפ 55, התפחה ארוכה, קראסט דק', price: 18, icon: 'baguette' },
+        { name: 'פוקצ׳ה רוזמרין', desc: 'שמן זית כתית, רוזמרין טרי, מלח גס', price: 22, icon: 'focaccia' },
+      ],
+      cakes: [
+        { name: 'עוגת גזר ואגוזים', desc: 'גזר טרי, אגוזי מלך, קינמון, ציפוי גבינת שמנת', price: 42, icon: 'carrot-cake' },
+        { name: 'עוגת שוקולד פאדג׳', desc: 'שוקולד בלגי 70%, חמאה, ביצים, קורט מלח', price: 48, icon: 'chocolate-cake' },
+        { name: 'עוגת תפוחים וקינמון', desc: 'תפוחי עונה, קינמון, צימוקים, בצק פריך', price: 38, icon: 'apple-cake' },
+        { name: 'עוגת גבינה אפויה', desc: 'גבינת שמנת 30%, וניל, פירורי ביסקוויט חמאה', price: 52, icon: 'cheesecake' },
+      ],
+      pastries: [
+        { name: 'קרואסון חמאה', desc: 'חמאה צרפתית 82%, 27 שכבות, אפייה טרייה', price: 14, icon: 'croissant' },
+        { name: 'רוגלך שוקולד', desc: 'בצק שמרים חמאתי, שוקולד בלגי, אגוזים', price: 12, icon: 'rugelach' },
+        { name: 'מאפה תרד וגבינה', desc: 'תרד טרי, גבינת פטה, בצק עלים חמאתי', price: 16, icon: 'spinach-pastry' },
+        { name: 'בורקס תפוח אדמה', desc: 'תפוח אדמה מתובל, בצק פילו פריך, שומשום', price: 14, icon: 'burekas' },
+        { name: 'עוגיית שוקולד צ׳יפס', desc: 'שוקולד מריר, חמאה, מלח ים, פריכה מבחוץ', price: 10, icon: 'cookie' },
+      ],
+    };
+
+    // SVG Icons for menu items
+    const icons = {
+      bread: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2C7.58 2 4 5.58 4 10c0 4.42 3.58 8 8 8s8-3.58 8-8c0-4.42-3.58-8-8-8z"></path><path d="M8 10h8"></path><path d="M10 14h4"></path></svg>`,
+      braid: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4c0 4.42 3.58 8 8 8s8-3.58 8-8"></path><path d="M16 4c0 4.42-3.58 8-8 8s-8-3.58-8-8"></path><path d="M8 20c0-4.42 3.58-8 8-8s8 3.58 8 8"></path><path d="M16 20c0-4.42-3.58-8-8-8s-8 3.58-8 8"></path></svg>`,
+      baguette: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12c0-4.42 3.58-8 8-8s8 3.58 8 8"></path><path d="M4 12v8c0 4.42 3.58 8 8 8s8-3.58 8-8v-8"></path><line x1="8" y1="6" x2="8" y2="18"></line><line x1="12" y1="6" x2="12" y2="18"></line><line x1="16" y1="6" x2="16" y2="18"></line></svg>`,
+      focaccia: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="14" rx="3"></rect><circle cx="12" cy="13" r="1.5"></circle><circle cx="8" cy="13" r="1.5"></circle><circle cx="16" cy="13" r="1.5"></circle><circle cx="12" cy="9" r="1.5"></circle><circle cx="8" cy="9" r="1.5"></circle><circle cx="16" cy="9" r="1.5"></circle></svg>`,
+      'carrot-cake': `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2C7.58 2 4 5.58 4 10c0 5.5 8 12 8 12s8-6.5 8-12c0-4.42-3.58-8-8-8z"></path><path d="M12 6v6"></path><path d="M9 9h6"></path></svg>`,
+      'chocolate-cake': `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="6" width="16" height="14" rx="2"></rect><path d="M4 14h16"></path><path d="M8 10h8"></path><path d="M8 18h8"></path></svg>`,
+      'apple-cake': `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2C7.58 2 4 5.58 4 10c0 5.5 8 12 8 12s8-6.5 8-12c0-4.42-3.58-8-8-8z"></path><path d="M12 6v4"></path><path d="M10 8h4"></path><path d="M8 14h8"></path></svg>`,
+      cheesecake: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12v8c0 2.2-1.8 4-4 4H8c-2.2 0-4-1.8-4-4V12"></path><path d="M4 12V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6"></path><line x1="8" y1="16" x2="16" y2="16"></line></svg>`,
+      croissant: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3C7 3 3 7 3 12s4 9 9 9 9-4 9-9c0-2.5-.9-4.8-2.4-6.5"></path><path d="M17 7c-1.5 1.5-2.5 3.5-2.5 5.5"></path><path d="M14 11c-1.5 1.5-2.5 3.5-2.5 5.5"></path></svg>`,
+      rugelach: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9c0-.5-.1-1-.2-1.5"></path><path d="M12 3v9h9"></path><circle cx="16" cy="16" r="2"></circle></svg>`,
+      'spinach-pastry': `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><path d="M12 4v16"></path><path d="M8 12h8"></path><path d="M8 8h8"></path></svg>`,
+      burekas: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>`,
+      cookie: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle><circle cx="8" cy="9" r="1"></circle><circle cx="16" cy="9" r="1"></circle><circle cx="12" cy="15" r="1"></circle><circle cx="9" cy="15" r="1"></circle><circle cx="15" cy="15" r="1"></circle></svg>`,
+    };
+
+    // ============ RENDER MENU ============
+    function renderMenu() {
+      const grids = {
+        breads: document.getElementById('breads-grid'),
+        cakes: document.getElementById('cakes-grid'),
+        pastries: document.getElementById('pastries-grid'),
+      };
+
+      Object.entries(menuData).forEach(([category, items]) => {
+        const grid = grids[category];
+        if (!grid) return;
+        grid.innerHTML = items.map((item, index) => `
+          <article class="menu-card group bg-surface border border-border rounded-md p-5 md:p-6 flex flex-col" style="transition-delay: ${index * 80}ms;" tabindex="0">
+            <div class="flex items-start gap-4 mb-4">
+              <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-accent/15 flex items-center justify-center text-accent" aria-hidden="true">
+                ${icons[item.icon] || icons.bread}
+              </div>
+              <div class="flex-1 min-w-0">
+                <h3 class="font-display font-medium text-lg text-primary mb-1">${item.name}</h3>
+                <p class="text-sm text-muted line-clamp-1">${item.desc}</p>
+              </div>
+            </div>
+            <div class="mt-auto flex items-baseline justify-between gap-4 pt-4 border-t border-border/50">
+              <span class="font-display font-semibold text-xl text-primary" aria-label="מחיר ${item.price} שקלים">${item.price}₪</span>
+              <span class="text-xs text-muted font-medium">לפריט</span>
+            </div>
+          </article>
+        `).join('');
+      });
+    }
+
+    // ============ TABS ============
+    function initTabs() {
+      const tabs = document.querySelectorAll('#menu-tabs [role="tab"]');
+      const panels = {
+        breads: document.getElementById('panel-breads'),
+        cakes: document.getElementById('panel-cakes'),
+        pastries: document.getElementById('panel-pastries'),
+      };
+
+      function activateTab(tabId) {
+        tabs.forEach(tab => {
+          const isActive = tab.dataset.tab === tabId;
+          tab.setAttribute('aria-selected', isActive);
+          tab.tabIndex = isActive ? 0 : -1;
+          if (isActive) {
+            tab.classList.add('bg-primary', 'text-primary-fg', 'border-primary');
+            tab.classList.remove('bg-bg', 'border-border', 'text-text');
+          } else {
+            tab.classList.remove('bg-primary', 'text-primary-fg', 'border-primary');
+            tab.classList.add('bg-bg', 'border-border', 'text-text');
+          }
+        });
+
+        Object.entries(panels).forEach(([key, panel]) => {
+          if (key === tabId) {
+            panel.hidden = false;
+            // Force reflow for animation
+            panel.offsetHeight;
+            panel.classList.add('active');
+          } else {
+            panel.classList.remove('active');
+            panel.hidden = true;
+          }
+        });
+      }
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => activateTab(tab.dataset.tab));
+        tab.addEventListener('keydown', (e) => {
+          const tabsArray = Array.from(tabs);
+          const currentIndex = tabsArray.indexOf(tab);
+          let nextIndex = currentIndex;
+          if (e.key === 'ArrowLeft') nextIndex = (currentIndex - 1 + tabsArray.length) % tabsArray.length;
+          else if (e.key === 'ArrowRight') nextIndex = (currentIndex + 1) % tabsArray.length;
+          else if (e.key === 'Home') nextIndex = 0;
+          else if (e.key === 'End') nextIndex = tabsArray.length - 1;
+          else return;
+          e.preventDefault();
+          tabsArray[nextIndex].focus();
+          activateTab(tabsArray[nextIndex].dataset.tab);
+        });
+      });
+    }
+
+    // ============ MOBILE NAV ============
+    function initMobileNav() {
+      const toggle = document.getElementById('nav-toggle');
+      const panel = document.getElementById('mobile-menu');
+      const backdrop = document.getElementById('mobile-backdrop');
+      const closeBtn = document.getElementById('mobile-close');
+      const hamburger = document.getElementById('hamburger-icon');
+      const closeIcon = document.getElementById('close-icon');
+      const links = panel.querySelectorAll('a');
+
+      function openMenu() {
+        panel.hidden = false;
+        backdrop.hidden = false;
+        // Force reflow
+        panel.offsetHeight;
+        panel.classList.add('open');
+        backdrop.classList.add('open');
+        toggle.setAttribute('aria-expanded', 'true');
+        hamburger.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        // Focus first link
+        setTimeout(() => links[0]?.focus(), 100);
+      }
+
+      function closeMenu() {
+        panel.classList.remove('open');
+        backdrop.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        hamburger.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+        document.body.style.overflow = '';
+        setTimeout(() => {
+          panel.hidden = true;
+          backdrop.hidden = true;
+          toggle.focus();
+        }, 300);
+      }
+
+      toggle.addEventListener('click', () => {
+        if (panel.classList.contains('open')) closeMenu();
+        else openMenu();
+      });
+
+      closeBtn.addEventListener('click', closeMenu);
+      backdrop.addEventListener('click', closeMenu);
+
+      links.forEach(link => {
+        link.addEventListener('click', () => {
+          if (panel.classList.contains('open')) closeMenu();
+        });
+      });
+
+      // Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && panel.classList.contains('open')) closeMenu();
+      });
+    }
+
+    // ============ SCROLL REVEAL ============
+    function initScrollReveal() {
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced) {
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -50px 0px', threshold: 0.1 });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
+
+    // ============ NAV SCROLL STATE ============
+    function initNavScroll() {
+      const nav = document.querySelector('header');
+      let lastScroll = 0;
+      window.addEventListener('scroll', () => {
+        const currentScroll = window.scrollY;
+        if (currentScroll > 20) nav.classList.add('nav-scrolled');
+        else nav.classList.remove('nav-scrolled');
+        lastScroll = currentScroll;
+      }, { passive: true });
+    }
+
+    // ============ SMOOTH SCROLL FALLBACK ============
+    function initSmoothScroll() {
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          const target = document.querySelector(targetId);
+          if (target) {
+            e.preventDefault();
+            const navHeight = document.querySelector('header').offsetHeight;
+            const targetPosition = target.getBoundingClientRect().top + window.scrollY - navHeight;
+            window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+            target.focus({ preventScroll: true });
+          }
+        });
+      });
+    }
+
+    // ============ INIT ============
+    document.addEventListener('DOMContentLoaded', () => {
+      renderMenu();
+      initTabs();
+      initMobileNav();
+      initScrollReveal();
+      initNavScroll();
+      initSmoothScroll();
+    });
+  </script>
+</body>
+</html>
